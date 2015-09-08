@@ -5,7 +5,7 @@
 import {expect} from "chai";
 import request from "supertest";
 import {app} from "../../../app/server/server.js";
-import db from "../../../app/database/init";
+import db from "../../../app/database/bookshelf/init";
 
 describe('Passport', () => {
 

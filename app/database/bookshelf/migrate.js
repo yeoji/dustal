@@ -1,5 +1,5 @@
 import Knex from 'knex';
-import config from '../../app/server/config/database.json';
+import config from '../../../app/server/config/database.json';
 
 const dbConf = config.bookshelf[config.bookshelf.db];
 const knex = Knex(dbConf);

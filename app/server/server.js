@@ -2,21 +2,21 @@ import express from "express";
 import passport from "passport";
 import routes from "./routes";
 
-import db from '../database/init';
+import db from '../database/db';
 
 export const app = express();
-
-// set db instance
-app.use(function (req, res, next) {
-    req.db = db;
-    next();
-});
 
 // Bootstrap application settings
 require('./config/express')(app, passport);
 
 // Bootstrap passport config
-require('./config/passport')(passport, db);
+const database = db(passport);
+
+// set db instance
+app.use(function (req, res, next) {
+    req.db = database;
+    next();
+});
 
 // Bootstrap routes
 routes(app, passport);

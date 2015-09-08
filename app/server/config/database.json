@@ -1,9 +1,10 @@
 {
+  "db": "mongo",
   "bookshelf": {
     "db": "mysql",
-    "init": "lib/database/init",
+    "init": "lib/database/bookshelf/init",
     "migrations": {
-      "directory": "lib/database/migrations",
+      "directory": "lib/database/bookshelf/migrations",
       "tableName": "migrations"
     },
     "postgresql": {
@@ -31,6 +32,14 @@
       "connection": {
         "filename": ""
       }
+    }
+  },
+  "mongo": {
+    "init": "lib/database/mongo/init",
+    "connection": {
+      "user": "",
+      "password": "",
+      "db": "mongodb://localhost/rainman"
     }
   }
 }

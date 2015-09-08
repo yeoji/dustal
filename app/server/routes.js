@@ -13,16 +13,16 @@ export default function (app, passport) {
         passport.authenticate('register', function(err, user, info) {
             if (err) { return next(err); }
             if (!user) {
-                return res.send(JSON.stringify({
+                return res.status(403).json({
                     error: true,
                     message: info.message
-                }));
+                });
             }
 
             // log in user
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
-                return res.send(JSON.stringify(user));
+                return res.status(200).json(user);
             });
 
         })(req, res, next);
@@ -34,18 +34,18 @@ export default function (app, passport) {
         // generate the authenticate method and pass the req/res
         // custom callback
         passport.authenticate('login', function(err, user, info) {
-            if (err) { return next(err); }
+            if (err !== null) { return next(err); }
             if (!user) {
-                return res.send(JSON.stringify({
+                return res.status(403).json({
                     error: true,
                     message: info.message
-                }));
+                });
             }
 
             // log in user
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
-                return res.send(JSON.stringify(user));
+                return res.status(200).json(user);
             });
 
         })(req, res, next);
@@ -56,16 +56,16 @@ export default function (app, passport) {
         req.logout();
         // there is still a user object set
         if(req.user) {
-            res.send(JSON.stringify({
+            res.status(500).json({
                 error: true,
                 message: 'Failed to log out user.'
-            }));
+            });
         }
 
-        res.send(JSON.stringify({
+        res.status(200).json({
             error: false,
             message: 'User logged out.'
-        }));
+        });
     });
 
 
