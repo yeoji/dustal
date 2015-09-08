@@ -1,0 +1,25 @@
+html
+    head
+        title="rainman."
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+
+        meta(name='description', content='')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+
+        // Latest compiled and minified CSS
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+        // Optional theme
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css')
+
+        link(href='/css/index.css', rel='stylesheet')
+
+        // Latest compiled and minified JavaScript
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+
+    body
+        #fullBg
+            .container
+                #react-app!= content
+
+    script(src='http://localhost:8081/js/app.js', defer)

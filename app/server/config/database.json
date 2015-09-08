@@ -1,0 +1,36 @@
+{
+  "bookshelf": {
+    "db": "mysql",
+    "init": "lib/database/init",
+    "migrations": {
+      "directory": "lib/database/migrations",
+      "tableName": "migrations"
+    },
+    "postgresql": {
+      "client": "pg",
+      "connection": {
+        "host": "127.0.0.1",
+        "user": "postgres",
+        "password": "",
+        "database": "",
+        "charset": "utf8"
+      }
+    },
+    "mysql": {
+      "client": "mysql",
+      "connection": {
+        "host": "192.168.33.10",
+        "user": "root",
+        "password": "root",
+        "database": "rainman",
+        "charset": "utf8"
+      }
+    },
+    "sqlite": {
+      "client": "sqlite3",
+      "connection": {
+        "filename": ""
+      }
+    }
+  }
+}
