@@ -3,8 +3,8 @@ import React from "react";
 
 import App from "./components/App";
 import Hello from "./components/Hello";
-import AuthForm from "./components/auth/AuthForm";
-
+import LoginForm from "./components/auth/LoginForm";
+import RegisterForm from "./components/auth/RegisterForm";
 import UserStore from './stores/UserStore';
 
 // To pass in props to the handler
@@ -26,8 +26,8 @@ export default (
     <Route path="/" handler={ App }>
         <DefaultRoute handler={ Hello } />
         <Route name="auth" path="/auth">
-            <Route name="login" handler={ wrapComponent(AuthForm, {type: 'login'}) } />
-            <Route name="register" handler={ wrapComponent(AuthForm, {type: 'register'}) } />
+            <Route name="login" handler={ wrapComponent(LoginForm) } />
+            <Route name="register" handler={ wrapComponent(RegisterForm) } />
         </Route>
         <Route path="/dashboard" handler={ Hello } onEnter={ requireAuth } />
     </Route>

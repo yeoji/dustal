@@ -3,7 +3,7 @@ import {expect} from "chai";
 import sinon from "sinon";
 import createComponent from "../createComponent.js";
 
-import AuthForm from "../../../../app/client/components/auth/AuthForm";
+import AuthForm from "../../../../app/client/components/auth/LoginForm";
 import RegistrationFields from "../../../../app/client/components/auth/RegistrationFields";
 
 describe('AuthForm component', () => {
