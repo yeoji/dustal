@@ -1,10 +1,5 @@
 export default {
 
-    authForm: {
-        maxWidth: '280px',
-        margin: '60px auto 10px'
-    },
-
     inputField: {
         backgroundColor: 'black',
         position: 'relative',

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./auth/AuthForm.styles";
+import {Row} from 'react-bootstrap';
 
 class Hello extends React.Component {
 
@@ -12,9 +13,11 @@ class Hello extends React.Component {
         }
 
         return (
-            <div style={{marginTop: '100px'}} className="text-center">
-                <h1 style={ styles.heading }>Hello {string}!</h1>
-            </div>
+            <Row className='show-grid'>
+                <div style={{marginTop: '100px'}} className="text-center">
+                    <h1 style={ styles.heading }>Hello {string}!</h1>
+                </div>
+            </Row>
         );
     }
 }
