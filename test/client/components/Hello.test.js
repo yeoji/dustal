@@ -12,7 +12,7 @@ describe('Hello component', () => {
         const expectedStr = 'Hello World!';
         const hello = createComponent(<Hello />);
 
-        expect(hello.type).to.equal('div');
-        expect(hello.props.children.props.children).to.equal(expectedStr);
+        expect(hello.props.children.type).to.equal('div');
+        expect(hello.props.children.props.children.props.children).to.equal(expectedStr);
     });
 });

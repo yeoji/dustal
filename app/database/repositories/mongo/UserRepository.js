@@ -4,6 +4,8 @@
  *      - findById(id, db);
  *      - findByEmail(email, db);
  *      - createUser(user, db);
+ *      - all(db);
+ *      - delete(user);
  **********************************/
 
 export default {
@@ -48,6 +50,32 @@ export default {
                     reject(err);
                 }
                 resolve(newUser);
+            });
+        });
+    },
+
+    /**
+     * Fetch all models
+     * @param db
+     */
+    all: function (db) {
+        return new Promise(function(resolve, reject) {
+           db.model('User').find({}, function(err, users) {
+               if(err) {
+                   reject(err);
+               }
+               resolve(users);
+           });
+        });
+    },
+
+    delete: function(user) {
+        return new Promise(function(resolve, reject) {
+            user.remove(function(err, model) {
+                if(err) {
+                    reject(err);
+                }
+                resolve(model);
             });
         });
     }

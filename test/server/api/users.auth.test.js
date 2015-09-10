@@ -1,11 +1,11 @@
 /***********************************************
  * Sample of how to test API routes on server. *
  ***********************************************/
-
 import {expect} from "chai";
+import rewire from "rewire";
 import request from "supertest";
 import {app} from "../../../app/server/server.js";
-import db from "../../../app/database/bookshelf/init";
+const db = rewire("../../../app/database/db");
 
 describe('Passport', () => {
 
@@ -18,11 +18,16 @@ describe('Passport', () => {
     describe('User registration', () => {
 
         before((done) => {
+            // passport and db init
+            db.__set__('passportConfig', function(passport, database) {
+                return null;
+            });
+            const database = db();
             // clear users table
-            db.models.User.fetchAll()
+            database.repositories.UserRepository.all(database.connection)
                 .then((users) => {
                     users.forEach((record) => {
-                        record.destroy().then(() => {
+                        database.repositories.UserRepository.delete(record).then(() => {
                             done();
                         })
                     });
@@ -65,7 +70,7 @@ describe('Passport', () => {
             request(app)
                 .post(baseUrl + '/register')
                 .send(post)
-                .expect(200)
+                .expect(403)
                 .end((err, res) => {
                     expect(err).to.not.exist;
 
@@ -96,7 +101,7 @@ describe('Passport', () => {
             request(app)
                 .post(url)
                 .send(loginData)
-                .expect(200)
+                .expect(403)
                 .end((err, res) => {
                     expect(err).to.not.exist;
 
@@ -117,7 +122,7 @@ describe('Passport', () => {
             request(app)
                 .post(url)
                 .send(loginData)
-                .expect(200)
+                .expect(403)
                 .end((err, res) => {
                     expect(err).to.not.exist;
 

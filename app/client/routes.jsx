@@ -26,8 +26,8 @@ export default (
     <Route path="/" handler={ App }>
         <DefaultRoute handler={ Hello } />
         <Route name="auth" path="/auth">
-            <Route name="login" handler={ wrapComponent(LoginForm) } />
-            <Route name="register" handler={ wrapComponent(RegisterForm) } />
+            <Route name="login" handler={ LoginForm } />
+            <Route name="register" handler={ RegisterForm } />
         </Route>
         <Route path="/dashboard" handler={ Hello } onEnter={ requireAuth } />
     </Route>
