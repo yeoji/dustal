@@ -1,0 +1,45 @@
+{
+  "db": "mongo",
+  "bookshelf": {
+    "db": "mysql",
+    "init": "lib/database/bookshelf/init",
+    "migrations": {
+      "directory": "lib/database/bookshelf/migrations",
+      "tableName": "migrations"
+    },
+    "postgresql": {
+      "client": "pg",
+      "connection": {
+        "host": "127.0.0.1",
+        "user": "postgres",
+        "password": "",
+        "database": "",
+        "charset": "utf8"
+      }
+    },
+    "mysql": {
+      "client": "mysql",
+      "connection": {
+        "host": "192.168.33.10",
+        "user": "root",
+        "password": "root",
+        "database": "rainman",
+        "charset": "utf8"
+      }
+    },
+    "sqlite": {
+      "client": "sqlite3",
+      "connection": {
+        "filename": ""
+      }
+    }
+  },
+  "mongo": {
+    "init": "lib/database/mongo/init",
+    "connection": {
+      "user": "",
+      "password": "",
+      "db": "mongodb://localhost/rainman"
+    }
+  }
+}
