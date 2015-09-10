@@ -4,7 +4,9 @@ export default class User {
             first_name: {type: String, default: ''},
             last_name: {type: String, default: ''},
             email: {type: String, default: ''},
-            password: {type: String, default: ''}
+            password: {type: String, default: ''},
+            mobile_no: {type: String, default: ''},
+            blog_ids: [mongoose.Schema.Types.ObjectId]
         });
 
         UserSchema.virtual('id').get(function () {
