@@ -47,9 +47,5 @@ class RegisterForm extends React.Component {
     }
 }
 
-RegisterForm.propTypes = {
-        UserStore: React.PropTypes.object,
-        type: React.PropTypes.string
-};
 
 export default RegisterForm;
