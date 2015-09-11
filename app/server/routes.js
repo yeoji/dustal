@@ -22,7 +22,11 @@ export default function (app, passport) {
             // log in user
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
-                return res.status(200).json(user);
+                return res.status(200).json({
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    email: user.email
+                });
             });
 
         })(req, res, next);
@@ -45,7 +49,11 @@ export default function (app, passport) {
             // log in user
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
-                return res.status(200).json(user);
+                return res.status(200).json({
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    email: user.email
+                });
             });
 
         })(req, res, next);
@@ -74,11 +82,33 @@ export default function (app, passport) {
      ****************/
 
 
-    // Route for rendering React components
-    app.use('*', function (req, res) {
+    /******************
+     *  React Routes  *
+     ******************/
+
+    // auth middleware to protect access serverside
+    const auth = (req, res, next) => {
+        if (req.user) {
+            next();
+        }
+        res.redirect('/auth/login');
+    };
+
+    // auth pages do not require authentication
+    app.use('/auth/*', function(req, res) {
+        const content = render(req, JSON.stringify({}));
+        res.render('index', {content: content});
+    });
+
+    // Route for rendering React components (requires auth)
+    app.use('*', auth, function (req, res) {
         res.locals.data = {
             UserStore: {
-                user: req.user
+                user: {
+                    first_name: req.user.first_name,
+                    last_name: req.user.last_name,
+                    email: req.user.email
+                }
             }
         };
         const content = render(req, JSON.stringify(res.locals.data));
