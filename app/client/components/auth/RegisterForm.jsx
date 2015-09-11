@@ -1,8 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router';
 import styles from './AuthForm.styles';
 import UserActions from "../../actions/UserActions";
-import {Row, Col, Input, ButtonInput} from 'react-bootstrap';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import Button from 'react-bootstrap/lib/Button';
+import Input from 'react-bootstrap/lib/Input';
 
 class RegisterForm extends React.Component {
 
@@ -36,7 +38,7 @@ class RegisterForm extends React.Component {
                             <Input style={styles.inputField} placeholder="Last Name" className="form-control" type="text" ref="last_name"/>
                             <Input style={styles.inputField} placeholder="E-mail" className="form-control" type="email" ref="email"/>
                             <Input style={styles.inputField} placeholder="Password" className="form-control" type="password" ref="password"/>
-                            <ButtonInput style={ styles.submitButton } type="button" className="btn btn-lg btn-default btn-block" onClick={this._onAuthSubmit} value="Register"/>
+                            <Button style={ styles.submitButton } type="button" className="btn btn-lg btn-default btn-block" onClick={this._onAuthSubmit}>Register</Button>
                         </form>
                     </div>
                 </Col>
@@ -44,5 +46,10 @@ class RegisterForm extends React.Component {
         );
     }
 }
+
+RegisterForm.propTypes = {
+        UserStore: React.PropTypes.object,
+        type: React.PropTypes.string
+};
 
 export default RegisterForm;
