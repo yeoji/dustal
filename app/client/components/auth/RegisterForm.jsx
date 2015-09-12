@@ -1,8 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router';
 import styles from './AuthForm.styles';
 import UserActions from "../../actions/UserActions";
-import {Row, Col, Input, ButtonInput} from 'react-bootstrap';
+import {Row, Col, Input, Button} from 'react-bootstrap';
 
 class RegisterForm extends React.Component {
 
@@ -36,7 +35,7 @@ class RegisterForm extends React.Component {
                             <Input style={styles.inputField} placeholder="Last Name" className="form-control" type="text" ref="last_name"/>
                             <Input style={styles.inputField} placeholder="E-mail" className="form-control" type="email" ref="email"/>
                             <Input style={styles.inputField} placeholder="Password" className="form-control" type="password" ref="password"/>
-                            <ButtonInput style={ styles.submitButton } type="button" className="btn btn-lg btn-default btn-block" onClick={this._onAuthSubmit} value="Register"/>
+                            <Button style={ styles.submitButton } type="button" className="btn btn-lg btn-default btn-block" onClick={this._onAuthSubmit}>Register</Button>
                         </form>
                     </div>
                 </Col>
