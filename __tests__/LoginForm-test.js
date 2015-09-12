@@ -2,6 +2,7 @@ jest.dontMock('../app/client/components/auth/LoginForm.jsx');
 jest.dontMock('../helpers/ReactRouterContext.js');
 
 import React from 'react/addons';
+import {Row, Col, Input, Button} from 'react-bootstrap';
 var LoginForm = require('../app/client/components/auth/LoginForm.jsx');
 var TestUtils = React.addons.TestUtils;
 var ReactRouterContext = require('../helpers/ReactRouterContext.js');

@@ -1,10 +1,8 @@
 import React from 'react';
 import styles from './AuthForm.styles';
 import UserActions from "../../actions/UserActions";
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import Button from 'react-bootstrap/lib/Button';
-import Input from 'react-bootstrap/lib/Input';
+import {Row, Col, Input, Button} from 'react-bootstrap';
+
 
 class RegisterForm extends React.Component {
 

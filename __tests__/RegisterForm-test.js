@@ -1,6 +1,7 @@
 jest.dontMock('../app/client/components/auth/RegisterForm.jsx');
 
 import React from 'react/addons';
+import {Row, Col, Input, Button} from 'react-bootstrap';
 var RegisterForm = require('../app/client/components/auth/RegisterForm.jsx');
 var TestUtils = React.addons.TestUtils;
 
