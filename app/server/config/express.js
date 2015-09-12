@@ -22,15 +22,6 @@ export default function (app, passport) {
     // so it may be used by other middleware
     app.use(cookieParser());
 
-    app.use(session({
-        secret: secrets.sessionSecret,
-        resave: false,
-        saveUninitialized: false
-    }));
-
     app.use(passport.initialize());
-    app.use(passport.session());
-
-    app.use(flash());
 
 };
