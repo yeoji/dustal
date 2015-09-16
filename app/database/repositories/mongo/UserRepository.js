@@ -3,9 +3,9 @@
  * - FUNCTIONS:
  *      - findById(id, db);
  *      - findByEmail(email, db);
- *      - createUser(user, db);
+ *      - create(user, hash, db);
  *      - all(db);
- *      - delete(user);
+ *      - delete(id, db);
  **********************************/
 
 export default {
@@ -36,7 +36,7 @@ export default {
         });
     },
 
-    createUser: function (user, hash, db) {
+    create: function (user, hash, db) {
         return new Promise(function (resolve, reject) {
             const userSchema = db.model('User');
             const newUser = new userSchema({
@@ -69,13 +69,13 @@ export default {
         });
     },
 
-    delete: function(user) {
+    delete: function(id, db) {
         return new Promise(function(resolve, reject) {
-            user.remove(function(err, model) {
-                if(err) {
+            db.model('User').findOne({_id: id}, function (err, model) {
+                if (err) {
                     reject(err);
                 }
-                resolve(model);
+                resolve(user.remove(function() {}));
             });
         });
     }

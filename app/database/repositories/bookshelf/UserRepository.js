@@ -3,9 +3,9 @@
  * - FUNCTIONS:
  *      - findById(id, db);
  *      - findByEmail(email, db);
- *      - createUser(user, db);
+ *      - create(user, hash, db);
  *      - all(db);
- *      - delete(user);
+ *      - delete(id, db);
  **********************************/
 
 export default {
@@ -22,7 +22,7 @@ export default {
         return db.models.User.forge({email: email}).fetch();
     },
 
-    createUser: function (user, hash, db) {
+    create: function (user, hash, db) {
         return new Promise(function (resolve, reject) {
             const newUser = db.models.User.forge({
                 first_name: user.first_name,
@@ -43,7 +43,10 @@ export default {
         return db.models.User.fetchAll();
     },
 
-    delete: function (user) {
-        return user.destroy();
+    delete: function (id, db) {
+        return db.models.User.forge({id: id}).fetch()
+            .then(function(user) {
+                return user.destroy();
+            });
     }
 }

@@ -47,6 +47,7 @@
     "jade": "^1.11.0",
     "jsonwebtoken": "^5.0.5",
     "knex": "^0.8.6",
+    "lodash": "^3.10.1",
     "mongoose": "^4.1.5",
     "mysql": "^2.9.0",
     "passport": "^0.3.0",
