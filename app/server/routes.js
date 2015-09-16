@@ -14,7 +14,8 @@ export default function (app, passport) {
      ****************/
     //app.use('/api/test', new RESTRouter('Test').generateRoutes({}));
     app.post('/sms/test', (req, res) => {
-        console.log(req.body);
+        res.set('Content-Type', 'text/xml');
+        res.send("<?xml version='1.0' encoding='UTF-8'?><Response><Message>I'm hungry!</Message></Response>");
     });
 
     /******************
