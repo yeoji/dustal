@@ -13,6 +13,9 @@ export default function (app, passport) {
      *  API Routes  *
      ****************/
     //app.use('/api/test', new RESTRouter('Test').generateRoutes({}));
+    app.post('/sms/test', (req, res) => {
+        console.log(req.body);
+    });
 
     /******************
      *  React Routes  *
