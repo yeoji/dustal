@@ -1,3 +1,4 @@
+import fs from "fs";
 import config from "../../../app/server/config/database.json";
 const dbImpl = config.db;
 
@@ -6,9 +7,9 @@ const dbImpl = config.db;
  * A sample comment is included in bookshelf/UserRepository.                      *
  * No interfaces in Javascript :(                                                 *
  **********************************************************************************/
+const repositories = {};
 
-// @TODO: possible to search for and autobind?
-// add any repositories you need and bind them here
-export default {
-    UserRepository: require('./' + dbImpl + '/UserRepository')
-}
+// add bindings here
+repositories.UserRepository = new (require("./" + dbImpl + "/UserRepository"))();
+
+export default repositories;

@@ -7,7 +7,9 @@ const options = {
     pass: config.mongo.connection.password
 };
 
-mongoose.connect(config.mongo.connection.db, options);
+const mongoUri = process.env.MONGOLAB_URI || config.mongo.connection.db;
+
+mongoose.connect(mongoUri, options);
 mongoose.models = {};
 
 models(mongoose);
