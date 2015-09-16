@@ -8,24 +8,15 @@
  *      - delete(id, db);
  **********************************/
 
-export default {
-    /**
-     * a standard function will be findById
-     * id is the id of the user you want to find
-     * db is the db instance created
-     */
-    findById: function (id, db) {
-        return new Promise(function (resolve, reject) {
-            db.model('User').findOne({_id: id}, function (err, model) {
-                if (err) {
-                    reject(err);
-                }
-                resolve(model);
-            });
-        });
-    },
+import Repository from "./Repository";
 
-    findByEmail: function (email, db) {
+class UserRepository extends Repository {
+
+    constructor() {
+        super('User');
+    }
+
+    findByEmail(email, db) {
         return new Promise(function (resolve, reject) {
             db.model('User').findOne({email: email}, function (err, model) {
                 if (err) {
@@ -34,9 +25,10 @@ export default {
                 resolve(model);
             });
         });
-    },
+    }
 
-    create: function (user, hash, db) {
+    // this overrides the create method in generic repository
+    create(user, hash, db) {
         return new Promise(function (resolve, reject) {
             const userSchema = db.model('User');
             const newUser = new userSchema({
@@ -52,31 +44,7 @@ export default {
                 resolve(newUser);
             });
         });
-    },
-
-    /**
-     * Fetch all models
-     * @param db
-     */
-    all: function (db) {
-        return new Promise(function(resolve, reject) {
-           db.model('User').find({}, function(err, users) {
-               if(err) {
-                   reject(err);
-               }
-               resolve(users);
-           });
-        });
-    },
-
-    delete: function(id, db) {
-        return new Promise(function(resolve, reject) {
-            db.model('User').findOne({_id: id}, function (err, model) {
-                if (err) {
-                    reject(err);
-                }
-                resolve(user.remove(function() {}));
-            });
-        });
     }
 }
+
+export default UserRepository;

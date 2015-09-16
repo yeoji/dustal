@@ -9,15 +9,7 @@ const dbImpl = config.db;
  **********************************************************************************/
 const repositories = {};
 
-// autobind the repositories
-const repoPath = __dirname + '/' + dbImpl + '/';
-const files = fs.readdirSync(repoPath);
-
-for (var file of files) {
-    // get rid of .js extension
-    // assuming that there will only be one '.' in the filename
-    const split = file.split('.');
-    repositories[split[0]] = require(repoPath + file);
-}
+// add bindings here
+repositories.UserRepository = new (require("./" + dbImpl + "/UserRepository"))();
 
 export default repositories;

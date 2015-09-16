@@ -26,8 +26,9 @@ describe('Passport', () => {
             // clear users table
             database.repositories.UserRepository.all(database.connection)
                 .then((users) => {
+                    console.log(users);
                     users.forEach((record) => {
-                        database.repositories.UserRepository.delete(record).then(() => {
+                        database.repositories.UserRepository.delete(record.id, database.connection).then(() => {
                             done();
                         })
                     });

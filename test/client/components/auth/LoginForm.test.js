@@ -4,7 +4,7 @@ import sinon from "sinon";
 
 import createComponent from "../createComponent.js";
 import LoginForm from "../../../../app/client/components/auth/LoginForm";
-import {Input, ButtonInput} from 'react-bootstrap';
+import {Input, Button} from 'react-bootstrap';
 
 describe('LoginForm component', () => {
     let loginForm;
@@ -28,14 +28,14 @@ describe('LoginForm component', () => {
 
         expect(inputs).to.have.length(2);
 
-        expect(inputs[0].props.name).to.equal('email');
-        expect(inputs[1].props.name).to.equal('password');
+        expect(inputs[0].ref).to.equal('email');
+        expect(inputs[1].ref).to.equal('password');
 
     });
 
     it('should call _onAuthSubmit on click of submit button', () => {
         let formChildren = loginForm.props.children.props.children.props.children[0].props.children;
-        let button = formChildren.filter(component => component.type == ButtonInput)[0];
+        let button = formChildren.filter(component => component.type == Button)[0];
         button.props.onClick();
 
         expect(_onAuthSubmitStub.called).to.equal(true);

@@ -4,7 +4,7 @@ import sinon from "sinon";
 
 import createComponent from "../createComponent.js";
 import RegisterForm from "../../../../app/client/components/auth/RegisterForm";
-import {Input, ButtonInput} from 'react-bootstrap';
+import {Input, Button} from 'react-bootstrap';
 
 describe('RegisterForm component', function () {
     let regForm;
@@ -36,7 +36,7 @@ describe('RegisterForm component', function () {
 
     it('should call _onAuthSubmit on click of submit button', () => {
         let formChildren = regForm.props.children.props.children.props.children.props.children;
-        let button = formChildren.filter(component => component.type == ButtonInput)[0];
+        let button = formChildren.filter(component => component.type == Button)[0];
         button.props.onClick();
 
         expect(_onAuthSubmitStub.called).to.equal(true);
