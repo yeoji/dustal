@@ -12,7 +12,8 @@
     "server": "nodemon lib/server/server",
     "dev-start": "npm run watch-js & npm run dev-server & npm run server",
     "start": "npm run build && node lib/server/server",
-    "build": "./node_modules/.bin/babel app -d lib --experimental",
+    "build": "./node_modules/.bin/babel app -d lib --experimental && npm run webpack",
+    "webpack": "./node_modules/.bin/webpack lib/client/render.js public/js/app.js",
     "migrate": "npm run build && node migration.js"
   },
   "jest": {
@@ -55,7 +56,8 @@
     "react": "^0.13.3",
     "react-bootstrap": "^0.25.1",
     "react-router": "*",
-    "babel": "^5.8.23"
+    "babel": "^5.8.23",
+    "webpack": "^1.12.1"
   },
   "devDependencies": {
     "babel-core": "^5.8.23",
@@ -70,7 +72,6 @@
     "rewire": "^2.3.4",
     "sinon": "^1.16.1",
     "supertest": "^1.1.0",
-    "webpack": "^1.12.1",
     "webpack-dev-server": "^1.10.1"
   }
 }
