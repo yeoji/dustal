@@ -1,15 +1,19 @@
 import React from "react";
 import styles from "./auth/AuthForm.styles";
-import {Row} from 'react-bootstrap';
+import {Row, Button, Grid, Jumbotron} from 'react-bootstrap';
+import {Link} from 'react-router';
 
 class Hello extends React.Component {
 
     render() {
+
+        let registerUrl = '/auth/register';
+
         return (
-            <Row className='show-grid'>
-                <div style={{marginTop: '100px'}} className="text-center">
-                    <h1 style={ styles.heading }>Hello World!</h1>
-                </div>
+            <Row>
+                <Jumbotron className="welcome text-center">
+                    <Button bsSize="large" className="welcome-button" href={registerUrl}>Join Now</Button>
+                </Jumbotron>
             </Row>
         );
     }
