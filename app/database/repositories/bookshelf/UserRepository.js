@@ -3,6 +3,7 @@
  * - FUNCTIONS:
  *      - findById(id, db);
  *      - findByEmail(email, db);
+ *      - findByMobileNo(mobile, db);
  *      - create(user, hash, db);
  *      - all(db);
  *      - delete(id, db);
@@ -18,6 +19,10 @@ class UserRepository extends Repository {
 
     findByEmail(email, db) {
         return db.models.User.forge({email: email}).fetch();
+    }
+
+    findByMobileNo(mobile, db) {
+        return db.models.User.forge({mobile_no: mobile}).fetch();
     }
 
     // this overrides the generic repository's create

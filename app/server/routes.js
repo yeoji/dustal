@@ -16,7 +16,7 @@ export default function (app, passport) {
     //app.use('/api/test', new RESTRouter('Test').generateRoutes({}));
     app.post('/sms/test', (req, res) => {
         SmsHandler.receiveSms(req)
-            .then((data) => {
+            .then(() => {
                 // send an empty response
                 res.type('xml');
                 res.send("<Response></Response>");

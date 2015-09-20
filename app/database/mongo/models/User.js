@@ -3,10 +3,11 @@ export default class User {
         let UserSchema = new mongoose.Schema({
             first_name: {type: String, default: ''},
             last_name: {type: String, default: ''},
+            username: {type: String, default: ''},
             email: {type: String, default: ''},
             password: {type: String, default: ''},
             mobile_no: {type: String, default: ''},
-            blog_ids: [mongoose.Schema.Types.ObjectId]
+            blogs: {type: [mongoose.Schema.Types.ObjectId], ref: 'Blog'}
         });
 
         UserSchema.virtual('id').get(function () {

@@ -3,6 +3,7 @@
  * - FUNCTIONS:
  *      - findById(id, db);
  *      - findByEmail(email, db);
+ *      - findByMobileNo(mobile, db);
  *      - create(user, hash, db);
  *      - all(db);
  *      - delete(id, db);
@@ -19,6 +20,17 @@ class UserRepository extends Repository {
     findByEmail(email, db) {
         return new Promise(function (resolve, reject) {
             db.model('User').findOne({email: email}, function (err, model) {
+                if (err) {
+                    reject(err);
+                }
+                resolve(model);
+            });
+        });
+    }
+
+    findByMobileNo(mobile, db) {
+        return new Promise(function (resolve, reject) {
+            db.model('User').findOne({mobile_no: mobile}).populate('blogs').exec(function (err, model) {
                 if (err) {
                     reject(err);
                 }

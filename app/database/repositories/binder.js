@@ -11,5 +11,6 @@ const repositories = {};
 
 // add bindings here
 repositories.UserRepository = new (require("./" + dbImpl + "/UserRepository"))();
+repositories.PostRepository = new (require("./" + dbImpl + "/Repository"))('Post');
 
 export default repositories;
