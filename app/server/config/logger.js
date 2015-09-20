@@ -15,7 +15,7 @@ export default function(app) {
     const format = ':date :method :url :status :errmsg :reqdata';
 
     // create a write stream (in append mode)
-    const logStream = fs.createWriteStream(__dirname + '/../logs/error.log', {flags: 'a'});
+    const logStream = fs.createWriteStream(__dirname + '/../../../logs/error.log', {flags: 'a'});
 
     // setup the logger
     app.use(morgan(format, {
