@@ -2,7 +2,7 @@ export default class Post {
     static register(mongoose) {
         let PostSchema = new mongoose.Schema({
             blog_id: mongoose.Schema.Types.ObjectId,
-            user_id: mongoose.Schema.Types.ObjectId,
+            user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
             message: {type: String, default: ''},
             timestamp: {type: Date, default: Date.now}
         });

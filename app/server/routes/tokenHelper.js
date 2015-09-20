@@ -17,7 +17,7 @@ const auth = (req, res, next) => {
         res.locals.user = jwt.verify(req.cookies.token, secrets.jwtSecret);
         next();
     } catch (err) {
-        res.redirect('/auth/login');
+        res.status(401).redirect('/auth/login');
     }
 };
 

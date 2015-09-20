@@ -12,7 +12,7 @@ export default function (passport, db) {
                         return done(null, false, {message: 'User Already Exists.'});
                     }
                     const hash = bcrypt.hashSync(password);
-                    const newUser = req.db.repositories.UserRepository.createUser(user, hash, db.connection);
+                    const newUser = req.db.repositories.UserRepository.create(user, hash, db.connection);
                     newUser.then(function (savedUser) {
                         return done(null, savedUser, {message: 'User Registered.'});
                     }).catch(function (err) {
