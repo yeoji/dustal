@@ -5,25 +5,30 @@
 body{
     font-family: 'Playfair Display', serif;
     font-size: 18px;
+    font-weight: 300;
 }
 
 a{
     font-family: 'Muli', serif;
     font-size: 18px;
+    font-weight: 400;
 }
 
 input{
     font-family: 'Muli', serif;
+    font-weight: 400;
 }
 
 h4{
     font-family: 'Muli', serif;
     font-size: 24px;
+    font-weight: 400;
 }
 
 .subheading{
     font-family: 'Muli', serif;
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: 300;
 }
 
 

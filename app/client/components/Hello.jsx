@@ -36,8 +36,6 @@ class Hello extends React.Component {
                         </div>
                     </Col>
                 </Row>
-                <Row className="how-it-works">
-                </Row>
                 <Row>
                     <Footer />
                 </Row>

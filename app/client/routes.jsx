@@ -29,6 +29,5 @@ export default (
             <Route name="login" handler={ LoginForm } />
             <Route name="register" handler={ RegisterForm } />
         </Route>
-        <Route path="/dashboard" handler={ Hello } onEnter={ requireAuth } />
     </Route>
 );
