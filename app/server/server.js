@@ -1,6 +1,7 @@
 import express from "express";
 import passport from "passport";
 import routes from "./routes";
+import logger from "./config/logger";
 
 import db from '../database/db';
 
@@ -8,6 +9,9 @@ export const app = express();
 
 // Bootstrap application settings
 require('./config/express')(app, passport);
+
+// Set up logger
+logger(app);
 
 // Bootstrap passport config
 const database = db(passport);
