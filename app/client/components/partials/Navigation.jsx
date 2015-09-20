@@ -10,13 +10,22 @@ class Navigation extends React.Component {
     }
 
     render() {
+
+        let loginUrl = '/auth/login';
+
         return (
             <Navbar>
-                <Nav navbar>
-                    <input type="text" className="form-control navbar-search" placeholder="search"/>
-                </Nav>
+                <div className="navbar-search">
+                    <Nav navbar>
+                        <form className='navbar-form' action="">
+                            <Input type="text" placeholder="search" className="navbar-search"/>
+                        </form>
+                    </Nav>
+                </div>
                 <Nav navbar right>
-                    <NavItem href="#">Login</NavItem>
+                    <li>
+                        <Link to={loginUrl}>Login</Link>
+                    </li>
                 </Nav>
             </Navbar>
         );
