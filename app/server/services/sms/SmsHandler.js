@@ -3,7 +3,7 @@
  * should be the SMS_IMPL (ie. Twillio) + SmsHandler
  * eg. TwillioSmsHandler
  */
-const smsImpl = (process.env.SMS_IMPL || 'Test');
+const smsImpl = (process.env.SMS_IMPL || 'Twilio');
 const SmsService = require('./' + smsImpl + 'SmsHandler');
 
 /**
