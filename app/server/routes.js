@@ -15,7 +15,10 @@ export default function (app, passport) {
      ****************/
     //app.use('/api/test', new RESTRouter('Test').generateRoutes({}));
     app.post('/sms/test', (req, res) => {
-        SmsHandler.receiveSms(req);
+        SmsHandler.receiveSms(req)
+            .then((data) => {
+                res.send("<?xml version='1.0' encoding='UTF-8'?><Response><Message>Store Location: 123 Easy St.</Message></Response>");
+            });
     });
 
     /******************
