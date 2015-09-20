@@ -14,7 +14,7 @@ export default function (app, passport) {
     /****************
      *  API Routes  *
      ****************/
-    app.use('/api/blog', new BlogRouter().generateRoutes());
+    app.use('/api/blogs', new BlogRouter().generateRoutes());
 
     // sms callback url
     app.post('/handler/sms', (req, res) => {

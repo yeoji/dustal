@@ -4,10 +4,7 @@ import fs from "fs";
 export default function(app) {
 
     morgan.token('errmsg', function getErrMsg(req, res) {
-        if(res.body.error) {
-            return res.body.message;
-        }
-        return '';
+        return JSON.stringify(res.locals);
     });
 
     morgan.token('reqdata', function getReqData(req) {

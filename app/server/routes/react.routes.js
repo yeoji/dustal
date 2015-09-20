@@ -13,6 +13,11 @@ reactRouter.use('/auth/*', function (req, res) {
     res.render('index', {content: content});
 });
 
+reactRouter.use('/', (req, res) => {
+    const content = render(req, JSON.stringify({}));
+    res.render('index', {content: content});
+});
+
 // Route for rendering React components (requires auth)
 reactRouter.use('*', tokenHelper.verifyToken, function (req, res) {
     res.locals.data = {
