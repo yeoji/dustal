@@ -2,6 +2,30 @@
 * Character styling
 **/
 
+body{
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+}
+
+a{
+    font-family: 'Muli', serif;
+    font-size: 18px;
+}
+
+input{
+    font-family: 'Muli', serif;
+}
+
+h4{
+    font-family: 'Muli', serif;
+    font-size: 24px;
+}
+
+.subheading{
+    font-family: 'Muli', serif;
+    font-size: 24px;
+}
+
 
 /*
 * Navbar stuff
@@ -10,19 +34,44 @@
     background-color: #FF7F66;
     border: 0;
     border-radius: 0;
-}
-
-.navbar,
-.navbar *{
-    max-height: 60px;
+    max-height: 65px;
 }
 
 .navbar-search{
-    margin: 0 auto;
-    width: 500px !important;
+    margin: auto;
+    width: 600px !important;
 }
 
-.navbar-default .navbar-nav>li>a{
+.navbar-search input{
+    height: 45px;
+}
+
+.navbar-right a{
+    position: absolute;
+    top: 25%;
+    color: white
+}
+
+
+/*
+* Footer stuff
+**/
+
+.footer{
+    width: 100%;
+    text-align: center;
+    background-color: #FF7F66;
+}
+
+.footer li{
+    float: none;
+    display: inline-block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+.footer a{
     color: white;
 }
 
@@ -46,3 +95,14 @@
     color: white;
     border: 0;
 }
+
+.features{
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.how-it-works{
+    height: 800px;
+    background-color: #7ecefd;
+}
+

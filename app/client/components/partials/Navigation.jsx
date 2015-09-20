@@ -23,9 +23,7 @@ class Navigation extends React.Component {
                     </Nav>
                 </div>
                 <Nav navbar right>
-                    <li>
-                        <Link to={loginUrl}>Login</Link>
-                    </li>
+                    <Link to={loginUrl}>Login</Link>
                 </Nav>
             </Navbar>
         );
