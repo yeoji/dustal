@@ -17,7 +17,9 @@ export default function (app, passport) {
     app.post('/sms/test', (req, res) => {
         SmsHandler.receiveSms(req)
             .then((data) => {
-                res.send("<?xml version='1.0' encoding='UTF-8'?><Response><Message>Store Location: 123 Easy St.</Message></Response>");
+                // send an empty response
+                res.type('xml');
+                res.send("<Response></Response>");
             });
     });
 
