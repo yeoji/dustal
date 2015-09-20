@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./auth/AuthForm.styles";
-import {Row, Button, Grid, Jumbotron} from 'react-bootstrap';
+import {Row, Col, Button, Jumbotron} from 'react-bootstrap';
 import {Link} from 'react-router';
-
+import Footer from "./partials/Footer";
 class Hello extends React.Component {
 
     render() {
@@ -10,11 +10,39 @@ class Hello extends React.Component {
         let registerUrl = '/auth/register';
 
         return (
-            <Row>
-                <Jumbotron className="welcome text-center">
-                    <Link to={registerUrl}><Button bsSize="large" className="welcome-button">Join Now</Button></Link>
-                </Jumbotron>
-            </Row>
+            <div>
+                <Row>
+                    <Jumbotron className="welcome text-center">
+                        <Link to={registerUrl}><Button bsSize="large" className="welcome-button">Join Now</Button></Link>
+                    </Jumbotron>
+                </Row>
+                <Row>
+                    <Col lg={4}>
+                        <div className="text-center features">
+                            <h4>Express your thoughts</h4>
+                            <p>Our focus is on convenient sharing of short blurbs via SMS so more time is spent enjoying your day.</p>
+                        </div>
+                    </Col>
+                    <Col lg={4}>
+                        <div className="text-center features">
+                            <h4>Reflect on your day</h4>
+                            <p>Most days are lived with no recollection of anything that has happened. Life should be remembered, and moments reflected upon</p>
+                        </div>
+                    </Col>
+                    <Col lg={4}>
+                        <div className="text-center features">
+                            <h4>Accessible whereever you are</h4>
+                            <p>Wherever you are, sharing your experiences will be right at your fingertips. All you have to do is press send.</p>
+                        </div>
+                    </Col>
+                </Row>
+                <Row className="how-it-works">
+                </Row>
+                <Row>
+                    <Footer />
+                </Row>
+
+            </div>
         );
     }
 }
