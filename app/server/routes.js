@@ -1,6 +1,7 @@
 import authRoutes from "./routes/auth.routes";
 import reactRouter from "./routes/react.routes";
-import RESTRouter from "./routes/RESTRoutes";
+import RESTRouter from "./routes/rest/RESTRoutes";
+import BlogRouter from "./routes/rest/BlogRoutes";
 import SmsHandler from "./services/sms/SmsHandler";
 
 export default function (app, passport) {
@@ -13,8 +14,10 @@ export default function (app, passport) {
     /****************
      *  API Routes  *
      ****************/
-    //app.use('/api/test', new RESTRouter('Test').generateRoutes({}));
-    app.post('/sms/test', (req, res) => {
+    app.use('/api/blog', new BlogRouter().generateRoutes());
+
+    // sms callback url
+    app.post('/handler/sms', (req, res) => {
         SmsHandler.receiveSms(req)
             .then(() => {
                 // send an empty response
