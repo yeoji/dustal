@@ -25,8 +25,18 @@ export default class Blog {
             return (this.user_ids.length > 1);
         });
 
-        BlogSchema.set('toJSON', {virtuals: true});
-        BlogSchema.set('toObject', {virtuals: true});
+        BlogSchema.set('toJSON', {
+            virtuals: true,
+            transform: function(doc, ret, options) {
+                delete ret.password;
+            }
+        });
+        BlogSchema.set('toObject', {
+            virtuals: true,
+            transform: function(doc, ret, options) {
+                delete ret.password;
+            }
+        });
 
         mongoose.model('Blog', BlogSchema);
     }

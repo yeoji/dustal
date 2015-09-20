@@ -1,4 +1,5 @@
 import RESTRoutes from "./RESTRoutes";
+import bcrypt from "bcrypt-nodejs";
 import tokenHelper from "../tokenHelper";
 
 export default class BlogRoutes extends RESTRoutes {
@@ -31,7 +32,7 @@ export default class BlogRoutes extends RESTRoutes {
                             }
                         });
                     }
-                    return res.status(200).json(blog);
+                    return res.status(200).json(blog.toJSON());
                 })
                 .catch((err) => {
                     return res.status(500).json({
@@ -43,6 +44,7 @@ export default class BlogRoutes extends RESTRoutes {
 
         // The update specific blog route
         apiRouter.put('/:name', tokenHelper.verifyToken, (req, res) => {
+            const name = req.params.name;
             req.db.repositories[this.model + 'Repository'].findByName(name, req.db.connection)
                 .then((blog) => {
                     // check that the user owns the blog
@@ -50,7 +52,7 @@ export default class BlogRoutes extends RESTRoutes {
                     if(blog.users.indexOf(res.locals.user._id) >= 0) {
                         req.db.repositories[this.model + 'Repository'].update(blog._id, req.body, req.db.connection)
                             .then((resource) => {
-                                return res.status(200).json(resource);
+                                return res.status(200).json(resource.toJSON());
                             })
                             .catch((err) => {
                                 return res.status(500).json({
@@ -69,6 +71,7 @@ export default class BlogRoutes extends RESTRoutes {
 
         // The delete specific blog route
         apiRouter.delete('/:name', (req, res) => {
+            const name = req.params.name;
             req.db.repositories[this.model + 'Repository'].findByName(name, req.db.connection)
                 .then((blog) => {
                     // check that the user owns the blog
@@ -92,7 +95,7 @@ export default class BlogRoutes extends RESTRoutes {
                                 return res.status(500).json({
                                     error: true,
                                     message: err
-                                })
+                                });
                             });
                     } else {
                         res.status(401).json({
@@ -103,7 +106,24 @@ export default class BlogRoutes extends RESTRoutes {
                 });
         });
 
-        // @TODO: add a route for getting permissions to view blog
+        // This is the route for getting permissions to view a private blog
+        apiRouter.post('/:name/auth', (req, res) => {
+            const name = req.params.name;
+            req.db.repositories[this.model + 'Repository'].findByName(name, req.db.connection)
+                .then((blog) => {
+                    if(blog.private) {
+                        if (bcrypt.compareSync(req.body.password, blog.password)) {
+                            return res.status(200).json(blog.toJSON());
+                        }
+                        return res.status(401).json({
+                            error: true,
+                            message: 'You do not have permissions to view this blog.'
+                        });
+                    } else {
+                        return res.status(200).json(blog.toJSON());
+                    }
+                });
+        });
     }
 
 }

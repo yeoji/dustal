@@ -6,7 +6,10 @@ export default class User {
             username: {type: String, default: '', lowercase: true, trim: true, unique: true},
             email: {type: String, default: ''},
             password: {type: String, default: ''},
-            mobile_no: {type: String, default: ''},
+            mobile: {
+                country_code: {type: String, default: ''},
+                number: {type: String, default: ''}
+            },
             blogs: {type: [mongoose.Schema.Types.ObjectId], ref: 'Blog'}
         });
 
