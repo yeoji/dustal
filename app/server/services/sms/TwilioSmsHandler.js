@@ -1,5 +1,7 @@
 const parseSms = (req) => {
     return new Promise((resolve, reject) => {
+        // NOTE: this is for testing the logging of sms from twilio
+        resolve('test');
         // match post to blog
         req.db.repositories.UserRepository.findByMobileNo(req.body.from, req.db.connection)
             .then((user) => {

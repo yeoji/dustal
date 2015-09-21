@@ -22,7 +22,7 @@ export default function (app, passport) {
             .then(() => {
                 // send an empty response
                 res.type('xml');
-                res.send("<Response></Response>");
+                return res.end("<Response></Response>");
             });
     });
 
