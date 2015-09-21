@@ -18,7 +18,6 @@ export default function (app, passport) {
 
     // sms callback url
     app.post('/handler/sms', (req, res) => {
-        console.log(req.body);
         SmsHandler.receiveSms(req)
             .then(() => {
                 // send an empty response

@@ -18,16 +18,49 @@ class UserService extends RESTService {
      */
     login(credentials) {
         let url = this.baseUrl + '/login';
-        return axios.post(url, credentials);
+        return new Promise((resolve, reject) => {
+            axios.post(url, credentials)
+                .then((response) => {
+                    if(response.status == 200) {
+                        resolve(response.data);
+                    }
+                    reject(response.data);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
     }
 
     register(user) {
         let url = this.baseUrl + '/register';
-        return axios.post(url, user);
+        return new Promise((resolve, reject) => {
+            axios.post(url, user)
+                .then((response) => {
+                    if(response.status == 200) {
+                        resolve(response.data);
+                    }
+                    reject(response.data);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
     }
 
     logout() {
-        return axios.get(this.baseUrl + '/logout');
+        return new Promise((resolve, reject) => {
+            axios.get(this.baseUrl + '/logout')
+                .then((response) => {
+                    if(response.status == 200) {
+                        resolve(response.data);
+                    }
+                    reject(response.data);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
     }
 
 }

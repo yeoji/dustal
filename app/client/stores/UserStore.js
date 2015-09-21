@@ -28,7 +28,7 @@ class UserStore {
         this.emitChange();
 
         // redirect to dashboard
-        routerInstance.get().transitionTo('/dashboard');
+        routerInstance.get().transitionTo('/');
     }
 
     handleDoLogin(user) {
@@ -36,7 +36,7 @@ class UserStore {
         this.emitChange();
 
         // redirect to dashboard
-        routerInstance.get().transitionTo('/dashboard');
+        routerInstance.get().transitionTo('/');
     }
 
     handleDoLogout() {

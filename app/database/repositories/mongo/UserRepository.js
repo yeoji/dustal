@@ -30,7 +30,9 @@ class UserRepository extends Repository {
 
     findByMobileNo(mobile, db) {
         return new Promise(function (resolve, reject) {
-            db.model('User').findOne({mobile_no: mobile}).populate('blogs').exec(function (err, model) {
+            db.model('User').findOne(function () {
+                return ((this.mobile.country_code + this.mobile.number) == mobile);
+            }).populate('blogs').exec(function (err, model) {
                 if (err) {
                     reject(err);
                 }

@@ -31,10 +31,7 @@ export default class RESTRoutes {
             apiRouter.get('/', (req, res) => {
                 req.db.repositories[this.model + 'Repository'].all(req.db.connection)
                     .then(function (resources) {
-                        const transformed = resources.map(function(resource) {
-                            return JSON.stringify(resource);
-                        });
-                        return res.status(200).json(transformed);
+                        return res.status(200).json(resources);
                     })
                     .catch(function (err) {
                         return res.status(500).json({
@@ -51,7 +48,7 @@ export default class RESTRoutes {
                 const id = req.params.id;
                 req.db.repositories[this.model + 'Repository'].findById(id, req.db.connection)
                     .then((resource) => {
-                        return res.status(200).json(JSON.stringify(resource));
+                        return res.status(200).json(resource);
                     })
                     .catch((err) => {
                         return res.status(500).json({
@@ -67,7 +64,7 @@ export default class RESTRoutes {
             apiRouter.post('/', (req, res) => {
                 req.db.repositories[this.model + 'Repository'].create(req.body, req.db.connection)
                     .then((resource) => {
-                        return res.status(200).json(JSON.stringify(resource));
+                        return res.status(200).json(resource);
                     })
                     .catch((err) => {
                         return res.status(500).json({
@@ -84,7 +81,7 @@ export default class RESTRoutes {
                 const id = req.params.id;
                 req.db.repositories[this.model + 'Repository'].update(id, req.body, req.db.connection)
                     .then((resource) => {
-                        return res.status(200).json(JSON.stringify(resource));
+                        return res.status(200).json(resource);
                     })
                     .catch((err) => {
                         return res.status(500).json({

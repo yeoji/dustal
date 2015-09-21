@@ -20,8 +20,7 @@ export default function(app) {
     // setup the logger
     app.use(morgan(format, {
         skip: function (req, res) {
-            return false;
-            //return res.statusCode < 400
+            return res.statusCode < 400
         },
         stream: logStream
     }));

@@ -32,7 +32,7 @@ export default class BlogRoutes extends RESTRoutes {
                             }
                         });
                     }
-                    return res.status(200).json(JSON.stringify(blog));
+                    return res.status(200).json(blog);
                 })
                 .catch((err) => {
                     return res.status(500).json({
@@ -52,7 +52,7 @@ export default class BlogRoutes extends RESTRoutes {
                     if(blog.users.indexOf(res.locals.user._id) >= 0) {
                         req.db.repositories[this.model + 'Repository'].update(blog._id, req.body, req.db.connection)
                             .then((resource) => {
-                                return res.status(200).json(JSON.stringify(resource));
+                                return res.status(200).json(resource);
                             })
                             .catch((err) => {
                                 return res.status(500).json({
@@ -113,14 +113,14 @@ export default class BlogRoutes extends RESTRoutes {
                 .then((blog) => {
                     if(blog.private) {
                         if (bcrypt.compareSync(req.body.password, blog.password)) {
-                            return res.status(200).json(JSON.stringify(blog));
+                            return res.status(200).json(blog);
                         }
                         return res.status(401).json({
                             error: true,
                             message: 'You do not have permissions to view this blog.'
                         });
                     } else {
-                        return res.status(200).json(JSON.stringify(blog));
+                        return res.status(200).json(blog);
                     }
                 });
         });

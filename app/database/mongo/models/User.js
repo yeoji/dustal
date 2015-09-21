@@ -17,6 +17,10 @@ export default class User {
             return this._id;
         });
 
+        UserSchema.virtual('mobile_no').get(function() {
+            return this.mobile.country_code + this.mobile.number;
+        });
+
         UserSchema.set('toJSON', {virtuals: true});
         UserSchema.set('toObject', {virtuals: true});
 

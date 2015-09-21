@@ -9,10 +9,8 @@ class UserActions {
     doRegister(user) {
         // register user on server
         UserApi.register(user)
-            .then((response) => {
-                if(response.status == 200) {
-                    this.dispatch(response.data);
-                }
+            .then((data) => {
+                this.dispatch(data);
             })
             .catch(err => {
                 console.log(err);
@@ -22,10 +20,8 @@ class UserActions {
     doLogin(user) {
         // tries to log in a user
         UserApi.login(user)
-            .then((response) => {
-                if(response.status == 200) {
-                    this.dispatch(response.data);
-                }
+            .then((data) => {
+                this.dispatch(data);
             })
             .catch((err) => {
                 console.log(err);
@@ -35,10 +31,8 @@ class UserActions {
     doLogout() {
         // tries to log in a user
         UserApi.logout()
-            .then((response) => {
-                if(response.status == 200) {
-                    this.dispatch(response.data);
-                }
+            .then((data) => {
+                this.dispatch(data);
             })
             .catch((err) => {
                 console.log(err);
