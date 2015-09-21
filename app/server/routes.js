@@ -2,6 +2,7 @@ import authRoutes from "./routes/auth.routes";
 import reactRouter from "./routes/react.routes";
 import RESTRouter from "./routes/rest/RESTRoutes";
 import BlogRouter from "./routes/rest/BlogRoutes";
+import PostRouter from "./routes/rest/PostRoutes";
 import SmsHandler from "./services/sms/SmsHandler";
 
 export default function (app, passport) {
@@ -15,6 +16,7 @@ export default function (app, passport) {
      *  API Routes  *
      ****************/
     app.use('/api/blogs', new BlogRouter().generateRoutes());
+    app.use('/api/posts', new PostRouter().generateRoutes());
 
     // sms callback url
     app.post('/handler/sms', (req, res) => {
