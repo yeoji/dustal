@@ -24,7 +24,6 @@ class Post extends React.Component{
                 <Col lg={6} lgOffset={3}>
                     <PostDate date={new Date()} />
                     <Message  time="1.47 AM" comments={commentsTest}>wtf</Message>
-                    <Message  time="1.47 AM" comments={commentsTest}>hello world</Message>
                 </Col>
             </Row>
 
