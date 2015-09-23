@@ -3,15 +3,17 @@
 **/
 
 body{
-    font-family: 'Playfair Display', serif;
     font-size: 18px;
     font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
 }
 
 a{
     font-family: 'Muli', serif;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 input{
@@ -75,14 +77,14 @@ h4{
     padding-bottom: 15px;
 }
 
-
 .footer a{
     color: white;
 }
 
+
 .welcome {
     width: 100%;
-    height: 1000px;
+    height: 800px;
     margin-top: -20px;
     vertical-align:middle;
     background: url('../img/bridge.jpeg') no-repeat center center fixed;
@@ -95,19 +97,118 @@ h4{
 
 .welcome-button{
     width: 10%;
-    margin-top: 400px;
+    margin-top: 200px;
     background-color: #FF7F66;
     color: white;
     border: 0;
 }
 
-.features{
+.features {
     max-width: 400px;
-    margin: 0 auto;
 }
 
-.how-it-works{
-    height: 800px;
-    background-color: #7ecefd;
+.comment-toggle{
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
+
+.message{
+    position: relative;
+    width: 48%;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: white;
+    left: 0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    clear: both;
+
+}
+
+.message div{
+    overflow: auto;
+}
+
+
+.message .time{
+    float: right;
+}
+
+.comment{
+    background: #2185C5;
+}
+
+.comment:after
+{
+    position: absolute;
+    content: '';
+    border-style: solid;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #2185C5;
+    display: block;
+    width: 0;
+    z-index: 1;
+    left: -10px;
+    bottom: 15px;
+}
+
+.post{
+    margin-left: auto;
+    margin-right: 0;
+    background: #FF7F66;
+}
+
+.post:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent #FF7F66;
+    display: block;
+    width: 0;
+    z-index: 1;
+    right: -10px;
+    bottom: 15px;
+}
+
+.comment .username{
+    text-decoration: underline;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
