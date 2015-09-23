@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router';
-import {Nav} from 'react-bootstrap';
+import {Navbar, Nav} from 'react-bootstrap';
 
 class Footer extends React.Component {
 
@@ -13,12 +13,12 @@ class Footer extends React.Component {
 
         return (
 
-                    <Nav navbar ulClassName="footer">
-                        <li><Link to={aboutUrl}>About</Link></li>
-                        <li><Link to={exploreUrl}>Explore</Link></li>
-                        <li><Link to={newsUrl}>News</Link></li>
-                        <li><Link to={contactUrl}>Contact Us</Link></li>
-                    </Nav>
+                <Nav navbar ulClassName="footer">
+                    <li><Link to={aboutUrl}>About</Link></li>
+                    <li><Link to={exploreUrl}>Explore</Link></li>
+                    <li><Link to={newsUrl}>News</Link></li>
+                    <li><Link to={contactUrl}>Contact Us</Link></li>
+                </Nav>
 
         );
     }

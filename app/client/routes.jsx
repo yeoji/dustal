@@ -3,14 +3,15 @@ import React from "react";
 
 import App from "./components/App";
 import Hello from "./components/Hello";
+import Post from "./components/blog/Post";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
 import UserStore from './stores/UserStore';
 
 // To pass in props to the handler
-const wrapComponent = function(Component, props) {
+const wrapComponent = function (Component, props) {
     return React.createClass({
-        render: function() {
+        render: function () {
             return React.createElement(Component, props);
         }
     });
@@ -18,16 +19,17 @@ const wrapComponent = function(Component, props) {
 
 function requireAuth(nextState, transition) {
     if (UserStore.getState().user.isEmpty()) {
-        transition.to('/auth/login', null, { nextPathname: nextState.location.pathname });
+        transition.to('/auth/login', null, {nextPathname: nextState.location.pathname});
     }
 }
 
 export default (
     <Route path="/" handler={ App }>
-        <DefaultRoute path='/' handler={ Hello } />
+        <DefaultRoute handler={ Hello }/>
         <Route name="auth" path="/auth">
-            <Route name="login" handler={ LoginForm } />
-            <Route name="register" handler={ RegisterForm } />
+            <Route name="login" handler={ LoginForm }/>
+            <Route name="register" handler={ RegisterForm }/>
         </Route>
+        <Route path="/blog/:userName" handler={ Post }/>
     </Route>
 );
