@@ -16,22 +16,6 @@ class Navigation extends React.Component {
         UserActions.doLogout();
     }
 
-    closeLogin() {
-        this.setState({ showLoginModal: false });
-    }
-
-    openLogin() {
-        this.setState({ showLoginModal: true });
-    }
-
-    closeRegister() {
-        this.setState({ showRegisterModal: false });
-    }
-
-    openRegister() {
-        this.setState({ showRegisterModal: true });
-    }
-
 
     render() {
 
@@ -46,12 +30,10 @@ class Navigation extends React.Component {
                         </Nav>
                     </div>
                     <Nav navbar right>
-                        <NavItem onClick={this.openRegister.bind(this)}>Sign Up</NavItem>
-                        <NavItem onClick={this.openLogin.bind(this)}>Login</NavItem>
+                        <NavItem onClick={this.props.showRegister}>Sign Up</NavItem>
+                        <NavItem onClick={this.props.showLogin}>Login</NavItem>
                     </Nav>
                 </Navbar>
-                <Login show={this.state.showLoginModal} close={this.closeLogin.bind(this)}/>
-                <Register show={this.state.showRegisterModal} close={this.closeRegister.bind(this)}/>
             </div>
         );
     }

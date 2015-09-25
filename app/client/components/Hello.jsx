@@ -13,7 +13,7 @@ class Hello extends React.Component {
             <div>
                 <Row>
                     <Jumbotron className="welcome text-center">
-                        <Link to={registerUrl}><Button bsSize="large" className="welcome-button">Join Now</Button></Link>
+                        <Button bsSize="large" className="welcome-button" onClick={this.props.showRegister}>Join Now</Button>
                     </Jumbotron>
                 </Row>
                 <Row>
