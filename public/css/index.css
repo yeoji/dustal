@@ -27,10 +27,35 @@ h4{
     font-weight: 400;
 }
 
+.btn-default{
+    background-color: #FF7F66;
+    color: white;
+}
+
 .subheading{
     font-family: 'Muli', serif;
     font-size: 22px;
     font-weight: 300;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+@media screen and (min-width: 768px) {
+    .modal:before {
+        display: inline-block;
+        vertical-align: middle;
+        content: " ";
+        height: 100%;
+    }
+}
+
+
+.modal {
+    text-align: center;
 }
 
 
@@ -53,11 +78,19 @@ h4{
     height: 45px;
 }
 
-.navbar-right a{
-    position: absolute;
-    top: 25%;
-    color: white
+.navbar-right *{
+    height: 60px;
 }
+
+.navbar-default .navbar-nav>li>a{
+    color: white;
+}
+
+.navbar-right li a{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 
 
 /*
@@ -86,7 +119,6 @@ h4{
     width: 100%;
     height: 800px;
     margin-top: -20px;
-    vertical-align:middle;
     background: url('../img/bridge.jpeg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -97,14 +129,18 @@ h4{
 
 .welcome-button{
     width: 10%;
-    margin-top: 200px;
-    background-color: #FF7F66;
-    color: white;
+    margin-top: 350px;
     border: 0;
 }
 
 .features {
-    max-width: 400px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.features h4{
+    color: #FF7F66;
+    text-align: center;
 }
 
 .comment-toggle{

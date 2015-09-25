@@ -26,10 +26,8 @@ function requireAuth(nextState, transition) {
 export default (
     <Route path="/" handler={ App }>
         <DefaultRoute handler={ Hello }/>
-        <Route name="auth" path="/auth">
-            <Route name="login" handler={ LoginForm }/>
-            <Route name="register" handler={ RegisterForm }/>
-        </Route>
         <Route path="/blog/:userName" handler={ Post }/>
+        <Route path="/favicon.ico" />
     </Route>
+
 );

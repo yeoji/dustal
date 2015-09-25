@@ -1,16 +1,12 @@
 import React from 'react';
 import styles from './AuthForm.styles';
 import UserActions from "../../actions/UserActions";
-import {Row, Col, Input, Button} from 'react-bootstrap';
+import {Modal, Input, Button} from 'react-bootstrap';
 
 class RegisterForm extends React.Component {
 
     constructor(props) {
         super(props);
-
-
-        // Bind methods here because arrows don't work for some reason -.-
-        this._onAuthSubmit = this._onAuthSubmit.bind(this);
     }
 
     _onAuthSubmit() {
@@ -26,20 +22,21 @@ class RegisterForm extends React.Component {
 
     render() {
         return (
-            <Row>
-                <Col mdOffset={4} md={4}>
-                    <div style={ { marginTop: '100px' } }>
-                        <form>
-                            <h1 style={ styles.heading }>rainman.</h1>
-                            <Input style={styles.inputField} placeholder="First Name" className="form-control" type="text" ref="first_name"/>
-                            <Input style={styles.inputField} placeholder="Last Name" className="form-control" type="text" ref="last_name"/>
-                            <Input style={styles.inputField} placeholder="E-mail" className="form-control" type="email" ref="email"/>
-                            <Input style={styles.inputField} placeholder="Password" className="form-control" type="password" ref="password"/>
-                            <Button style={ styles.submitButton } type="button" className="btn btn-lg btn-default btn-block" onClick={this._onAuthSubmit}>Register</Button>
-                        </form>
-                    </div>
-                </Col>
-            </Row>
+
+            <Modal show={this.props.show} onHide={this.props.close}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Register</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <form onSubmit={this._onAuthSubmit.bind(this)}>
+                        <Input style={styles.inputField} placeholder="First Name" className="form-control" type="text" ref="first_name"/>
+                        <Input style={styles.inputField} placeholder="Last Name" className="form-control" type="text" ref="last_name"/>
+                        <Input style={styles.inputField} placeholder="E-mail" className="form-control" type="email" ref="email"/>
+                        <Input style={styles.inputField} placeholder="Password" className="form-control" type="password" ref="password"/>
+                        <Button style={ styles.submitButton } type="button" className="btn btn-lg btn-default btn-block" onClick={this._onAuthSubmit}>Register</Button>
+                    </form>
+                </Modal.Body>
+            </Modal>
         );
     }
 }
