@@ -2,8 +2,6 @@ import React from "react";
 import {Link} from 'react-router';
 import UserActions from "../../actions/UserActions";
 import {Navbar, Nav, NavItem, Input} from 'react-bootstrap';
-import Login from '../auth/LoginForm';
-import Register from '../auth/RegisterForm';
 
 class Navigation extends React.Component {
 

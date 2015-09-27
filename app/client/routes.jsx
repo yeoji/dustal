@@ -4,8 +4,6 @@ import React from "react";
 import App from "./components/App";
 import Hello from "./components/Hello";
 import Post from "./components/blog/Post";
-import LoginForm from "./components/auth/LoginForm";
-import RegisterForm from "./components/auth/RegisterForm";
 import UserStore from './stores/UserStore';
 
 // To pass in props to the handler
