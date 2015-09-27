@@ -1,31 +1,31 @@
 import React from 'react';
+import {Input} from 'react-bootstrap';
 import {Link} from 'react-router';
-import {Row, Col, Tooltip} from 'react-bootstrap';
 import PostDate from './PostDate';
 import Message from './Message';
 import Comment from './Comment';
+import SendMessage from './SendMessage'
 
 class Post extends React.Component{
     constructor(props) {
         super(props);
-
     }
-
     render(){
 
-        let commentsTest = [
-            {username: "BertramTruong", time: "1.49PM", message: "hello world"},
-            {username: "JoeyLee", time: "2.59 PM", message: "hello joey"}
-        ];
+        let messageNodes = this.props.messages.map(function(m){
+
+            return(
+                <Message time={m.time} comments={m.comments}>{m.message}</Message>
+            )
+        });
 
         return(
 
-            <Row>
-                <Col lg={6} lgOffset={3}>
-                    <PostDate date={new Date()} />
-                    <Message  time="1.47 AM" comments={commentsTest}>wtf</Message>
-                </Col>
-            </Row>
+            <div className="post">
+                <PostDate date={this.props.date}/>
+                {messageNodes}
+                <SendMessage />
+            </div>
 
         )
     }

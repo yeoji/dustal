@@ -2,12 +2,14 @@
 * Character styling
 **/
 
+
 body{
     font-size: 18px;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
+    background-color: #FFF6E5;
 }
 
 a{
@@ -19,6 +21,7 @@ a{
 input{
     font-family: 'Muli', serif;
     font-weight: 400;
+
 }
 
 h4{
@@ -26,6 +29,7 @@ h4{
     font-size: 24px;
     font-weight: 400;
 }
+
 
 .btn-default{
     background-color: #FF7F66;
@@ -62,6 +66,7 @@ h4{
 /*
 * Navbar stuff
 **/
+
 .navbar {
     background-color: #FF7F66;
     border: 0;
@@ -143,10 +148,53 @@ h4{
     text-align: center;
 }
 
+
+
 .comment-toggle{
     text-align: center;
     margin-top: 15px;
     margin-bottom: 15px;
+    width: 48%;
+}
+
+.blog {
+    margin-top: -20px;
+    background: url('../img/blog.jpeg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 0 !important;
+}
+
+.post{
+    padding: 30px 100px;
+    margin: 40px 0;
+    border-radius: 35px;
+    background-color: #FFF6E5;
+}
+
+.post .date{
+    color: #FF7F66;
+    margin-bottom: 20px;
+}
+
+
+
+.post:first-child textarea{
+    display: block;
+    border-radius: 10px;
+}
+
+.post textarea{
+    display: none;
+    resize: none;
+    font-size: 18px;
+    margin-top: 20px;
+    border: solid;
+    border-width: 2px;
+    border-color: #2185C5;
+
 }
 
 .message{
@@ -154,12 +202,12 @@ h4{
     width: 48%;
     padding: 10px;
     margin-bottom: 10px;
-    color: white;
     left: 0;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     clear: both;
+    background-color: white;
 
 }
 
@@ -169,11 +217,14 @@ h4{
 
 
 .message .time{
+    font-size: 14px;
     float: right;
 }
 
 .comment{
-    background: #2185C5;
+    border: solid;
+    border-width: 2px;
+    border-color: #2185C5;
 }
 
 .comment:after
@@ -190,13 +241,15 @@ h4{
     bottom: 15px;
 }
 
-.post{
+.user-message{
     margin-left: auto;
     margin-right: 0;
-    background: #FF7F66;
+    border: solid;
+    border-width: 2px;
+    border-color: #FF7F66;
 }
 
-.post:after
+.user-message:after
 {
     content: '';
     position: absolute;
@@ -211,8 +264,8 @@ h4{
 }
 
 .comment .username{
+    font-size: 14px;
     text-decoration: underline;
-    color: white;
 }
 
 

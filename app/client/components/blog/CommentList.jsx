@@ -13,12 +13,12 @@ class CommentList extends React.Component{
         if(!this.state.showComments){
 
             //do ajax here
-            let commentsTest = [
-                {username: "AlanYu", time: "1.49AM", message: "hello alan"},
-                {username: "WendyNguyen", time: "3.59 AM", message: "hello wendy"}
+            let loadComments = [
+                {username: "Bob", time: "1.49AM", message: "hello alan"},
+                {username: "Bob", time: "3.59 AM", message: "hello wendy"}
             ];
 
-            let comments = commentsTest.concat(this.state.comments);
+            let comments = loadComments.concat(this.state.comments);
             this.setState({comments: comments});
         }
         else{
@@ -37,7 +37,13 @@ class CommentList extends React.Component{
 
         return(
             <div className="commentList">
-                <CommentToggle onToggle={this.loadComments.bind(this)} showComments={this.state.showComments}/>
+                {(() => {
+                    if(this.state.comments.length !== 0){
+                        return(
+                            <CommentToggle onToggle={this.loadComments.bind(this)} showComments={this.state.showComments}/>
+                        )
+                    }
+                })()}
                 {commentNodes}
             </div>
         )

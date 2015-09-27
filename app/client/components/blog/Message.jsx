@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentList from './CommentList';
+import ReactEmoji from 'react-emoji';
 
 class Message extends React.Component{
     constructor(props) {
@@ -10,9 +11,9 @@ class Message extends React.Component{
 
         return(
             <div>
-                <div className="message post">
+                <div className="message user-message">
                     <p>
-                        {this.props.children}
+                        {ReactEmoji.emojify(this.props.children, {emojiType: 'emojione'})}
                     </p>
                     <div>
                         <span className="time">{this.props.time}</span>

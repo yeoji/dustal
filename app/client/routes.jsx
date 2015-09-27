@@ -3,7 +3,7 @@ import React from "react";
 
 import App from "./components/App";
 import Hello from "./components/Hello";
-import Post from "./components/blog/Post";
+import Blog from "./components/blog/Blog";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
 import UserStore from './stores/UserStore';
@@ -26,7 +26,7 @@ function requireAuth(nextState, transition) {
 export default (
     <Route path="/" handler={ App }>
         <DefaultRoute handler={ Hello }/>
-        <Route path="/blog/:userName" handler={ Post }/>
+        <Route path="/blog/:userName" handler={ Blog }/>
         <Route path="/favicon.ico" />
     </Route>
 

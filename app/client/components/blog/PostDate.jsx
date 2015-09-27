@@ -9,7 +9,7 @@ class PostDate extends React.Component{
     render(){
 
         return(
-            <h4>{this.props.date.toUTCString()}</h4>
+            <h4 className="date">{this.props.date.toUTCString()}</h4>
         );
     }
 }
