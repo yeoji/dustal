@@ -16,6 +16,16 @@ export default function (app, passport) {
     /****************
      *  API Routes  *
      ****************/
+    app.get('/testlol', (req, res) => {
+        req.db.repositories.UserRepository.all(req.db.connection)
+            .then((resp) => {
+                return res.json(resp);
+            })
+            .catch((err) => {
+                return res.json(err);
+            });
+    });
+
     app.use('/api/blogs', new BlogRouter().generateRoutes());
     app.use('/api/posts', new PostRouter().generateRoutes());
     app.use('/api/comments', new CommentRouter().generateRoutes());

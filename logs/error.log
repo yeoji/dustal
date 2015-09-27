@@ -63,3 +63,22 @@ Sun, 27 Sep 2015 05:43:37 GMT GET /blog/AlanYu 500 {} {}
 Sun, 27 Sep 2015 05:43:39 GMT GET /blog/AlanYu 500 {} {}
 Sun, 27 Sep 2015 05:56:34 GMT GET /blog/AlanYu 500 {} {}
 Sun, 27 Sep 2015 05:56:35 GMT GET /blog/AlanYu 500 {} {}
+Sun, 27 Sep 2015 09:05:47 GMT POST /api/users/register 403 {} {"first_name":"Joey","last_name":"Lee","username":"joey","email":"jayd005@gmail.com","password":"testing"}
+Sun, 27 Sep 2015 09:06:47 GMT POST /api/users/register 403 {} {"first_name":"Joey","last_name":"Lee","username":"joey","email":"foo@bar.com","password":"testing","mobile":{"country_code":"+61","number":"412345678"}}
+Sun, 27 Sep 2015 09:06:56 GMT POST /api/users/register 500 {} {"first_name":"Joey","last_name":"Lee","username":"joey","email":"bar@bar.com","password":"testing","mobile":{"country_code":"+61","number":"412345678"}}
+Sun, 27 Sep 2015 09:07:11 GMT POST /api/users/register 500 {} {"first_name":"Joey","last_name":"Lee","username":"joey","email":"bar@bar.com","password":"testing","mobile":{"country_code":"+61","number":"412345678"}}
+Sun, 27 Sep 2015 09:07:31 GMT POST /api/users/register 500 {} {"first_name":"Joey","last_name":"Lee","username":"barbar","email":"bar@bar.com","password":"testing","mobile":{"country_code":"+61","number":"412345678"}}
+Sun, 27 Sep 2015 09:07:43 GMT POST /api/users/register 500 {} {"first_name":"Joey","last_name":"Lee","username":"barbar","email":"peanut@pea.com","password":"testing","mobile":{"country_code":"+61","number":"412345678"}}
+Sun, 27 Sep 2015 09:08:40 GMT POST /api/users/register 500 {} {"first_name":"Joey","last_name":"Lee","username":"barbar","email":"peanut@pea.com","password":"testing","mobile":{"country_code":"+61","number":"412345678"}}
+Sun, 27 Sep 2015 09:19:06 GMT POST /api/users/register 403 {} {"first_name":"Foo","last_name":"Bar","username":"foobar","email":"foo@bar.com","password":"foobar","mobile":{"country_code":"+61","number":"412345678"}}
+Sun, 27 Sep 2015 09:24:17 GMT POST /api/users/login 403 {} {"email":"foo@bar.com","password":"foobarr"}
+Sun, 27 Sep 2015 09:25:34 GMT POST /api/users/login 401 {} {"email":"foo@bar.com","password":"foobarr"}
+Sun, 27 Sep 2015 09:34:52 GMT POST /api/blogs 500 {} {"title":"The FOO","name":"foosblog","users":["5607b3a5f545476ede5acfb0"]}
+Sun, 27 Sep 2015 09:37:48 GMT POST /api/blogs 500 {} {"title":"The FOO","name":"foosblog","users":["5607b3a5f545476ede5acfb0"]}
+Sun, 27 Sep 2015 09:38:31 GMT POST /api/blogs 500 {} {"title":"The FOO","name":"foosblog","users":["5607b3a5f545476ede5acfb0"]}
+Sun, 27 Sep 2015 09:46:24 GMT GET /testlol 500 {} {}
+Sun, 27 Sep 2015 10:01:25 GMT POST /api/blogs 403 {"user":{"_id":"5607b3a5f545476ede5acfb0","__v":0,"blogs":[],"mobile":{"number":"412345678","country_code":"+61"},"password":"$2a$10$dXu12S81orHbMZjM7oojmu1uitHScXajjJMPH72tuHikVojgnxZ5i","email":"foo@bar.com","username":"foobar","last_name":"Bar","first_name":"Foo","mobile_no":"+61412345678","id":"5607b3a5f545476ede5acfb0","iat":1443345843}} {"title":"The FOO","name":"foosblog","users":["5607b3a5f545476ede5acfb0"]}
+Sun, 27 Sep 2015 10:03:47 GMT POST /api/blogs 403 {"user":{"_id":"5607b3a5f545476ede5acfb0","__v":0,"blogs":[],"mobile":{"number":"412345678","country_code":"+61"},"password":"$2a$10$dXu12S81orHbMZjM7oojmu1uitHScXajjJMPH72tuHikVojgnxZ5i","email":"foo@bar.com","username":"foobar","last_name":"Bar","first_name":"Foo","mobile_no":"+61412345678","id":"5607b3a5f545476ede5acfb0","iat":1443345843}} {"title":"The FOO","name":"foosblogg","users":["5607b3a5f545476ede5acfb0"]}
+Sun, 27 Sep 2015 10:05:47 GMT POST /api/blogs 403 {"user":{"_id":"5607b3a5f545476ede5acfb0","__v":0,"blogs":[],"mobile":{"number":"412345678","country_code":"+61"},"password":"$2a$10$dXu12S81orHbMZjM7oojmu1uitHScXajjJMPH72tuHikVojgnxZ5i","email":"foo@bar.com","username":"foobar","last_name":"Bar","first_name":"Foo","mobile_no":"+61412345678","id":"5607b3a5f545476ede5acfb0","iat":1443345843}} {"title":"The FOO","name":"foosbloggg"}
+Sun, 27 Sep 2015 10:08:33 GMT GET /testlol 500 {} {}
+Sun, 27 Sep 2015 10:14:14 GMT POST /api/blogs 403 {"user":{"_id":"5607b3a5f545476ede5acfb0","__v":0,"blogs":[],"mobile":{"number":"412345678","country_code":"+61"},"password":"$2a$10$dXu12S81orHbMZjM7oojmu1uitHScXajjJMPH72tuHikVojgnxZ5i","email":"foo@bar.com","username":"foobar","last_name":"Bar","first_name":"Foo","mobile_no":"+61412345678","id":"5607b3a5f545476ede5acfb0","iat":1443345843}} {"title":"The FOO","name":"barssblog"}

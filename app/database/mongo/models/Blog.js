@@ -24,7 +24,7 @@ export default class Blog {
         });
 
         BlogSchema.virtual('shared').get(function() {
-            return (this.user_ids.length > 1);
+            return (this.users.length > 1);
         });
 
         // before saving, hash the password

@@ -44,7 +44,7 @@ export default function(app, passport) {
                 return next(err);
             }
             if (!user) {
-                return res.status(403).json({
+                return res.status(401).json({
                     error: true,
                     message: info.message
                 });
