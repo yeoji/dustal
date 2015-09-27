@@ -13,26 +13,31 @@ class Hello extends React.Component {
             <div>
                 <Row>
                     <Jumbotron className="welcome text-center">
-                        <Link to={registerUrl}><Button bsSize="large" className="welcome-button">Join Now</Button></Link>
+                        <Button bsSize="large" className="welcome-button" onClick={this.props.showRegister}>Join Now</Button>
                     </Jumbotron>
                 </Row>
                 <Row>
-                    <Col lg={4}>
-                        <div className="text-center features">
+                    <Col lg={4} lgOffset={4}>
+                        <div className="features">
                             <h4>Express your thoughts</h4>
-                            <p>Our focus is on convenient sharing of short blurbs via SMS so more time is spent enjoying your day.</p>
+                            <p>Personal blogs allow you to share what's on your mind;
+                                but most blogging services require an effort to sit down and type out a long post.
+                                Our focus is on convenient sharing of short blurbs via SMS
+                                so more time is spent enjoying your day.</p>
                         </div>
-                    </Col>
-                    <Col lg={4}>
-                        <div className="text-center features">
+                        <div className="features">
                             <h4>Reflect on your day</h4>
-                            <p>Most days are lived with no recollection of anything that has happened. Life should be remembered, and moments reflected upon</p>
+                            <p>Most days are lived with no recollection of anything that has happened.
+                                Our service provides an unobtrusive way to build a habit of recording the littlest things;
+                                and piecing them into something bigger.
+                                Life should be remembered, and moments reflected upon.</p>
                         </div>
-                    </Col>
-                    <Col lg={4}>
-                        <div className="text-center features">
-                            <h4>Accessible whereever you are</h4>
-                            <p>Wherever you are, sharing your experiences will be right at your fingertips. All you have to do is press send.</p>
+                        <div className="features">
+                            <h4>Accessible wherever you are</h4>
+                            <p>Convenient, effortless, unobtrusive. Our SMS-based platform
+                                allows posting worldwide, whenever you want; as it requires absolutely no internet connection.
+                                Wherever you are, sharing your experiences will be right at your fingertips.
+                                All you have to do is press send.</p>
                         </div>
                     </Col>
                 </Row>
