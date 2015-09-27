@@ -4,6 +4,7 @@ export default class Post {
             blog_id: mongoose.Schema.Types.ObjectId,
             user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
             message: {type: String, default: ''},
+            comments: {type: [mongoose.Schema.Types.ObjectId], ref: 'Comment', default: []},
             timestamp: {type: Date, default: Date.now}
         });
 

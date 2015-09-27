@@ -1,3 +1,5 @@
+import bcrypt from "bcrypt-nodejs";
+
 export default class Blog {
     static register(mongoose) {
         /**
@@ -23,6 +25,12 @@ export default class Blog {
 
         BlogSchema.virtual('shared').get(function() {
             return (this.user_ids.length > 1);
+        });
+
+        // before saving, hash the password
+        BlogSchema.pre('save', function(next) {
+            this.password = bcrypt.hashSync(this.password);
+            next();
         });
 
         BlogSchema.set('toJSON', {

@@ -70,7 +70,7 @@ export default class BlogRoutes extends RESTRoutes {
         });
 
         // The delete specific blog route
-        apiRouter.delete('/:name', (req, res) => {
+        apiRouter.delete('/:name', tokenHelper.verifyToken, (req, res) => {
             const name = req.params.name;
             req.db.repositories[this.model + 'Repository'].findByName(name, req.db.connection)
                 .then((blog) => {
@@ -79,7 +79,7 @@ export default class BlogRoutes extends RESTRoutes {
                     if(blog.users.indexOf(res.locals.user._id) >= 0) {
                         req.db.repositories[this.model + 'Repository'].delete(blog._id, req.db.connection)
                             .then((resource) => {
-                                if (!resource) {
+                                if (!resource.id) {
                                     return res.status(200).json({
                                         error: false,
                                         message: 'Resource deleted successfully.'

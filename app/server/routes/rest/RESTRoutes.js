@@ -98,7 +98,7 @@ export default class RESTRoutes {
                 const id = req.params.id;
                 req.db.repositories[this.model + 'Repository'].delete(id, req.db.connection)
                     .then((resource) => {
-                        if (!resource) {
+                        if (!resource.id) {
                             return res.status(200).json({
                                 error: false,
                                 message: 'Resource deleted successfully.'
