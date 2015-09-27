@@ -24,20 +24,21 @@ class RegisterModal extends React.Component {
     render() {
         return (
 
-            <Modal show={this.props.show} onHide={this.props.close}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Register</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <form onSubmit={this._onAuthSubmit.bind(this)}>
-                        <Input placeholder="First Name" className="form-control" type="text" ref="first_name"/>
-                        <Input placeholder="Last Name" className="form-control" type="text" ref="last_name"/>
-                        <Input placeholder="E-mail" className="form-control" type="email" ref="email"/>
-                        <Input placeholder="Password" className="form-control" type="password" ref="password"/>
-                        <Button type="submit" className="btn btn-lg btn-default btn-block">Register</Button>
-                    </form>
-                </Modal.Body>
-            </Modal>
+                <Modal show={this.props.show} onHide={this.props.close}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Register</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <form onSubmit={this._onAuthSubmit.bind(this)}>
+                            <Input placeholder="First Name" className="form-control" type="text" ref="first_name"/>
+                            <Input placeholder="Last Name" className="form-control" type="text" ref="last_name"/>
+                            <Input placeholder="E-mail" className="form-control" type="email" ref="email"/>
+                            <Input placeholder="Password" className="form-control" type="password" ref="password"/>
+                            <Button type="submit" className="btn btn-lg btn-default btn-block">Register</Button>
+                        </form>
+                    </Modal.Body>
+                </Modal>
+
         );
     }
 }

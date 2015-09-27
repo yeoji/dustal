@@ -46,8 +46,10 @@ class App extends React.Component {
                     <RouteHandler { ...this.props } showLogin={this.openLogin.bind(this)} showRegister={this.openRegister.bind(this)}/>
                 </AltContainer>
             </Grid>
+
             <LoginModal show={this.state.showLoginModal} close={this.closeLogin.bind(this)}/>
             <RegisterModal show={this.state.showRegisterModal} close={this.closeRegister.bind(this)}/>
+
         </div>
         );
     }

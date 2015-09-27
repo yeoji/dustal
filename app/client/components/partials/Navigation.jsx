@@ -18,7 +18,7 @@ class Navigation extends React.Component {
     render() {
 
         return (
-            <div>
+
                 <Navbar>
                     <div className="navbar-search">
                         <Nav navbar>
@@ -32,7 +32,7 @@ class Navigation extends React.Component {
                         <NavItem onClick={this.props.showLogin}>Login</NavItem>
                     </Nav>
                 </Navbar>
-            </div>
+            
         );
     }
 }
