@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./auth/AuthForm.styles";
 import {Row, Col, Button, Jumbotron} from 'react-bootstrap';
 import {Link} from 'react-router';
 import Footer from "./partials/Footer";
