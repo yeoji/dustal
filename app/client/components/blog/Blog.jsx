@@ -42,6 +42,70 @@ class Blog extends React.Component{
                         comments: []
                     }
                 ]
+            },
+            {date : date,
+                messages : [
+                    {time : '1.47 AM', message: 'At the supermarket :)',
+                        comments: []
+                    },
+                    {time : '1.49 AM', message: 'omg cool $1',
+                        comments: []
+                    },
+                    {time : '1.49 AM', message: 'Should I buy a carrot? :rabbit2:',
+                        comments: [
+                            {username: "AlanYu", time: "2.30AM", message: "No! buy sushi instead :sushi::sushi:"},
+                            {username: "WendyNguyen", time: "3.59 AM", message: "Yes!"}
+                        ]
+                    }
+                ]
+            },
+            {date : date,
+                messages : [
+                    {time : '1.47 AM', message: 'hello joey',
+                        comments: [
+                            {username: "AlanYu", time: "1.49 AM", message: "hello alan"},
+                            {username: "WendyNguyen", time: "3.59 AM", message: "hello wendy"}
+                        ]
+                    },
+                    {time : '1.47 AM', message: 'hello alan',
+                        comments: []
+                    },
+                    {time : '1.47 AM', message: 'hello bob',
+                        comments: []
+                    }
+                ]
+            },
+            {date : date,
+                messages : [
+                    {time : '1.47 AM', message: 'At the supermarket :)',
+                        comments: []
+                    },
+                    {time : '1.49 AM', message: 'omg cool $1',
+                        comments: []
+                    },
+                    {time : '1.49 AM', message: 'Should I buy a carrot? :rabbit2:',
+                        comments: [
+                            {username: "AlanYu", time: "2.30AM", message: "No! buy sushi instead :sushi::sushi:"},
+                            {username: "WendyNguyen", time: "3.59 AM", message: "Yes!"}
+                        ]
+                    }
+                ]
+            },
+            {date : date,
+                messages : [
+                    {time : '1.47 AM', message: 'hello joey',
+                        comments: [
+                            {username: "AlanYu", time: "1.49 AM", message: "hello alan"},
+                            {username: "WendyNguyen", time: "3.59 AM", message: "hello wendy"}
+                        ]
+                    },
+                    {time : '1.47 AM', message: 'hello alan',
+                        comments: []
+                    },
+                    {time : '1.47 AM', message: 'hello bob',
+                        comments: []
+                    }
+                ]
             }
         ];
 

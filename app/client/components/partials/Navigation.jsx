@@ -32,7 +32,7 @@ class Navigation extends React.Component {
                         <NavItem onClick={this.props.showLogin}>Login</NavItem>
                     </Nav>
                 </Navbar>
-            
+
         );
     }
 }

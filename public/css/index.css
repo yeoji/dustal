@@ -179,22 +179,23 @@ h4{
     margin-bottom: 20px;
 }
 
-
-
-.post:first-child textarea{
+.post:first-child .send-message{
     display: block;
-    border-radius: 10px;
+}
+
+
+.post .send-message{
+    display: none;
 }
 
 .post textarea{
-    display: none;
     resize: none;
     font-size: 18px;
     margin-top: 20px;
     border: solid;
     border-width: 2px;
     border-color: #2185C5;
-
+    border-radius: 10px;
 }
 
 .message{
@@ -208,6 +209,7 @@ h4{
     border-radius: 10px;
     clear: both;
     background-color: white;
+    min-height: 50px;
 
 }
 

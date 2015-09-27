@@ -24,7 +24,7 @@ class Post extends React.Component{
             <div className="post">
                 <PostDate date={this.props.date}/>
                 {messageNodes}
-                <SendMessage />
+                <SendMessage username="JoeyLee"/>
             </div>
 
         )
