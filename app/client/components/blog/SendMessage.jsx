@@ -1,6 +1,6 @@
 import React from 'react';
-import {Input} from 'react-bootstrap';
 import Comment from './Comment';
+import EmojiMessage from '../partials/EmojiMessage'
 import moment from 'moment';
 
 
@@ -11,11 +11,10 @@ class SendMessage extends React.Component{
     }
 
     componentDidMount() {
-        setInterval(this.tick.bind(this), 1000); // Call a method on the mixin
+        setInterval(this.tick.bind(this), 1000000); // Call a method on the mixin
     }
 
     tick(){
-        console.log('render');
         let currentTime = this.state.date.add('1', 'seconds');
         this.setState({date: currentTime});
     }
@@ -27,10 +26,8 @@ class SendMessage extends React.Component{
     render(){
         return(
             <div className="send-message">
-                <Comment username={this.props.username} time={this.state.date.format('h:m A')}>{this.state.message}</Comment>
-                <form>
-                    <Input type="textarea" placeholder="Send a message" rows="5" onChange={this.handleChange.bind(this)} />
-                </form>
+                <Comment username={this.props.username} time={this.state.date.format('h:mm A')}>{this.state.message}</Comment>
+                <EmojiMessage onChange={this.handleChange.bind(this)} />
             </div>
         )
     }

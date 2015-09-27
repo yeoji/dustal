@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import ReactEmoji from 'react-emoji';
+import EmojiText from '../partials/EmojiText';
 
 class Comment extends React.Component{
     constructor(props){
@@ -8,11 +8,12 @@ class Comment extends React.Component{
     }
 
     render(){
+
         return(
-            <div className="message comment">
-                <p>
-                    {ReactEmoji.emojify(this.props.children)}
-                </p>
+            <div className={"message comment " + this.props.className}>
+                <EmojiText>
+                    {this.props.children}
+                </EmojiText>
                 <div>
                     <Link to={"/blog/" + this.props.username} className="username">{this.props.username}</Link>
                     <span className="time">{this.props.time}</span>

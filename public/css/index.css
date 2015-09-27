@@ -1,8 +1,6 @@
 /*
 * Character styling
 **/
-
-
 body{
     font-size: 18px;
     font-weight: 300;
@@ -174,6 +172,7 @@ h4{
     background-color: #FFF6E5;
 }
 
+
 .post .date{
     color: #FF7F66;
     margin-bottom: 20px;
@@ -181,11 +180,6 @@ h4{
 
 .post:first-child .send-message{
     display: block;
-}
-
-
-.post .send-message{
-    display: none;
 }
 
 .post textarea{
@@ -209,7 +203,7 @@ h4{
     border-radius: 10px;
     clear: both;
     background-color: white;
-    min-height: 50px;
+    min-height: 60px;
 
 }
 
@@ -268,6 +262,25 @@ h4{
 .comment .username{
     font-size: 14px;
     text-decoration: underline;
+}
+
+.post .send-message{
+    display: none;
+}
+
+.send-message .comment{
+    border: dotted;
+    border-color: #2185C5;
+}
+
+.emoji-message{
+    position: relative;
+}
+
+.emoji-message .emoji-selector{
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
 
 
