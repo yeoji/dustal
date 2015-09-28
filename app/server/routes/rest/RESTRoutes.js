@@ -8,11 +8,10 @@
 import express from "express";
 import _ from 'lodash';
 
-const apiRouter = express.Router();
-
 export default class RESTRoutes {
 
     constructor(model) {
+        this.apiRouter = express.Router();
         this.model = model;
         this.defaultOpts = {
             index: true,
@@ -28,7 +27,7 @@ export default class RESTRoutes {
 
         if (opts.index) {
             // Get all resources
-            apiRouter.get('/', (req, res) => {
+            this.apiRouter.get('/', (req, res) => {
                 req.db.repositories[this.model + 'Repository'].all(req.db.connection)
                     .then(function (resources) {
                         return res.status(200).json(resources);
@@ -44,7 +43,7 @@ export default class RESTRoutes {
 
         if (opts.show) {
             // Get resource by id
-            apiRouter.get('/:id', (req, res) => {
+            this.apiRouter.get('/:id', (req, res) => {
                 const id = req.params.id;
                 req.db.repositories[this.model + 'Repository'].findById(id, req.db.connection)
                     .then((resource) => {
@@ -61,7 +60,7 @@ export default class RESTRoutes {
 
         if (opts.create) {
             // Create new resource
-            apiRouter.post('/', (req, res) => {
+            this.apiRouter.post('/', (req, res) => {
                 req.db.repositories[this.model + 'Repository'].create(req.body, req.db.connection)
                     .then((resource) => {
                         return res.status(200).json(resource);
@@ -77,7 +76,7 @@ export default class RESTRoutes {
 
         if (opts.update) {
             // Update resource
-            apiRouter.put('/:id', (req, res) => {
+            this.apiRouter.put('/:id', (req, res) => {
                 const id = req.params.id;
                 req.db.repositories[this.model + 'Repository'].update(id, req.body, req.db.connection)
                     .then((resource) => {
@@ -94,21 +93,16 @@ export default class RESTRoutes {
 
         if (opts.delete) {
             // Delete resource
-            apiRouter.delete('/:id', (req, res) => {
+            this.apiRouter.delete('/:id', (req, res) => {
                 const id = req.params.id;
                 req.db.repositories[this.model + 'Repository'].delete(id, req.db.connection)
-                    .then((resource) => {
-                        if (!resource.id) {
+                    .then((success) => {
+                        if (success) {
                             return res.status(200).json({
                                 error: false,
                                 message: 'Resource deleted successfully.'
                             });
                         }
-
-                        return res.status(500).json({
-                            error: true,
-                            message: 'Could not delete resource'
-                        });
                     })
                     .catch((err) => {
                         return res.status(500).json({
@@ -119,7 +113,7 @@ export default class RESTRoutes {
             });
         }
 
-        return apiRouter;
+        return this.apiRouter;
     }
 
 }

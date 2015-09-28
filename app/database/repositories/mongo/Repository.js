@@ -61,11 +61,12 @@ export default class Repository {
 
     delete(id, db) {
         return new Promise((resolve, reject) => {
-            db.model(this.model).findOne({_id: id}, function (err, model) {
+            db.model(this.model).remove({_id: id}, function (err) {
+                console.log('db' + err);
                 if (err) {
                     reject(err);
                 }
-                resolve(model.remove(function() {}));
+                resolve(true);
             });
         });
     }

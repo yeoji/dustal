@@ -1,5 +1,3 @@
-import bcrypt from "bcrypt-nodejs";
-
 export default class Blog {
     static register(mongoose) {
         /**
@@ -12,7 +10,6 @@ export default class Blog {
             title: {type: String, default: ''},
             name: {type: String, default: '', lowercase: true, trim: true, unique: true},
             users: [mongoose.Schema.Types.ObjectId],
-            post_ids: [mongoose.Schema.Types.ObjectId],
             created_at: { type: Date, default: Date.now },
             private: {type: Boolean, default: false},
             password: {type: String, default: ''},
@@ -24,13 +21,7 @@ export default class Blog {
         });
 
         BlogSchema.virtual('shared').get(function() {
-            return (this.user_ids.length > 1);
-        });
-
-        // before saving, hash the password
-        BlogSchema.pre('save', function(next) {
-            this.password = bcrypt.hashSync(this.password);
-            next();
+            return (this.users.length > 1);
         });
 
         BlogSchema.set('toJSON', {
@@ -40,10 +31,7 @@ export default class Blog {
             }
         });
         BlogSchema.set('toObject', {
-            virtuals: true,
-            transform: function(doc, ret, options) {
-                delete ret.password;
-            }
+            virtuals: true
         });
 
         mongoose.model('Blog', BlogSchema);

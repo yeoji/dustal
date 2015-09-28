@@ -19,6 +19,7 @@ export default function (app, passport) {
     app.use('/api/blogs', new BlogRouter().generateRoutes());
     app.use('/api/posts', new PostRouter().generateRoutes());
     app.use('/api/comments', new CommentRouter().generateRoutes());
+    app.use('/api/users', new RESTRouter().generateRoutes({index: false, create: false, delete: false}));
 
     // sms callback url
     app.post('/handler/sms', (req, res) => {

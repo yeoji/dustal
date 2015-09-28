@@ -24,3 +24,5 @@ class BlogRepository extends Repository {
     }
 
 }
+
+export default BlogRepository;
