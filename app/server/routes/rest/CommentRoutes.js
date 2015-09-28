@@ -49,21 +49,40 @@ export default class CommentRoutes extends RESTRoutes {
                     // check that comment being deleted is owned by the logged in user
                     // or that the blog the comment belongs to belongs to the logged in user
                     if (String(comment.user) == String(res.locals.user._id) || String(comment.post_id.user) == String(res.locals.user._id)) {
-                        req.db.repositories[this.model + 'Repository'].delete(id, req.db.connection)
-                            .then((success) => {
-                                if (success) {
-                                    return res.status(200).json({
-                                        error: false,
-                                        message: 'Comment deleted successfully.'
-                                    });
-                                }
-                            })
-                            .catch((err) => {
-                                return res.status(500).json({
-                                    error: true,
-                                    message: "Could not delete comment"
+
+                        // delete from post document
+                        let comments = comment.post_id.comments;
+                        let index = comments.indexOf(id);
+                        if(index >= 0) {
+                            comments.splice(index, 1);
+
+                            req.db.repositories.PostRepository.update(comment.post_id._id, {comments: comments}, req.db.connection)
+                                .then((fin) => {
+                                    // delete comment document
+                                    req.db.repositories[this.model + 'Repository'].delete(id, req.db.connection)
+                                        .then((success) => {
+                                            if (success) {
+                                                return res.status(200).json({
+                                                    error: false,
+                                                    message: 'Comment deleted successfully.'
+                                                });
+                                            }
+                                        })
+                                        .catch((err) => {
+                                            return res.status(500).json({
+                                                error: true,
+                                                message: "Could not delete comment"
+                                            });
+                                        });
                                 })
-                            });
+                                .catch((err) => {
+                                    return res.status(500).json({
+                                        error: true,
+                                        message: "Could not delete comment"
+                                    });
+                                });
+                        }
+
                     } else {
                         return res.status(401).json({
                             error: true,

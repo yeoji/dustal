@@ -63,7 +63,7 @@ export default class BlogRoutes extends RESTRoutes {
             // make sure the blog name doesn't already exist
             req.db.repositories[this.model + 'Repository'].findByName(req.body.name, req.db.connection)
                 .then((blog) => {
-                    if(!blog) {
+                    if (!blog) {
                         // create blog document
                         req.body.users = [res.locals.user._id];
                         req.body.password = bcrypt.hashSync(req.body.password);
@@ -100,7 +100,7 @@ export default class BlogRoutes extends RESTRoutes {
                     // check that the user owns the blog
                     // @TODO: should we populate the users in the blog document or leave it as IDs
                     if (blog.users.indexOf(res.locals.user._id) >= 0) {
-                        if(req.body.password) {
+                        if (req.body.password) {
                             req.body.password = bcrypt.hashSync(req.body.password);
                         }
                         req.db.repositories[this.model + 'Repository'].update(blog._id, req.body, req.db.connection)
@@ -133,6 +133,14 @@ export default class BlogRoutes extends RESTRoutes {
                         req.db.repositories[this.model + 'Repository'].delete(blog._id, req.db.connection)
                             .then((success) => {
                                 if (success) {
+                                    // delete blog from user's document
+                                    for (var user of blog.users) {
+                                        req.db.repositories.UserRepository.removeBlog(user, blog._id, req.db.connection);
+                                    }
+
+                                    // delete all posts
+                                    req.db.repositories.PostRepository.deleteByBlogId(blog._id, req.db.connection);
+
                                     return res.status(200).json({
                                         error: false,
                                         message: 'Blog deleted successfully.'

@@ -61,6 +61,37 @@ class UserRepository extends Repository {
             });
         });
     }
+
+    /**
+     * Handles the removal of a blog_id from the user's document
+     * @param user_id
+     * @param blog_id
+     * @param db
+     */
+    removeBlog(user_id, blog_id, db) {
+        return new Promise((resolve, reject) => {
+
+            this.findById(user_id, db)
+                .then((user) => {
+                    let blogs = user.blogs;
+                    let index = blogs.indexOf(blog_id);
+                    if(index >= 0) {
+                        blogs.splice(index, 1);
+                    }
+
+                    this.update(user_id, {blogs: blogs}, db)
+                        .then((result) => {
+                            resolve(result);
+                        })
+                        .catch((err) => {
+                            reject(err);
+                        });
+                })
+                .catch((err) => {
+                    reject(err)
+                });
+        });
+    }
 }
 
 export default UserRepository;

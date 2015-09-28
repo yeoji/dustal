@@ -24,6 +24,22 @@ class CommentRepository extends Repository {
         });
     }
 
+    /**
+     * Deletes all comments with the specified post id
+     * @param post_id
+     * @param db
+     */
+    deleteByPost(post_id, db) {
+        return new Promise((resolve, reject) => {
+           db.model(this.model).remove({post_id: post_id}, function (err) {
+               if (err) {
+                   reject(err);
+               }
+               resolve(true);
+           });
+        });
+    }
+
 }
 
 export default CommentRepository;
