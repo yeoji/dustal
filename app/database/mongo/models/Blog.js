@@ -10,7 +10,6 @@ export default class Blog {
             title: {type: String, default: ''},
             name: {type: String, default: '', lowercase: true, trim: true, unique: true},
             users: [mongoose.Schema.Types.ObjectId],
-            post_ids: [mongoose.Schema.Types.ObjectId],
             created_at: { type: Date, default: Date.now },
             private: {type: Boolean, default: false},
             password: {type: String, default: ''},

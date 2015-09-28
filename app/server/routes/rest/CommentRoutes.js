@@ -58,23 +58,18 @@ export default class CommentRoutes extends RESTRoutes {
                     // @TODO: comment document has to be populated with the post
                     if(comment.user == res.locals.user._id || comment.post.user == res.locals.user._id) {
                         req.db.repositories[this.model + 'Repository'].delete(id, req.db.connection)
-                            .then((resource) => {
-                                if (!resource.id) {
+                            .then((success) => {
+                                if (success) {
                                     return res.status(200).json({
                                         error: false,
-                                        message: 'Resource deleted successfully.'
+                                        message: 'Comment deleted successfully.'
                                     });
                                 }
-
-                                return res.status(500).json({
-                                    error: true,
-                                    message: 'Could not delete resource'
-                                });
                             })
                             .catch((err) => {
                                 return res.status(500).json({
                                     error: true,
-                                    message: err
+                                    message: "Could not delete comment"
                                 })
                             });
                     }

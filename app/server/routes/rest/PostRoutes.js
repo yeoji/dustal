@@ -27,7 +27,9 @@ export default class PostRoutes extends RESTRoutes {
         apiRouter.post('/', tokenHelper.verifyToken, (req, res) => {
             // check that the blog belongs to user
             // @TODO: not sure if res.locals.user is populated; assumed not here
-            if ((res.locals.user.blogs.indexOf(req.body.blog_id) >= 0) && (req.body.user == res.locals.user._id)) {
+            if (res.locals.user.blogs.indexOf(req.body.blog_id) >= 0) {
+                // create post document
+                req.body.user = res.locals.user._id;
                 req.db.repositories[this.model + 'Repository'].create(req.body, req.db.connection)
                     .then((resource) => {
                         return res.status(200).json(resource);
@@ -35,15 +37,15 @@ export default class PostRoutes extends RESTRoutes {
                     .catch((err) => {
                         return res.status(500).json({
                             error: true,
-                            message: err
-                        })
+                            message: "Could not create the post."
+                        });
                     });
+            } else {
+                return res.status(401).json({
+                    error: true,
+                    message: 'You do not have permissions to post to this blog'
+                });
             }
-
-            return res.status(401).json({
-                error: true,
-                message: 'You do not have permissions to post to this blog'
-            });
         });
 
         // overriding delete route
@@ -57,37 +59,32 @@ export default class PostRoutes extends RESTRoutes {
                     if (res.locals.user.blogs.indexOf(post.blog_id) >= 0) {
 
                         req.db.repositories[this.model + 'Repository'].delete(id, req.db.connection)
-                            .then((resource) => {
-                                if (!resource.id) {
+                            .then((success) => {
+                                if (success) {
                                     return res.status(200).json({
                                         error: false,
-                                        message: 'Resource deleted successfully.'
+                                        message: 'Post deleted successfully.'
                                     });
                                 }
-
-                                return res.status(500).json({
-                                    error: true,
-                                    message: 'Could not delete resource'
-                                });
                             })
                             .catch((err) => {
                                 return res.status(500).json({
                                     error: true,
-                                    message: err
+                                    message: "Could not delete post"
                                 });
                             });
 
+                    } else {
+                        return res.status(401).json({
+                            error: true,
+                            message: 'You do not have permissions to delete this post'
+                        });
                     }
-
-                    return res.status(401).json({
-                        error: true,
-                        message: 'You do not have permissions to delete this post'
-                    });
                 })
                 .catch((err) => {
-                    return res.status(500).json({
+                    return res.status(400).json({
                         error: true,
-                        message: err
+                        message: "Post does not exist."
                     });
                 });
         });

@@ -17,7 +17,7 @@ export default function (app, passport) {
      *  API Routes  *
      ****************/
     app.get('/testlol', (req, res) => {
-        req.db.repositories.BlogRepository.all(req.db.connection)
+        req.db.repositories.PostRepository.all(req.db.connection)
             .then((resp) => {
                 return res.json(resp);
             })
