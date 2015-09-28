@@ -35,9 +35,9 @@ export default class BlogRoutes extends RESTRoutes {
                     return res.status(200).json(blog);
                 })
                 .catch((err) => {
-                    return res.status(500).json({
+                    return res.status(400).json({
                         error: true,
-                        message: err
+                        message: "Could not find a blog with that name."
                     })
                 });
         });
@@ -50,6 +50,7 @@ export default class BlogRoutes extends RESTRoutes {
                     if(!blog) {
                         // create blog document
                         req.body.users = [res.locals.user._id];
+                        req.body.password = bcrypt.hashSync(req.body.password);
                         req.db.repositories[this.model + 'Repository'].create(req.body, req.db.connection)
                             .then((resource) => {
                                 // add blog_id to user's blog array
@@ -83,6 +84,9 @@ export default class BlogRoutes extends RESTRoutes {
                     // check that the user owns the blog
                     // @TODO: should we populate the users in the blog document or leave it as IDs
                     if (blog.users.indexOf(res.locals.user._id) >= 0) {
+                        if(req.body.password) {
+                            req.body.password = bcrypt.hashSync(req.body.password);
+                        }
                         req.db.repositories[this.model + 'Repository'].update(blog._id, req.body, req.db.connection)
                             .then((resource) => {
                                 return res.status(200).json(resource);
@@ -111,23 +115,18 @@ export default class BlogRoutes extends RESTRoutes {
                     // @TODO: should we populate the users in the blog document or leave it as IDs
                     if (blog.users.indexOf(res.locals.user._id) >= 0) {
                         req.db.repositories[this.model + 'Repository'].delete(blog._id, req.db.connection)
-                            .then((resource) => {
-                                if (!resource.id) {
+                            .then((success) => {
+                                if (success) {
                                     return res.status(200).json({
                                         error: false,
-                                        message: 'Resource deleted successfully.'
+                                        message: 'Blog deleted successfully.'
                                     });
                                 }
-
-                                return res.status(500).json({
-                                    error: true,
-                                    message: 'Could not delete resource'
-                                });
                             })
                             .catch((err) => {
-                                return res.status(500).json({
+                                return res.status(400).json({
                                     error: true,
-                                    message: err
+                                    message: 'Could not delete blog.'
                                 });
                             });
                     } else {
@@ -136,6 +135,12 @@ export default class BlogRoutes extends RESTRoutes {
                             message: 'You do not have permissions to delete this blog.'
                         });
                     }
+                })
+                .catch((err) => {
+                    return res.status(400).json({
+                        error: true,
+                        message: "Could not find a blog with that name."
+                    });
                 });
         });
 
@@ -155,6 +160,12 @@ export default class BlogRoutes extends RESTRoutes {
                     } else {
                         return res.status(200).json(blog);
                     }
+                })
+                .catch((err) => {
+                    return res.status(500).json({
+                        error: true,
+                        message: "Could not find a blog with that name."
+                    });
                 });
         });
 
