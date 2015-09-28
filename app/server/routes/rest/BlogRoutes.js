@@ -31,8 +31,24 @@ export default class BlogRoutes extends RESTRoutes {
                                 name: blog.name
                             }
                         });
+                    } else {
+                        // by default, blog should load with today's posts
+                        req.db.repositories.PostRepository.findByBlogId(blog._id, req.db.connection, Date.now())
+                            .then((posts) => {
+                                return res.status(200).json({
+                                    blog: {
+                                        info: blog,
+                                        posts: posts
+                                    }
+                                });
+                            })
+                            .catch((err) => {
+                                return res.status(500).json({
+                                    error: true,
+                                    message: "Could not load blog posts"
+                                });
+                            });
                     }
-                    return res.status(200).json(blog);
                 })
                 .catch((err) => {
                     return res.status(400).json({
@@ -151,6 +167,7 @@ export default class BlogRoutes extends RESTRoutes {
                 .then((blog) => {
                     if (blog.private) {
                         if (bcrypt.compareSync(req.body.password, blog.password)) {
+                            tokenHelper.setBlogToken(blog, req, res);
                             return res.status(200).json(blog);
                         }
                         return res.status(401).json({
@@ -166,6 +183,45 @@ export default class BlogRoutes extends RESTRoutes {
                         error: true,
                         message: "Could not find a blog with that name."
                     });
+                });
+        });
+
+        // This is the route to retrieve the blog's posts limited by day
+        apiRouter.get('/:name/posts', (req, res) => {
+            // find the blog
+            const name = req.params.name;
+            req.db.repositories[this.model + 'Repository'].findByName(name, req.db.connection)
+                .then((blog) => {
+                    // if private, send unauthorized so client can show password page
+                    if (blog.private && !tokenHelper.verifyBlogToken(blog, req)) {
+                        return res.status(401).json({
+                            error: true,
+                            message: 'Blog is private',
+                            blog: {
+                                title: blog.title,
+                                name: blog.name
+                            }
+                        });
+                    } else {
+                        // if no day is provided, load all posts
+                        const day = req.query.day ? req.query.day : false;
+                        req.db.repositories.PostRepository.findByBlogId(blog._id, req.db.connection, day)
+                            .then((posts) => {
+                                return res.status(200).json(posts);
+                            })
+                            .catch((err) => {
+                                return res.status(500).json({
+                                    error: true,
+                                    message: "Could not load blog posts"
+                                });
+                            });
+                    }
+                })
+                .catch((err) => {
+                    return res.status(400).json({
+                        error: true,
+                        message: "Could not find a blog with that name."
+                    })
                 });
         });
 
