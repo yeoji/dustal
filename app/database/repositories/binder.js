@@ -13,5 +13,6 @@ const repositories = {};
 repositories.UserRepository = new (require("./" + dbImpl + "/UserRepository"))();
 repositories.BlogRepository = new (require("./" + dbImpl + "/BlogRepository"))();
 repositories.PostRepository = new (require("./" + dbImpl + "/Repository"))('Post');
+repositories.CommentRepository = new (require("./" + dbImpl + "/CommentRepository"))();
 
 export default repositories;
