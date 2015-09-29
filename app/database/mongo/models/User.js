@@ -10,7 +10,8 @@ export default class User {
                 country_code: {type: String, default: ''},
                 number: {type: String, default: ''}
             },
-            blogs: {type: [mongoose.Schema.Types.ObjectId], ref: 'Blog'}
+            blogs: {type: [mongoose.Schema.Types.ObjectId], ref: 'Blog'},
+            profile_img: {type: String, default: ''}
         });
 
         UserSchema.virtual('id').get(function () {
