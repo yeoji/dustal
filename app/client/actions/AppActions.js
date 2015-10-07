@@ -3,7 +3,7 @@ import alt from "../alt";
 class AppActions {
 
     updateClicks(e) {
-       this.dispatch(e.target);
+        this.dispatch(e.target);
     }
 }
 

@@ -9,6 +9,8 @@ class RegisterModal extends React.Component {
     }
 
     _onAuthSubmit() {
+        console.log('here');
+
         const user = {};
         user.first_name = this.refs.first_name.getValue();
         user.last_name = this.refs.last_name.getValue();
