@@ -19,12 +19,18 @@ class Post extends React.Component{
             )
         });
 
+        var sendMessage = null;
+
+        if(this.props.first){
+            sendMessage = <SendMessage/>;
+        }
+
         return(
 
             <div className="post">
                 <PostDate date={this.props.date}/>
                 {messageNodes}
-                <SendMessage username="JoeyLee"/>
+                {sendMessage}
             </div>
 
         )

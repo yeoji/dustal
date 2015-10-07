@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 class PostDate extends React.Component{
 
@@ -8,8 +9,14 @@ class PostDate extends React.Component{
 
     render(){
 
+
+
         return(
-            <h4 className="date">{this.props.date.toUTCString()}</h4>
+            <div className="date text-center">
+
+                    {moment(this.props.date).format("Do MMMM YYYY")}
+
+            </div>
         );
     }
 }

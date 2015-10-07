@@ -15,11 +15,10 @@ class CommentToggle extends React.Component{
         let displayText = this.props.showComments ? 'Hide comments' : 'Show comments';
 
         return(
-            <div className="comment-toggle">
-                <span>
-                    <a onClick={this.handleClick.bind(this)}>{displayText}</a>
-                </span>
-            </div>
+
+            <a className="comment-toggle" onClick={this.handleClick.bind(this)}>{displayText}</a>
+
+
         );
     }
 }

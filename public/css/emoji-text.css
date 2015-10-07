@@ -1,5 +1,94 @@
-.emoji-text img{
-    width: 20px;
-    height: 20px;
+.emoji-message{
+    position: relative;
+    clear: both;
+}
+
+.emoji-preview img{
+    width: 25px;
+    height: 25px;
     margin: 2px;
+}
+
+.emoji-message textarea{
+    resize: none;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.emoji-picker{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.emoji-selector{
+    position: absolute;
+    border-radius: 15px;
+    right: 30px;
+    width: 236px;
+    height: 230px;
+    background-color: white;
+    z-index: 1000;
+    top: 30px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.emoji-selector img{
+    width: 30px;
+    height: 30px;
+    margin: 5px
+}
+
+.emoji-selector img:hover{
+    border: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+/**
+ * gemini-scrollbar
+ * @version 1.2.9
+ * @link http://noeldelgado.github.io/gemini-scrollbar/
+ * @license MIT
+ */
+
+/* @helper: used to measure the scrollbar width on a temporal element */
+
+/* disable selection while dragging */
+.gm-scrollbar-disable-selection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* fallback for native floating scrollbars */
+.gm-prevented {
+    -webkit-overflow-scrolling: touch;
+}
+.gm-prevented .gm-scrollbar {
+    display: none;
+}
+
+
+/* actual gemini-scrollbar styles */
+/* vertical scrollbar track */
+.gm-scrollbar.-vertical {
+    background-color: #f0f0f0
+}
+
+/* horizontal scrollbar track */
+.gm-scrollbar.-horizontal {
+    background-color: transparent;
+}
+
+/* scrollbar thumb */
+.gm-scrollbar .thumb {
+    background-color: rebeccapurple;
+}
+.gm-scrollbar .thumb:hover {
+    background-color: fuchsia;
 }

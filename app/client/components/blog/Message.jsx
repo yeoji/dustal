@@ -12,9 +12,9 @@ class Message extends React.Component{
         return(
             <div>
                 <div className="message user-message">
-                    <p>
+                    <span>
                         {ReactEmoji.emojify(this.props.children, {emojiType: 'emojione'})}
-                    </p>
+                    </span>
                     <div>
                         <span className="time">{this.props.time}</span>
                     </div>

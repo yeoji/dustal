@@ -10,7 +10,7 @@ class Comment extends React.Component{
     render(){
 
         return(
-            <div className={"message comment " + this.props.className}>
+            <div className="message comment">
                 <EmojiText>
                     {this.props.children}
                 </EmojiText>
