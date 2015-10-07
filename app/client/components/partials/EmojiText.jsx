@@ -10,11 +10,8 @@ class EmojiText extends React.Component{
     render(){
         let html = Emojione.toImage(this.props.children);
 
-        console.log(html);
-
         return(
-            <span className="emoji-text" dangerouslySetInnerHTML={{__html: html}} />
-
+            <span dangerouslySetInnerHTML={{__html: html}} />
         )
     }
 }

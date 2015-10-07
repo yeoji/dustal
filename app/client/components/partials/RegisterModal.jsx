@@ -23,7 +23,7 @@ class RegisterModal extends React.Component {
 
     render() {
         return (
-
+            <div>
                 <Modal show={this.props.show} onHide={this.props.close}>
                     <Modal.Header closeButton>
                         <Modal.Title>Register</Modal.Title>
@@ -38,6 +38,7 @@ class RegisterModal extends React.Component {
                         </form>
                     </Modal.Body>
                 </Modal>
+            </div>
 
         );
     }

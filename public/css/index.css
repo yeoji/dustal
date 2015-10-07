@@ -7,7 +7,7 @@ body{
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
     -o-font-smoothing: antialiased;
-    background-color: #FFF6E5;
+    background-color: white;
 }
 
 a{
@@ -21,6 +21,13 @@ input{
     font-weight: 400;
 
 }
+
+h3{
+    font-family: 'Muli', serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
 
 h4{
     font-family: 'Muli', serif;
@@ -66,35 +73,26 @@ h4{
 **/
 
 .navbar {
+    position: relative;
     background-color: #FF7F66;
     border: 0;
     border-radius: 0;
     max-height: 65px;
+    color: white;
 }
 
-.navbar-search{
-    margin: auto;
-    width: 600px !important;
+.navbar-default .navbar-brand{
+    color: white;
 }
 
-.navbar-search input{
-    height: 45px;
-}
-
-.navbar-right *{
-    height: 60px;
+.navbar-form .form-control{
+    position: absolute;
+    width: 25%;
 }
 
 .navbar-default .navbar-nav>li>a{
     color: white;
 }
-
-.navbar-right li a{
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-
 
 /*
 * Footer stuff
@@ -130,8 +128,11 @@ h4{
     border-radius: 0 !important;
 }
 
+/**
+* Homepage stuff
+**/
 .welcome-button{
-    width: 10%;
+    padding: 10px 40px;
     margin-top: 350px;
     border: 0;
 }
@@ -146,141 +147,109 @@ h4{
     text-align: center;
 }
 
-
-
-.comment-toggle{
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    width: 48%;
-}
-
-.blog {
-    margin-top: -20px;
-    background: url('../img/blog.jpeg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    border-radius: 0 !important;
-}
-
+/**
+* Blog related stuff
+**/
 .post{
-    padding: 30px 100px;
-    margin: 40px 0;
-    border-radius: 35px;
-    background-color: #FFF6E5;
+    width: 100%;
+
 }
 
 
-.post .date{
-    color: #FF7F66;
-    margin-bottom: 20px;
+.post > .date{
+    margin: 25px 0px;
+    display: inline-block;
+    float: left;
+    clear: both;
+
 }
 
-.post:first-child .send-message{
-    display: block;
-}
-
-.post textarea{
-    resize: none;
-    font-size: 18px;
-    margin-top: 20px;
-    border: solid;
-    border-width: 2px;
-    border-color: #2185C5;
-    border-radius: 10px;
+.post .send-message{
+    position: relative;
+    float: left;
+    clear: both;
+    width: 100%;
 }
 
 .message{
     position: relative;
-    width: 48%;
+    display: inline-block;
+    min-height: 50px;
+    max-width: 60%;
     padding: 10px;
     margin-bottom: 10px;
-    left: 0;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     clear: both;
     background-color: white;
-    min-height: 60px;
+}
 
+.message:after
+{
+    content: '';
+    position: absolute;
+    border-style: solid;
+    display: block;
+    z-index: 1;
+    bottom: 15px;
 }
 
 .message div{
     overflow: auto;
 }
 
-
 .message .time{
     font-size: 14px;
     float: right;
 }
 
-.comment{
-    border: solid;
-    border-width: 2px;
-    border-color: #2185C5;
-}
-
-.comment:after
-{
-    position: absolute;
-    content: '';
-    border-style: solid;
-    border-width: 10px 10px 10px 0;
-    border-color: transparent #2185C5;
-    display: block;
-    width: 0;
-    z-index: 1;
-    left: -10px;
-    bottom: 15px;
+.message img{
+    width: 25px;
+    height: 25px;
+    margin: 2px;
 }
 
 .user-message{
-    margin-left: auto;
-    margin-right: 0;
+    float: right;
     border: solid;
     border-width: 2px;
     border-color: #FF7F66;
 }
 
-.user-message:after
-{
-    content: '';
-    position: absolute;
-    border-style: solid;
+.user-message:after {
     border-width: 10px 0 10px 10px;
     border-color: transparent #FF7F66;
-    display: block;
-    width: 0;
-    z-index: 1;
-    right: -10px;
-    bottom: 15px;
+    float: right;
+    left: 100%;
+}
+
+.comment-toggle{
+    float: left;
+    clear:both;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 50%;
+    text-align: center;
+}
+
+.comment{
+    float: left;
+    border: solid;
+    border-width: 2px;
+    border-color: #2185C5;
+}
+
+.comment:after{
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #2185C5;
+    float: left;
+    right: 100%;
 }
 
 .comment .username{
     font-size: 14px;
     text-decoration: underline;
-}
-
-.post .send-message{
-    display: none;
-}
-
-.send-message .comment{
-    border: dotted;
-    border-color: #2185C5;
-}
-
-.emoji-message{
-    position: relative;
-}
-
-.emoji-message .emoji-selector{
-    position: absolute;
-    right: 10px;
-    top: 10px;
 }
 
 

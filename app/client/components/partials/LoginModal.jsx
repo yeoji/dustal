@@ -24,7 +24,7 @@ class LoginModal extends React.Component {
     render() {
 
         return (
-
+            <div>
                 <Modal show={this.props.show} onHide={this.props.close}>
                     <Modal.Header closeButton>
                         <Modal.Title>Login</Modal.Title>
@@ -37,6 +37,7 @@ class LoginModal extends React.Component {
                         </form>
                     </Modal.Body>
                 </Modal>
+            </div>
 
         );
     }

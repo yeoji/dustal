@@ -1,8 +1,22 @@
 import React from "react";
 import {Row, Col, Button, Jumbotron} from 'react-bootstrap';
 import {Link} from 'react-router';
+import RegisterModal from './partials/RegisterModal';
 import Footer from "./partials/Footer";
 class Hello extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {showRegisterModal: false};
+    }
+
+    closeRegister() {
+        this.setState({ showRegisterModal: false });
+    }
+
+    openRegister() {
+        this.setState({ showRegisterModal: true });
+    }
 
     render() {
 
@@ -10,9 +24,10 @@ class Hello extends React.Component {
 
         return (
             <div>
+                <RegisterModal show={this.state.showRegisterModal} close={this.closeRegister.bind(this)}/>
                 <Row>
                     <Jumbotron className="welcome text-center">
-                        <Button bsSize="large" className="welcome-button" onClick={this.props.showRegister}>Join Now</Button>
+                        <Button bsSize="large" className="welcome-button" onClick={this.openRegister.bind(this)}>Join Now</Button>
                     </Jumbotron>
                 </Row>
                 <Row>
