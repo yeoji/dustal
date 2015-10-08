@@ -5,7 +5,7 @@ import BlogRouter from "./routes/rest/BlogRoutes";
 import PostRouter from "./routes/rest/PostRoutes";
 import CommentRouter from "./routes/rest/CommentRoutes";
 import uploadRouter from "./routes/upload.routes";
-import SmsHandler from "./services/sms/SmsHandler";
+import {SmsHandler} from "./services/sms/SmsService";
 
 export default function (app, passport) {
 
@@ -27,7 +27,7 @@ export default function (app, passport) {
 
     // sms callback url
     app.post('/handler/sms', (req, res) => {
-        SmsHandler.receiveSms(req)
+        SmsService.SmsHandler.receiveSms(req)
             .then(() => {
                 // send an empty response
                 res.type('xml');

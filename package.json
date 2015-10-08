@@ -40,6 +40,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "bookshelf": "^0.8.2",
+    "chance": "^0.8.0",
     "cookie-parser": "^1.3.5",
     "emojione": "^1.5.0",
     "express": "^4.13.3",

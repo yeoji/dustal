@@ -1,4 +1,7 @@
 import tokenHelper from "./tokenHelper";
+import {SmsSender} from "../services/sms/SmsService";
+
+const smsSender = new SmsSender();
 
 export default function(app, passport) {
 
@@ -23,12 +26,18 @@ export default function(app, passport) {
 
             // no errors, therefore authenticated
             tokenHelper.setToken(user, res);
+
+            // send verification code to mobile
+            const verificationMsg = "Hi, thanks for registering! Your verification code is: " + user.mobile.verification_code;
+            smsSender.sendSms(user.mobile.country_code, user.mobile.number, verificationMsg);
+
             return res.status(200).json({
                 error: false,
                 message: 'Successfully registered user.',
                 first_name: user.first_name,
                 last_name: user.last_name,
-                email: user.email
+                email: user.email,
+                mobile: user.mobile
             });
 
         })(req, res, next);
@@ -57,7 +66,8 @@ export default function(app, passport) {
                 message: 'Successfully logged in!',
                 first_name: user.first_name,
                 last_name: user.last_name,
-                email: user.email
+                email: user.email,
+                mobile: user.mobile
             });
 
         })(req, res, next);

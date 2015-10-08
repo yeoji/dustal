@@ -8,7 +8,9 @@ export default class User {
             password: {type: String, default: ''},
             mobile: {
                 country_code: {type: String, default: ''},
-                number: {type: String, default: ''}
+                number: {type: String, default: ''},
+                is_verified: {type: Boolean, default: false},
+                verification_code: {type: String}
             },
             blogs: {type: [mongoose.Schema.Types.ObjectId], ref: 'Blog'},
             profile_img: {type: String, default: ''}
@@ -16,10 +18,6 @@ export default class User {
 
         UserSchema.virtual('id').get(function () {
             return this._id;
-        });
-
-        UserSchema.virtual('mobile_no').get(function() {
-            return this.mobile.country_code + this.mobile.number;
         });
 
         UserSchema.set('toJSON', {virtuals: true});
