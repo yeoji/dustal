@@ -4,7 +4,7 @@ import tokenHelper from "./tokenHelper";
 const uploadRouter = express.Router();
 
 const storage = multer.diskStorage({
-    destination: '../storage/uploads',
+    destination: 'storage/uploads',
     filename: function (req, file, cb) {
         const data = {};
         tokenHelper.verifyToken(req, data, function() {
