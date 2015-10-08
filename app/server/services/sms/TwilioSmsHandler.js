@@ -1,7 +1,11 @@
+import {getCallCode} from "./SmsService";
+
 const parseSms = (req) => {
     return new Promise((resolve, reject) => {
         // match post to blog
-        req.db.repositories.UserRepository.findByMobileNo(req.body.From, req.db.connection)
+        // remove the country call code from the From number
+        const from = req.body.From.slice(getCallCode(req.body.FromCountry).length);
+        req.db.repositories.UserRepository.findByMobileNo(from, req.db.connection)
             .then((user) => {
                 for(var blog of user.blogs) {
                     if(blog.assigned_no == req.body.To) {

@@ -9,7 +9,10 @@
  *      - delete(id, db);
  **********************************/
 
+import Chance from "chance";
 import Repository from "./Repository";
+
+const chance = new Chance();
 
 class UserRepository extends Repository {
 
@@ -31,7 +34,7 @@ class UserRepository extends Repository {
     findByMobileNo(mobile, db) {
         return new Promise(function (resolve, reject) {
             db.model('User').findOne(function () {
-                return ((this.mobile.country_code + this.mobile.number) == mobile);
+                return this.mobile.number == mobile;
             }).populate('blogs').exec(function (err, model) {
                 if (err) {
                     reject(err);
@@ -45,6 +48,8 @@ class UserRepository extends Repository {
     create(user, hash, db) {
         return new Promise(function (resolve, reject) {
             const userSchema = db.model('User');
+            /* add verification code */
+            user.mobile.verification_code = chance.natural({min: 1000, max: 9999});
             const newUser = new userSchema({
                 first_name: user.first_name,
                 last_name: user.last_name,
