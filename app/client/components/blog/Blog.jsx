@@ -29,11 +29,6 @@ class Blog extends Component {
             },
             {date : date,
                 messages : [
-                    {time : '1.49 AM', message: '',
-                        comments: [
-                            {username: "BertramTruong", time: "2.30AM", message: "It's a piece of shit :smirk:"}
-                        ]
-                    },
                     {time : '1.47 AM', message: 'Web design is so hard :(',
                         comments: []
                     }
@@ -43,7 +38,7 @@ class Blog extends Component {
                 messages : [
                     {time : '1.49 AM', message: 'React JS is awesome :D ',
                         comments: [
-                            {username: "BertramTruong", time: "2.30AM", message: "It's a piece of shit :smirk:"}
+                            {username: "BertramTruong", time: "2.30AM", message: "Should I buy a carrot? :rabbit2: this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text "}
                         ]
                     },
                     {time : '1.47 AM', message: 'Web design is so hard :(',

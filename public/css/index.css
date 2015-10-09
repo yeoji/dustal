@@ -2,39 +2,21 @@
 * Character styling
 **/
 body{
-    font-size: 18px;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    -o-font-smoothing: antialiased;
-    background-color: white;
+    font-family: 'Muli', sans-serif;
 }
 
 a{
-    font-family: 'Muli', serif;
     font-size: 18px;
-    font-weight: 300;
-}
-
-input{
-    font-family: 'Muli', serif;
-    font-weight: 400;
-
 }
 
 h3{
-    font-family: 'Muli', serif;
     font-size: 18px;
-    font-weight: 400;
 }
 
 
 h4{
-    font-family: 'Muli', serif;
     font-size: 24px;
-    font-weight: 400;
 }
-
 
 .btn-default{
     background-color: #FF7F66;
@@ -62,11 +44,17 @@ h4{
     }
 }
 
-
 .modal {
     text-align: center;
 }
 
+.tab-content{
+    margin-top: 20px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
 
 /*
 * Navbar stuff
@@ -152,16 +140,15 @@ h4{
 **/
 .post{
     width: 100%;
-
+    padding: 20px;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
 }
 
 
 .post > .date{
     margin: 25px 0px;
-    display: inline-block;
-    float: left;
-    clear: both;
-
 }
 
 .post .send-message{
@@ -174,14 +161,15 @@ h4{
 .message{
     position: relative;
     display: inline-block;
+    clear: both;
+    min-width: 100px;
     min-height: 50px;
     max-width: 60%;
-    padding: 10px;
+    padding: 3px;
     margin-bottom: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    clear: both;
     background-color: white;
 }
 
@@ -200,13 +188,13 @@ h4{
 }
 
 .message .time{
-    font-size: 14px;
+    font-size: 10px;
     float: right;
 }
 
-.message img{
-    width: 25px;
-    height: 25px;
+.message img:not(.display-picture){
+    width: 15px;
+    height: 15px;
     margin: 2px;
 }
 
@@ -224,20 +212,25 @@ h4{
     left: 100%;
 }
 
+
 .comment-toggle{
     float: left;
     clear:both;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 0 0 5px 0;
     width: 50%;
     text-align: center;
 }
 
 .comment{
     float: left;
+    margin-left: 50px;
     border: solid;
     border-width: 2px;
     border-color: #2185C5;
+}
+
+.comment > div{
+    clear: both;
 }
 
 .comment:after{
@@ -248,10 +241,30 @@ h4{
 }
 
 .comment .username{
-    font-size: 14px;
-    text-decoration: underline;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #aaaaaa;
+    margin-bottom: 3px;
+
 }
 
+.comment .username>a{
+    clear: right;
+    font-size: 14px;
+}
+
+.comment-picture{
+    float: left;
+    clear: left;
+}
+
+.display-picture{
+    position: absolute;
+    right: 100%;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
 
 
 

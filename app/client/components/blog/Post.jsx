@@ -27,7 +27,7 @@ class Post extends React.Component{
 
         return(
 
-            <div className="post">
+            <div className="post clearfix">
                 <PostDate date={this.props.date}/>
                 {messageNodes}
                 {sendMessage}

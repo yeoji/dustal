@@ -37,8 +37,9 @@ class EmojiMessage extends React.Component{
 
     render(){
         return(
-            <div>
-                <Comment >{this.state.message}</Comment>
+            <div className="emoji-wrapper">
+                <Comment username="BobLee">{this.state.message}</Comment>
+
                 <div className="emoji-message">
                     <form>
                         <Input type="textarea"

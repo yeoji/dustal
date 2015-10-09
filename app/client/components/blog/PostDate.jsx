@@ -13,9 +13,9 @@ class PostDate extends React.Component{
 
         return(
             <div className="date text-center">
-
+                <h4>
                     {moment(this.props.date).format("Do MMMM YYYY")}
-
+                </h4>
             </div>
         );
     }
