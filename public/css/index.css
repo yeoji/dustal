@@ -141,9 +141,7 @@ h4{
 .post{
     width: 100%;
     padding: 20px;
-    border-bottom: solid;
-    border-width: 1px;
-    border-color: #aaaaaa;
+    border-bottom: 1px solid #aaaaaa;
 }
 
 
@@ -200,9 +198,7 @@ h4{
 
 .user-message{
     float: right;
-    border: solid;
-    border-width: 2px;
-    border-color: #FF7F66;
+    border: 2px solid #FF7F66;
 }
 
 .user-message:after {
@@ -224,9 +220,7 @@ h4{
 .comment{
     float: left;
     margin-left: 50px;
-    border: solid;
-    border-width: 2px;
-    border-color: #2185C5;
+    border: 2PX solid #2185C5;
 }
 
 .comment > div{
