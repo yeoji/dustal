@@ -10,15 +10,20 @@ class Comment extends React.Component{
     render(){
 
         return(
-            <div className="message comment">
-                <EmojiText>
-                    {this.props.children}
-                </EmojiText>
-                <div>
-                    <Link to={"/blog/" + this.props.username} className="username">{this.props.username}</Link>
-                    <span className="time">{this.props.time}</span>
+
+
+                <div className="message comment">
+                    <img className="img-circle display-picture comment-picture" src="../../img/dp.jpg"/>
+                    <div className="username">
+                        <Link to={"/blog/" + this.props.username}>{this.props.username}</Link>
+                    </div>
+                    <EmojiText>
+                        {this.props.children}
+                    </EmojiText>
+                    <div>
+                        <span className="time">{this.props.time}</span>
+                    </div>
                 </div>
-            </div>
         )
     }
 

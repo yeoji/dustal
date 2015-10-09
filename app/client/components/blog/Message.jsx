@@ -11,7 +11,7 @@ class Message extends React.Component{
 
         return(
             <div>
-                <div className="message user-message">
+                <div className="message user-message clearfix pull-right">
                     <span>
                         {ReactEmoji.emojify(this.props.children, {emojiType: 'emojione'})}
                     </span>
