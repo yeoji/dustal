@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
 // Bootstrap routes
 routes(app, passport);
 
-// Set up socket.io
-sockets(app);
-
 var server = app.listen(app.get('port'));
+
+// Set up socket.io
+sockets(server, database);

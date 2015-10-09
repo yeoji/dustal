@@ -23,6 +23,12 @@ html
 
     script(src='/socket.io/socket.io.js')
     script.
-        var socket = io();
+        var socket = io('http://localhost:3000/blog');
+        socket.on('connect', function() {
+           socket.emit('joinBlog', {name: 'barsssblog'});
+        });
+        socket.on('disconnect', function() {
+            console.log('disconnected');
+        });
 
     <div id="content"></div>

@@ -35,11 +35,6 @@ export default function (app, passport) {
             });
     });
 
-    app.get('/test', (req, res) => {
-        console.log(getCallCode("AU"));
-        return res.end(getCallCode("AU"));
-    });
-
 
     /******************
      *  React Routes  *
