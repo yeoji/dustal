@@ -5,7 +5,7 @@ import BlogRouter from "./routes/rest/BlogRoutes";
 import PostRouter from "./routes/rest/PostRoutes";
 import CommentRouter from "./routes/rest/CommentRoutes";
 import uploadRouter from "./routes/upload.routes";
-import {SmsHandler} from "./services/sms/SmsService";
+import {SmsHandler, getCallCode} from "./services/sms/SmsService";
 
 export default function (app, passport) {
 
@@ -27,13 +27,19 @@ export default function (app, passport) {
 
     // sms callback url
     app.post('/handler/sms', (req, res) => {
-        SmsService.SmsHandler.receiveSms(req)
+        SmsHandler.receiveSms(req)
             .then(() => {
                 // send an empty response
                 res.type('xml');
                 return res.end("<Response></Response>");
             });
     });
+
+    app.get('/test', (req, res) => {
+        console.log(getCallCode("AU"));
+        return res.end(getCallCode("AU"));
+    });
+
 
     /******************
      *  React Routes  *
