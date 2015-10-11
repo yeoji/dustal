@@ -1,7 +1,32 @@
 import {getCallCode} from "./SmsService";
+import secrets from "../../config/secrets";
+import crypto from "crypto";
+
+const verifyReq = (req) => {
+    // verify req against token
+    if(!req.query.key || (req.query.key != secrets.twilioHandlerKey)) return false;
+
+    // verify req signature
+    let handlerUrl = "https://" + req.headers.host + req.url;
+
+    Object.keys(req.body).sort().forEach((key) => {
+        handlerUrl += key;
+        handlerUrl += req.body[key];
+    });
+    // hash with authtoken
+    const hash = crypto.createHmac('sha1', secrets.twilioAuthToken).update(handlerUrl).digest('base64');
+    return hash == req.headers['X-Twilio-Signature'];
+};
 
 const parseSms = (req) => {
     return new Promise((resolve, reject) => {
+
+        // verify the req is sent from twilio
+        if(!verifyReq(req)) {
+            reject({message: 'Not sent by twilio.'});
+            return;
+        }
+
         // match post to blog
         // remove the country call code from the From number
         const from = req.body.From.slice(getCallCode(req.body.FromCountry).length);

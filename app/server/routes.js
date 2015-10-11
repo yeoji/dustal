@@ -32,6 +32,9 @@ export default function (app, passport) {
                 // send an empty response
                 res.type('xml');
                 return res.end("<Response></Response>");
+            })
+            .catch((err) => {
+                return res.status(500).json(err);
             });
     });
 
