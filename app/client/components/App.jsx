@@ -10,8 +10,6 @@ const storesObj = {
     UserStore: UserStore
 };
 
-
-
 class App extends React.Component {
 
     constructor(props){
@@ -20,7 +18,6 @@ class App extends React.Component {
 
     componentDidMount(){
         window.addEventListener('click', this.handleClick.bind(this));
-
     }
 
     handleClick(e){
@@ -28,7 +25,6 @@ class App extends React.Component {
     }
 
     render() {
-
         return (
             <div>
                 <Navigation/>

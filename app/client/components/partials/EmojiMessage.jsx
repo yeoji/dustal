@@ -9,7 +9,7 @@ import EmojiSelector from './EmojiSelector';
 import AppStore from '../../stores/AppStore';
 
 
-class EmojiMessage extends React.Component{
+class EmojiMessage extends Component{
     constructor(props){
         super(props);
         this.state = {message: "", showSelector: false, app: AppStore.getState()};
@@ -52,10 +52,7 @@ class EmojiMessage extends React.Component{
                          src="http://cdn.jsdelivr.net/emojione/assets/svg/1F604.svg"/>
                     <EmojiSelector show={this.state.showSelector} />
                 </div>
-
             </div>
-
-
         )
     }
 }

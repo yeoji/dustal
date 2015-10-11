@@ -3,14 +3,14 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
-    'webpack-dev-server/client?http://localhost:8081',
+    'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     __dirname + '/../../client/render'
   ],
   output: {
     path: __dirname + '/../../public/js/',
     filename: 'app.js',
-    publicPath: 'http://localhost:8081/js/'
+    publicPath: 'http://localhost:8080/js/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
