@@ -2,3 +2,6 @@
 Thu, 08 Oct 2015 05:09:34 GMT GET /test/sms 500 {} {}
 Thu, 08 Oct 2015 05:10:37 GMT GET /test/sms 500 {} {}
 Thu, 08 Oct 2015 05:11:37 GMT GET /test/sms 500 {} {}
+Fri, 09 Oct 2015 13:51:27 GMT GET / 500 {} {}
+Fri, 09 Oct 2015 13:51:27 GMT GET /favicon.ico 500 {} {}
+Fri, 09 Oct 2015 13:52:32 GMT GET /api/blogs/barssblog 401 {} {}
