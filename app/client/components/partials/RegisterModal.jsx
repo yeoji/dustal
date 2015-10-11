@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import UserActions from "../../actions/UserActions";
 import {Modal, Tabs, Tab, Input, Button} from 'react-bootstrap';
+import CustomOption from './flags/CustomOption';
+import CustomValue from './flags/CustomSingleValue';
+import Select from 'react-select';
 import countryPhones from '../../data/country-phone';
 
-class RegisterModal extends React.Component {
+class RegisterModal extends Component {
 
     constructor(props) {
         super(props);
@@ -34,15 +37,6 @@ class RegisterModal extends React.Component {
     }
 
     render() {
-
-        let countryNodes = countryPhones.map(function(country){
-            return(
-                <option value={country.country_code}>
-                    {country.country_name + " (" + country.call_code + ")"}
-                </option>
-            )
-        });
-
         return (
             <div>
                 <Modal show={this.props.show} onHide={this.props.close}>
@@ -60,9 +54,14 @@ class RegisterModal extends React.Component {
                                     <Button type="button" className="btn btn-lg btn-default btn-block" onClick={this.nextTab.bind(this)}>Next</Button>
                                 </Tab>
                                 <Tab eventKey={2} title="Mobile Verfication">
-                                    <Input type="select">
-                                        {countryNodes}
-                                    </Input>
+                                    <Select
+                                        name="form-field-name"
+                                        value="AU"
+                                        options={countryPhones}
+                                        optionComponent={CustomOption}
+                                        singleValueComponent={CustomValue}
+                                        clearable={false}
+                                    />
                                     <Input placeholder="Number" className="form-control" type="text" ref="number"/>
                                     <Button type="submit" className="btn btn-lg btn-default btn-block">Register</Button>
                                 </Tab>
@@ -75,5 +74,10 @@ class RegisterModal extends React.Component {
         );
     }
 }
+
+RegisterModal.propTypes = {
+    show: PropTypes.bool,
+    close: PropTypes.func
+};
 
 export default RegisterModal;

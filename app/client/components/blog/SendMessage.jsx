@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Comment from './Comment';
 import EmojiMessage from '../partials/EmojiMessage'
 import moment from 'moment';
 
 
-class SendMessage extends React.Component{
+class SendMessage extends Component{
     constructor(props){
         super(props);
         this.state = {message: "", date: moment()};
@@ -18,5 +18,7 @@ class SendMessage extends React.Component{
         )
     }
 }
+
+
 
 export default SendMessage;

@@ -27,5 +27,4 @@ export default (
         <Route path="/blog/:userName" handler={ Blog }/>
         <Route path="/favicon.ico" />
     </Route>
-
 );

@@ -30,17 +30,16 @@ class App extends React.Component {
     render() {
 
         return (
-        <div>
-            <Navigation/>
-            <Grid fluid>
-                <AltContainer stores={ storesObj }>
-                    <RouteHandler { ...this.props }/>
-                </AltContainer>
-            </Grid>
-        </div>
+            <div>
+                <Navigation/>
+                <Grid fluid>
+                    <AltContainer stores={ storesObj }>
+                        <RouteHandler { ...this.props }/>
+                    </AltContainer>
+                </Grid>
+            </div>
         );
     }
 }
 
-App.propTypes = {};
 export default App;

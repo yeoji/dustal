@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import EmojiText from './EmojiText';
 
-class EmojiPreview extends React.Component{
+class EmojiPreview extends Component{
     constructor(props){
         super(props);
     }

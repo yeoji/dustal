@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import CommentList from './CommentList';
 import ReactEmoji from 'react-emoji';
 
-class Message extends React.Component{
+class Message extends Component{
     constructor(props) {
         super(props);
     }
@@ -24,5 +24,10 @@ class Message extends React.Component{
         )
     }
 }
+
+Message.propTypes = {
+    comments: PropTypes.arrayOf(PropTypes.object),
+    time: PropTypes.string
+};
 
 export default Message;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PropTypes, Component} from "react";
 import {Link} from 'react-router';
 import {Navbar, NavBrand, CollapsibleNav, Nav, NavItem, Input} from 'react-bootstrap';
 import UserActions from "../../actions/UserActions";
@@ -6,7 +6,7 @@ import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 
 
-class Navigation extends React.Component {
+class Navigation extends Component {
 
     constructor(props){
         super(props);
@@ -59,7 +59,5 @@ class Navigation extends React.Component {
         );
     }
 }
-
-Navigation.propTypes = {};
 
 export default Navigation;
