@@ -29,7 +29,7 @@ export default function(app, passport) {
 
             // send verification code to mobile
             const verificationMsg = "Hi, thanks for registering! Your verification code is: " + user.mobile.verification_code;
-            smsSender.sendSms(user.mobile.country_code, user.mobile.number, verificationMsg);
+            //smsSender.sendSms(user.mobile.country_code, user.mobile.number, verificationMsg);
 
             return res.status(200).json({
                 error: false,

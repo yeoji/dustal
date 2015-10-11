@@ -49,9 +49,9 @@ const setBlogToken = (blog, req, res) => {
  * @param req
  * @returns {boolean}
  */
-const verifyBlogToken = (blog, req) => {
+const verifyBlogToken = (blog, req, cookie) => {
     try {
-        const blogs = jwt.verify(req.cookies.blogs, secrets.jwtSecret);
+        const blogs = jwt.verify((req ? req.cookies.blogs : cookie.blogs), secrets.jwtSecret);
         console.log('blogs: ' + blogs);
         if(blogs.indexOf(blog) >= 0) {
             console.log('blog: ' + blog);
