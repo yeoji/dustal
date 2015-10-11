@@ -1,6 +1,7 @@
 import express from "express";
 import passport from "passport";
 import routes from "./routes";
+import sockets from "./sockets";
 import logger from "./config/logger";
 
 import db from '../database/db';
@@ -26,3 +27,6 @@ app.use(function (req, res, next) {
 routes(app, passport);
 
 var server = app.listen(app.get('port'));
+
+// Set up socket.io
+sockets(server, database);
