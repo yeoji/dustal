@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {PropTypes, Component} from 'react';
 import {Link} from 'react-router';
 import EmojiText from '../partials/EmojiText';
 
-class Comment extends React.Component{
+class Comment extends Component{
     constructor(props){
         super(props);
     }
@@ -10,8 +10,6 @@ class Comment extends React.Component{
     render(){
 
         return(
-
-
                 <div className="message comment">
                     <img className="img-circle display-picture comment-picture" src="../../img/dp.jpg"/>
                     <div className="username">
@@ -26,8 +24,11 @@ class Comment extends React.Component{
                 </div>
         )
     }
-
-
 }
+
+Comment.propTypes = {
+    username : PropTypes.string,
+    time : PropTypes.string
+};
 
 export default Comment;

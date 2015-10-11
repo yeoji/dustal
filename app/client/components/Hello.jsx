@@ -1,12 +1,12 @@
-import React from "react";
+import React, {Component, PropTypes} from "react";
 import {Row, Col, Button, Jumbotron} from 'react-bootstrap';
 import {Link} from 'react-router';
 import RegisterModal from './partials/RegisterModal';
 import Footer from "./partials/Footer";
-class Hello extends React.Component {
+class Hello extends Component {
 
     constructor(props){
-        super(props);
+        super();
         this.state = {showRegisterModal: false};
     }
 
@@ -65,7 +65,7 @@ class Hello extends React.Component {
 }
 
 Hello.propTypes = {
-    UserStore: React.PropTypes.object
+    UserStore: PropTypes.object
 };
 
 export default Hello;

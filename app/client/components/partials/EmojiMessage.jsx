@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import $ from 'jquery';
 import moment from 'moment';
 import {Input} from 'react-bootstrap';
@@ -59,5 +59,7 @@ class EmojiMessage extends React.Component{
         )
     }
 }
+
+
 
 export default EmojiMessage;

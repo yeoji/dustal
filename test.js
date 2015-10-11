@@ -1194,9 +1194,29 @@ var test = [
     }
 ];
 
-var myJsonString = JSON.stringify(test);
+function compare(a,b) {
+    if (a.country_code < b.country_code)
+        return -1;
+    if (a.country_code > b.country_code)
+        return 1;
+    return 0;
+}
 
-console.log(myJsonString);
+var sortedTest = test.sort(compare);
+
+var myJsonString = JSON.stringify(sortedTest);
+
+var newArray = [];
+
+var testList = test.map(function(t){
+    newArray.push({value: t.country_code, label: t.country_name + " " + "(" + t.call_code + ")"})
+});
+
+console.log(newArray);
+
+
+
+
 
 
 

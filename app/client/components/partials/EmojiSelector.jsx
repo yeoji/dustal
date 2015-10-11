@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import Emojione from 'emojione';
 import GeminiScrollbar from 'react-gemini-scrollbar'
 
-class EmojiSelector extends React.Component{
+class EmojiSelector extends Component{
 
     constructor(props){
         super(props);
@@ -25,6 +25,10 @@ class EmojiSelector extends React.Component{
             </GeminiScrollbar>
         )
     }
+}
+
+EmojiSelector.propTypes = {
+    show : PropTypes.bool
 }
 
 export default EmojiSelector;

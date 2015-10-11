@@ -2,1196 +2,243 @@
  * Created by alanyu on 8/10/15.
  */
 var CountryPhone =  [
-    {
-        country_name:'Afghanistan',
-        call_code:'+93',
-        country_code:'AF'
-    },
-    {
-        country_name:'Albania',
-        call_code:'+355',
-        country_code:'AL'
-    },
-    {
-        country_name:'Algeria',
-        call_code:'+213',
-        country_code:'DZ'
-    },
-    {
-        country_name:'American Samoa',
-        call_code:'+1-684',
-        country_code:'AS'
-    },
-    {
-        country_name:'Andorra',
-        call_code:'+376',
-        country_code:'AD'
-    },
-    {
-        country_name:'Angola',
-        call_code:'+244',
-        country_code:'AO'
-    },
-    {
-        country_name:'Anguilla',
-        call_code:'+1-264',
-        country_code:'AI'
-    },
-    {
-        country_name:'Antigua and Barbuda',
-        call_code:'+1-268',
-        country_code:'AG'
-    },
-    {
-        country_name:'Argentina',
-        call_code:'+54',
-        country_code:'AR'
-    },
-    {
-        country_name:'Armenia',
-        call_code:'+374',
-        country_code:'AM'
-    },
-    {
-        country_name:'Aruba',
-        call_code:'+297',
-        country_code:'AW'
-    },
-    {
-        country_name:'Australia',
-        call_code:'+61',
-        country_code:'AU'
-    },
-    {
-        country_name:'Austria',
-        call_code:'+43',
-        country_code:'AT'
-    },
-    {
-        country_name:'Azerbaijan',
-        call_code:'+994',
-        country_code:'AZ'
-    },
-    {
-        country_name:'Bahamas',
-        call_code:'+1-242',
-        country_code:'BS'
-    },
-    {
-        country_name:'Bahrain',
-        call_code:'+973',
-        country_code:'BH'
-    },
-    {
-        country_name:'Bangladesh',
-        call_code:'+880',
-        country_code:'BD'
-    },
-    {
-        country_name:'Barbados',
-        call_code:'+1-246',
-        country_code:'BB'
-    },
-    {
-        country_name:'Belarus',
-        call_code:'+375',
-        country_code:'BY'
-    },
-    {
-        country_name:'Belgium',
-        call_code:'+32',
-        country_code:'BE'
-    },
-    {
-        country_name:'Belize',
-        call_code:'+501',
-        country_code:'BZ'
-    },
-    {
-        country_name:'Benin',
-        call_code:'+229',
-        country_code:'BJ'
-    },
-    {
-        country_name:'Bermuda',
-        call_code:'+1-441',
-        country_code:'BM'
-    },
-    {
-        country_name:'Bhutan',
-        call_code:'+975',
-        country_code:'BT'
-    },
-    {
-        country_name:'Bolivia',
-        call_code:'+591',
-        country_code:'BO'
-    },
-    {
-        country_name:'Bosnia and Herzegovina',
-        call_code:'+387',
-        country_code:'BA'
-    },
-    {
-        country_name:'Botswana',
-        call_code:'+267',
-        country_code:'BW'
-    },
-    {
-        country_name:'Brazil',
-        call_code:'+55',
-        country_code:'BR'
-    },
-    {
-        country_name:'British Indian Ocean Territory',
-        call_code:'+246',
-        country_code:'IO'
-    },
-    {
-        country_name:'Brunei',
-        call_code:'+673',
-        country_code:'BN'
-    },
-    {
-        country_name:'Bulgaria',
-        call_code:'+359',
-        country_code:'BG'
-    },
-    {
-        country_name:'Burkina Faso',
-        call_code:'+226',
-        country_code:'BF'
-    },
-    {
-        country_name:'Burundi',
-        call_code:'+257',
-        country_code:'BI'
-    },
-    {
-        country_name:'Cambodia',
-        call_code:'+855',
-        country_code:'KH'
-    },
-    {
-        country_name:'Cameroon',
-        call_code:'+237',
-        country_code:'CM'
-    },
-    {
-        country_name:'Canada',
-        call_code:'+1',
-        country_code:'CA'
-    },
-    {
-        country_name:'Cape Verde',
-        call_code:'+238',
-        country_code:'CV'
-    },
-    {
-        country_name:'Cayman Islands',
-        call_code:'+345',
-        country_code:'KY'
-    },
-    {
-        country_name:'Central African Republic',
-        call_code:'+236',
-        country_code:'CF'
-    },
-    {
-        country_name:'Chad',
-        call_code:'+235',
-        country_code:'TD'
-    },
-    {
-        country_name:'Chile',
-        call_code:'+56',
-        country_code:'CL'
-    },
-    {
-        country_name:'China',
-        call_code:'+86',
-        country_code:'CN'
-    },
-    {
-        country_name:'Christmas Island',
-        call_code:'+61',
-        country_code:'CX'
-    },
-    {
-        country_name:'Cocos Islands',
-        call_code:'+61',
-        country_code:'CC'
-    },
-    {
-        country_name:'Colombia',
-        call_code:'+57',
-        country_code:'CO'
-    },
-    {
-        country_name:'Comoros',
-        call_code:'+269',
-        country_code:'KM'
-    },
-    {
-        country_name:'Republic Of The Congo',
-        call_code:'+242',
-        country_code:'CG'
-    },
-    {
-        country_name:'Democratic Republic Of The Congo',
-        call_code:'+243',
-        country_code:'CD'
-    },
-    {
-        country_name:'Cook Islands',
-        call_code:'+682',
-        country_code:'CK'
-    },
-    {
-        country_name:'Costa Rica',
-        call_code:'+506',
-        country_code:'CR'
-    },
-    {
-        country_name:'Ivory Coast',
-        call_code:'+225',
-        country_code:'CI'
-    },
-    {
-        country_name:'Croatia',
-        call_code:'+385',
-        country_code:'HR'
-    },
-    {
-        country_name:'Cuba',
-        call_code:'+53',
-        country_code:'CU'
-    },
-    {
-        country_name:'Cyprus',
-        call_code:'+537',
-        country_code:'CY'
-    },
-    {
-        country_name:'Czech Republic',
-        call_code:'+420',
-        country_code:'CZ'
-    },
-    {
-        country_name:'Denmark',
-        call_code:'+45',
-        country_code:'DK'
-    },
-    {
-        country_name:'Djibouti',
-        call_code:'+253',
-        country_code:'DJ'
-    },
-    {
-        country_name:'Dominica',
-        call_code:'+1-767',
-        country_code:'DM'
-    },
-    {
-        country_name:'Dominican Republic',
-        call_code:'+1-849',
-        country_code:'DO'
-    },
-    {
-        country_name:'Ecuador',
-        call_code:'+593',
-        country_code:'EC'
-    },
-    {
-        country_name:'Egypt',
-        call_code:'+20',
-        country_code:'EG'
-    },
-    {
-        country_name:'El Salvador',
-        call_code:'+503',
-        country_code:'SV'
-    },
-    {
-        country_name:'Equatorial Guinea',
-        call_code:'+240',
-        country_code:'GQ'
-    },
-    {
-        country_name:'Eritrea',
-        call_code:'+291',
-        country_code:'ER'
-    },
-    {
-        country_name:'Estonia',
-        call_code:'+372',
-        country_code:'EE'
-    },
-    {
-        country_name:'Ethiopia',
-        call_code:'+251',
-        country_code:'ET'
-    },
-    {
-        country_name:'Falkland Islands',
-        call_code:'+500',
-        country_code:'FK'
-    },
-    {
-        country_name:'Faroe Islands',
-        call_code:'+298',
-        country_code:'FO'
-    },
-    {
-        country_name:'Fiji',
-        call_code:'+679',
-        country_code:'FJ'
-    },
-    {
-        country_name:'Finland',
-        call_code:'+358',
-        country_code:'FI'
-    },
-    {
-        country_name:'France',
-        call_code:'+33',
-        country_code:'FR'
-    },
-    {
-        country_name:'French Guiana',
-        call_code:'+594',
-        country_code:'GF'
-    },
-    {
-        country_name:'French Polynesia',
-        call_code:'+689',
-        country_code:'PF'
-    },
-    {
-        country_name:'Gabon',
-        call_code:'+241',
-        country_code:'GA'
-    },
-    {
-        country_name:'Gambia',
-        call_code:'+220',
-        country_code:'GM'
-    },
-    {
-        country_name:'Georgia',
-        call_code:'+995',
-        country_code:'GE'
-    },
-    {
-        country_name:'Germany',
-        call_code:'+49',
-        country_code:'DE'
-    },
-    {
-        country_name:'Ghana',
-        call_code:'+233',
-        country_code:'GH'
-    },
-    {
-        country_name:'Gibraltar',
-        call_code:'+350',
-        country_code:'GI'
-    },
-    {
-        country_name:'Greece',
-        call_code:'+30',
-        country_code:'GR'
-    },
-    {
-        country_name:'Greenland',
-        call_code:'+299',
-        country_code:'GL'
-    },
-    {
-        country_name:'Grenada',
-        call_code:'+1-473',
-        country_code:'GD'
-    },
-    {
-        country_name:'Guadeloupe',
-        call_code:'+590',
-        country_code:'GP'
-    },
-    {
-        country_name:'Guam',
-        call_code:'+1-671',
-        country_code:'GU'
-    },
-    {
-        country_name:'Guatemala',
-        call_code:'+502',
-        country_code:'GT'
-    },
-    {
-        country_name:'Guernsey',
-        call_code:'+44',
-        country_code:'GG'
-    },
-    {
-        country_name:'Guinea',
-        call_code:'+224',
-        country_code:'GN'
-    },
-    {
-        country_name:'Guinea-Bissau',
-        call_code:'+245',
-        country_code:'GW'
-    },
-    {
-        country_name:'Guyana',
-        call_code:'+595',
-        country_code:'GY'
-    },
-    {
-        country_name:'Haiti',
-        call_code:'+509',
-        country_code:'HT'
-    },
-    {
-        country_name:'Holy See (Vatican City State)',
-        call_code:'+379',
-        country_code:'VA'
-    },
-    {
-        country_name:'Honduras',
-        call_code:'+504',
-        country_code:'HN'
-    },
-    {
-        country_name:'Hong Kong',
-        call_code:'+852',
-        country_code:'HK'
-    },
-    {
-        country_name:'Hungary',
-        call_code:'+36',
-        country_code:'HU'
-    },
-    {
-        country_name:'Iceland',
-        call_code:'+354',
-        country_code:'IS'
-    },
-    {
-        country_name:'India',
-        call_code:'+91',
-        country_code:'IN'
-    },
-    {
-        country_name:'Indonesia',
-        call_code:'+62',
-        country_code:'ID'
-    },
-    {
-        country_name:'Iran',
-        call_code:'+98',
-        country_code:'IR'
-    },
-    {
-        country_name:'Iraq',
-        call_code:'+964',
-        country_code:'IQ'
-    },
-    {
-        country_name:'Ireland',
-        call_code:'+353',
-        country_code:'IE'
-    },
-    {
-        country_name:'Isle of Man',
-        call_code:'+44',
-        country_code:'IM'
-    },
-    {
-        country_name:'Israel',
-        call_code:'+972',
-        country_code:'IL'
-    },
-    {
-        country_name:'Italy',
-        call_code:'+39',
-        country_code:'IT'
-    },
-    {
-        country_name:'Jamaica',
-        call_code:'+1-876',
-        country_code:'JM'
-    },
-    {
-        country_name:'Japan',
-        call_code:'+81',
-        country_code:'JP'
-    },
-    {
-        country_name:'Jersey',
-        call_code:'+44',
-        country_code:'JE'
-    },
-    {
-        country_name:'Jordan',
-        call_code:'+962',
-        country_code:'JO'
-    },
-    {
-        country_name:'Kazakhstan',
-        call_code:'+77',
-        country_code:'KZ'
-    },
-    {
-        country_name:'Kenya',
-        call_code:'+254',
-        country_code:'KE'
-    },
-    {
-        country_name:'Kiribati',
-        call_code:'+686',
-        country_code:'KI'
-    },
-    {
-        country_name:'North Korea',
-        call_code:'+850',
-        country_code:'KP'
-    },
-    {
-        country_name:'South Korea',
-        call_code:'+82',
-        country_code:'KR'
-    },
-    {
-        country_name:'Kuwait',
-        call_code:'+965',
-        country_code:'KW'
-    },
-    {
-        country_name:'Kyrgyzstan',
-        call_code:'+996',
-        country_code:'KG'
-    },
-    {
-        country_name:'Laos',
-        call_code:'+856',
-        country_code:'LA'
-    },
-    {
-        country_name:'Latvia',
-        call_code:'+371',
-        country_code:'LV'
-    },
-    {
-        country_name:'Lebanon',
-        call_code:'+961',
-        country_code:'LB'
-    },
-    {
-        country_name:'Lesotho',
-        call_code:'+266',
-        country_code:'LS'
-    },
-    {
-        country_name:'Liberia',
-        call_code:'+231',
-        country_code:'LR'
-    },
-    {
-        country_name:'Libya',
-        call_code:'+218',
-        country_code:'LY'
-    },
-    {
-        country_name:'Liechtenstein',
-        call_code:'+423',
-        country_code:'LI'
-    },
-    {
-        country_name:'Lithuania',
-        call_code:'+370',
-        country_code:'LT'
-    },
-    {
-        country_name:'Luxembourg',
-        call_code:'+352',
-        country_code:'LU'
-    },
-    {
-        country_name:'Macao',
-        call_code:'+853',
-        country_code:'MO'
-    },
-    {
-        country_name:'Macedonia',
-        call_code:'+389',
-        country_code:'MK'
-    },
-    {
-        country_name:'Madagascar',
-        call_code:'+261',
-        country_code:'MG'
-    },
-    {
-        country_name:'Malawi',
-        call_code:'+265',
-        country_code:'MW'
-    },
-    {
-        country_name:'Malaysia',
-        call_code:'+60',
-        country_code:'MY'
-    },
-    {
-        country_name:'Maldives',
-        call_code:'+960',
-        country_code:'MV'
-    },
-    {
-        country_name:'Mali',
-        call_code:'+223',
-        country_code:'ML'
-    },
-    {
-        country_name:'Malta',
-        call_code:'+356',
-        country_code:'MT'
-    },
-    {
-        country_name:'Marshall Islands',
-        call_code:'+692',
-        country_code:'MH'
-    },
-    {
-        country_name:'Martinique',
-        call_code:'+596',
-        country_code:'MQ'
-    },
-    {
-        country_name:'Mauritania',
-        call_code:'+222',
-        country_code:'MR'
-    },
-    {
-        country_name:'Mauritius',
-        call_code:'+230',
-        country_code:'MU'
-    },
-    {
-        country_name:'Mayotte',
-        call_code:'+262',
-        country_code:'YT'
-    },
-    {
-        country_name:'Mexico',
-        call_code:'+52',
-        country_code:'MX'
-    },
-    {
-        country_name:'Micronesia',
-        call_code:'+691',
-        country_code:'FM'
-    },
-    {
-        country_name:'Moldova',
-        call_code:'+373',
-        country_code:'MD'
-    },
-    {
-        country_name:'Monaco',
-        call_code:'+377',
-        country_code:'MC'
-    },
-    {
-        country_name:'Mongolia',
-        call_code:'+976',
-        country_code:'MN'
-    },
-    {
-        country_name:'Montenegro',
-        call_code:'+382',
-        country_code:'ME'
-    },
-    {
-        country_name:'Montserrat',
-        call_code:'+1-664',
-        country_code:'MS'
-    },
-    {
-        country_name:'Morocco',
-        call_code:'+212',
-        country_code:'MA'
-    },
-    {
-        country_name:'Mozambique',
-        call_code:'+258',
-        country_code:'MZ'
-    },
-    {
-        country_name:'Myanmar',
-        call_code:'+95',
-        country_code:'MM'
-    },
-    {
-        country_name:'Namibia',
-        call_code:'+264',
-        country_code:'NA'
-    },
-    {
-        country_name:'Nauru',
-        call_code:'+674',
-        country_code:'NR'
-    },
-    {
-        country_name:'Nepal',
-        call_code:'+977',
-        country_code:'NP'
-    },
-    {
-        country_name:'Netherlands',
-        call_code:'+31',
-        country_code:'NL'
-    },
-    {
-        country_name:'Netherlands Antilles',
-        call_code:'+599',
-        country_code:'AN'
-    },
-    {
-        country_name:'New Caledonia',
-        call_code:'+687',
-        country_code:'NC'
-    },
-    {
-        country_name:'New Zealand',
-        call_code:'+64',
-        country_code:'NZ'
-    },
-    {
-        country_name:'Nicaragua',
-        call_code:'+505',
-        country_code:'NI'
-    },
-    {
-        country_name:'Niger',
-        call_code:'+227',
-        country_code:'NE'
-    },
-    {
-        country_name:'Nigeria',
-        call_code:'+234',
-        country_code:'NG'
-    },
-    {
-        country_name:'Niue',
-        call_code:'+683',
-        country_code:'NU'
-    },
-    {
-        country_name:'Norfolk Island',
-        call_code:'+672',
-        country_code:'NF'
-    },
-    {
-        country_name:'Northern Mariana Islands',
-        call_code:'+1-670',
-        country_code:'MP'
-    },
-    {
-        country_name:'Norway',
-        call_code:'+47',
-        country_code:'NO'
-    },
-    {
-        country_name:'Oman',
-        call_code:'+968',
-        country_code:'OM'
-    },
-    {
-        country_name:'Pakistan',
-        call_code:'+92',
-        country_code:'PK'
-    },
-    {
-        country_name:'Palau',
-        call_code:'+680',
-        country_code:'PW'
-    },
-    {
-        country_name:'Palestinie',
-        call_code:'+970',
-        country_code:'PS'
-    },
-    {
-        country_name:'Panama',
-        call_code:'+507',
-        country_code:'PA'
-    },
-    {
-        country_name:'Papua New Guinea',
-        call_code:'+675',
-        country_code:'PG'
-    },
-    {
-        country_name:'Paraguay',
-        call_code:'+595',
-        country_code:'PY'
-    },
-    {
-        country_name:'Peru',
-        call_code:'+51',
-        country_code:'PE'
-    },
-    {
-        country_name:'Philippines',
-        call_code:'+63',
-        country_code:'PH'
-    },
-    {
-        country_name:'Pitcairn',
-        call_code:'+872',
-        country_code:'PN'
-    },
-    {
-        country_name:'Poland',
-        call_code:'+48',
-        country_code:'PL'
-    },
-    {
-        country_name:'Portugal',
-        call_code:'+351',
-        country_code:'PT'
-    },
-    {
-        country_name:'Puerto Rico',
-        call_code:'+1-939',
-        country_code:'PR'
-    },
-    {
-        country_name:'Qatar',
-        call_code:'+974',
-        country_code:'QA'
-    },
-    {
-        country_name:'Romania',
-        call_code:'+40',
-        country_code:'RO'
-    },
-    {
-        country_name:'Russia',
-        call_code:'+7',
-        country_code:'RU'
-    },
-    {
-        country_name:'Rwanda',
-        call_code:'+250',
-        country_code:'RW'
-    },
-    {
-        country_name:'Reunion',
-        call_code:'+262',
-        country_code:'RE'
-    },
-    {
-        country_name:'Saint Barthelemy',
-        call_code:'+590',
-        country_code:'BL'
-    },
-    {
-        country_name:'Saint Helena',
-        call_code:'+290',
-        country_code:'SH'
-    },
-    {
-        country_name:'Saint Kitts and Nevis',
-        call_code:'+1-869',
-        country_code:'KN'
-    },
-    {
-        country_name:'Saint Lucia',
-        call_code:'+1-758',
-        country_code:'LC'
-    },
-    {
-        country_name:'Saint Martin',
-        call_code:'+590',
-        country_code:'MF'
-    },
-    {
-        country_name:'Saint Pierre and Miquelon',
-        call_code:'+508',
-        country_code:'PM'
-    },
-    {
-        country_name:'Saint Vincent and the Grenadines',
-        call_code:'+1-784',
-        country_code:'VC'
-    },
-    {
-        country_name:'Samoa',
-        call_code:'+685',
-        country_code:'WS'
-    },
-    {
-        country_name:'San Marino',
-        call_code:'+378',
-        country_code:'SM'
-    },
-    {
-        country_name:'Sao Tome and Principe',
-        call_code:'+239',
-        country_code:'ST'
-    },
-    {
-        country_name:'Saudi Arabia',
-        call_code:'+966',
-        country_code:'SA'
-    },
-    {
-        country_name:'Senegal',
-        call_code:'+221',
-        country_code:'SN'
-    },
-    {
-        country_name:'Serbia',
-        call_code:'+381',
-        country_code:'RS'
-    },
-    {
-        country_name:'Seychelles',
-        call_code:'+248',
-        country_code:'SC'
-    },
-    {
-        country_name:'Sierra Leone',
-        call_code:'+232',
-        country_code:'SL'
-    },
-    {
-        country_name:'Singapore',
-        call_code:'+65',
-        country_code:'SG'
-    },
-    {
-        country_name:'Slovakia',
-        call_code:'+421',
-        country_code:'SK'
-    },
-    {
-        country_name:'Slovenia',
-        call_code:'+386',
-        country_code:'SI'
-    },
-    {
-        country_name:'Solomon Islands',
-        call_code:'+677',
-        country_code:'SB'
-    },
-    {
-        country_name:'Somalia',
-        call_code:'+252',
-        country_code:'SO'
-    },
-    {
-        country_name:'South Africa',
-        call_code:'+27',
-        country_code:'ZA'
-    },
-    {
-        country_name:'Spain',
-        call_code:'+34',
-        country_code:'ES'
-    },
-    {
-        country_name:'Sri Lanka',
-        call_code:'+94',
-        country_code:'LK'
-    },
-    {
-        country_name:'Sudan',
-        call_code:'+249',
-        country_code:'SD'
-    },
-    {
-        country_name:'Suriname',
-        call_code:'+597',
-        country_code:'SR'
-    },
-    {
-        country_name:'Svalbard and Jan Mayen',
-        call_code:'+47',
-        country_code:'SJ'
-    },
-    {
-        country_name:'Swaziland',
-        call_code:'+268',
-        country_code:'SZ'
-    },
-    {
-        country_name:'Sweden',
-        call_code:'+46',
-        country_code:'SE'
-    },
-    {
-        country_name:'Switzerland',
-        call_code:'+41',
-        country_code:'CH'
-    },
-    {
-        country_name:'Syria',
-        call_code:'+963',
-        country_code:'SY'
-    },
-    {
-        country_name:'Taiwan',
-        call_code:'+886',
-        country_code:'TW'
-    },
-    {
-        country_name:'Tajikistan',
-        call_code:'+992',
-        country_code:'TJ'
-    },
-    {
-        country_name:'Tanzania',
-        call_code:'+255',
-        country_code:'TZ'
-    },
-    {
-        country_name:'Thailand',
-        call_code:'+66',
-        country_code:'TH'
-    },
-    {
-        country_name:'East Timor',
-        call_code:'+670',
-        country_code:'TL'
-    },
-    {
-        country_name:'Togo',
-        call_code:'+228',
-        country_code:'TG'
-    },
-    {
-        country_name:'Tokelau',
-        call_code:'+690',
-        country_code:'TK'
-    },
-    {
-        country_name:'Tonga',
-        call_code:'+676',
-        country_code:'TO'
-    },
-    {
-        country_name:'Trinidad and Tobago',
-        call_code:'+1868',
-        country_code:'TT'
-    },
-    {
-        country_name:'Tunisia',
-        call_code:'+216',
-        country_code:'TN'
-    },
-    {
-        country_name:'Turkey',
-        call_code:'+90',
-        country_code:'TR'
-    },
-    {
-        country_name:'Turkmenistan',
-        call_code:'+993',
-        country_code:'TM'
-    },
-    {
-        country_name:'Turks and Caicos Islands',
-        call_code:'+1649',
-        country_code:'TC'
-    },
-    {
-        country_name:'Tuvalu',
-        call_code:'+688',
-        country_code:'TV'
-    },
-    {
-        country_name:'Uganda',
-        call_code:'+256',
-        country_code:'UG'
-    },
-    {
-        country_name:'Ukraine',
-        call_code:'+380',
-        country_code:'UA'
-    },
-    {
-        country_name:'United Arab Emirates',
-        call_code:'+971',
-        country_code:'AE'
-    },
-    {
-        country_name:'United Kingdom',
-        call_code:'+44',
-        country_code:'GB'
-    },
-    {
-        country_name:'United States',
-        call_code:'+1',
-        country_code:'US'
-    },
-    {
-        country_name:'Uruguay',
-        call_code:'+598',
-        country_code:'UY'
-    },
-    {
-        country_name:'Uzbekistan',
-        call_code:'+998',
-        country_code:'UZ'
-    },
-    {
-        country_name:'Vanuatu',
-        call_code:'+678',
-        country_code:'VU'
-    },
-    {
-        country_name:'Venezuela',
-        call_code:'+58',
-        country_code:'VE'
-    },
-    {
-        country_name:'Vietnam',
-        call_code:'+84',
-        country_code:'VN'
-    },
-    {
-        country_name:'British Virgin Islands',
-        call_code:'+1-284',
-        country_code:'VG'
-    },
-    {
-        country_name:'U.S. Virgin Islands',
-        call_code:'+1-340',
-        country_code:'VI'
-    },
-    {
-        country_name:'Wallis and Futuna',
-        call_code:'+681',
-        country_code:'WF'
-    },
-    {
-        country_name:'Yemen',
-        call_code:'+967',
-        country_code:'YE'
-    },
-    {
-        country_name:'Zambia',
-        call_code:'+260',
-        country_code:'ZM'
-    },
-    {
-        country_name:'Zimbabwe',
-        call_code:'+263',
-        country_code:'ZW'
-    }
-];
+    { value: 'AD', label: 'Andorra (+376)' },
+    { value: 'AE', label: 'United Arab Emirates (+971)' },
+    { value: 'AF', label: 'Afghanistan (+93)' },
+    { value: 'AG', label: 'Antigua and Barbuda (+1-268)' },
+    { value: 'AI', label: 'Anguilla (+1-264)' },
+    { value: 'AL', label: 'Albania (+355)' },
+    { value: 'AM', label: 'Armenia (+374)' },
+    { value: 'AN', label: 'Netherlands Antilles (+599)' },
+    { value: 'AO', label: 'Angola (+244)' },
+    { value: 'AR', label: 'Argentina (+54)' },
+    { value: 'AS', label: 'American Samoa (+1-684)' },
+    { value: 'AT', label: 'Austria (+43)' },
+    { value: 'AU', label: 'Australia (+61)' },
+    { value: 'AW', label: 'Aruba (+297)' },
+    { value: 'AZ', label: 'Azerbaijan (+994)' },
+    { value: 'BA', label: 'Bosnia and Herzegovina (+387)' },
+    { value: 'BB', label: 'Barbados (+1-246)' },
+    { value: 'BD', label: 'Bangladesh (+880)' },
+    { value: 'BE', label: 'Belgium (+32)' },
+    { value: 'BF', label: 'Burkina Faso (+226)' },
+    { value: 'BG', label: 'Bulgaria (+359)' },
+    { value: 'BH', label: 'Bahrain (+973)' },
+    { value: 'BI', label: 'Burundi (+257)' },
+    { value: 'BJ', label: 'Benin (+229)' },
+    { value: 'BL', label: 'Saint Barthelemy (+590)' },
+    { value: 'BM', label: 'Bermuda (+1-441)' },
+    { value: 'BN', label: 'Brunei (+673)' },
+    { value: 'BO', label: 'Bolivia (+591)' },
+    { value: 'BR', label: 'Brazil (+55)' },
+    { value: 'BS', label: 'Bahamas (+1-242)' },
+    { value: 'BT', label: 'Bhutan (+975)' },
+    { value: 'BW', label: 'Botswana (+267)' },
+    { value: 'BY', label: 'Belarus (+375)' },
+    { value: 'BZ', label: 'Belize (+501)' },
+    { value: 'CA', label: 'Canada (+1)' },
+    { value: 'CC', label: 'Cocos Islands (+61)' },
+    { value: 'CD', label: 'Democratic Republic Of The Congo (+243)' },
+    { value: 'CF', label: 'Central African Republic (+236)' },
+    { value: 'CG', label: 'Republic Of The Congo (+242)' },
+    { value: 'CH', label: 'Switzerland (+41)' },
+    { value: 'CI', label: 'Ivory Coast (+225)' },
+    { value: 'CK', label: 'Cook Islands (+682)' },
+    { value: 'CL', label: 'Chile (+56)' },
+    { value: 'CM', label: 'Cameroon (+237)' },
+    { value: 'CN', label: 'China (+86)' },
+    { value: 'CO', label: 'Colombia (+57)' },
+    { value: 'CR', label: 'Costa Rica (+506)' },
+    { value: 'CU', label: 'Cuba (+53)' },
+    { value: 'CV', label: 'Cape Verde (+238)' },
+    { value: 'CX', label: 'Christmas Island (+61)' },
+    { value: 'CY', label: 'Cyprus (+537)' },
+    { value: 'CZ', label: 'Czech Republic (+420)' },
+    { value: 'DE', label: 'Germany (+49)' },
+    { value: 'DJ', label: 'Djibouti (+253)' },
+    { value: 'DK', label: 'Denmark (+45)' },
+    { value: 'DM', label: 'Dominica (+1-767)' },
+    { value: 'DO', label: 'Dominican Republic (+1-849)' },
+    { value: 'DZ', label: 'Algeria (+213)' },
+    { value: 'EC', label: 'Ecuador (+593)' },
+    { value: 'EE', label: 'Estonia (+372)' },
+    { value: 'EG', label: 'Egypt (+20)' },
+    { value: 'ER', label: 'Eritrea (+291)' },
+    { value: 'ES', label: 'Spain (+34)' },
+    { value: 'ET', label: 'Ethiopia (+251)' },
+    { value: 'FI', label: 'Finland (+358)' },
+    { value: 'FJ', label: 'Fiji (+679)' },
+    { value: 'FK', label: 'Falkland Islands (+500)' },
+    { value: 'FM', label: 'Micronesia (+691)' },
+    { value: 'FO', label: 'Faroe Islands (+298)' },
+    { value: 'FR', label: 'France (+33)' },
+    { value: 'GA', label: 'Gabon (+241)' },
+    { value: 'GB', label: 'United Kingdom (+44)' },
+    { value: 'GD', label: 'Grenada (+1-473)' },
+    { value: 'GE', label: 'Georgia (+995)' },
+    { value: 'GF', label: 'French Guiana (+594)' },
+    { value: 'GG', label: 'Guernsey (+44)' },
+    { value: 'GH', label: 'Ghana (+233)' },
+    { value: 'GI', label: 'Gibraltar (+350)' },
+    { value: 'GL', label: 'Greenland (+299)' },
+    { value: 'GM', label: 'Gambia (+220)' },
+    { value: 'GN', label: 'Guinea (+224)' },
+    { value: 'GP', label: 'Guadeloupe (+590)' },
+    { value: 'GQ', label: 'Equatorial Guinea (+240)' },
+    { value: 'GR', label: 'Greece (+30)' },
+    { value: 'GT', label: 'Guatemala (+502)' },
+    { value: 'GU', label: 'Guam (+1-671)' },
+    { value: 'GW', label: 'Guinea-Bissau (+245)' },
+    { value: 'GY', label: 'Guyana (+595)' },
+    { value: 'HK', label: 'Hong Kong (+852)' },
+    { value: 'HN', label: 'Honduras (+504)' },
+    { value: 'HR', label: 'Croatia (+385)' },
+    { value: 'HT', label: 'Haiti (+509)' },
+    { value: 'HU', label: 'Hungary (+36)' },
+    { value: 'ID', label: 'Indonesia (+62)' },
+    { value: 'IE', label: 'Ireland (+353)' },
+    { value: 'IL', label: 'Israel (+972)' },
+    { value: 'IM', label: 'Isle of Man (+44)' },
+    { value: 'IN', label: 'India (+91)' },
+    { value: 'IO', label: 'British Indian Ocean Territory (+246)' },
+    { value: 'IQ', label: 'Iraq (+964)' },
+    { value: 'IR', label: 'Iran (+98)' },
+    { value: 'IS', label: 'Iceland (+354)' },
+    { value: 'IT', label: 'Italy (+39)' },
+    { value: 'JE', label: 'Jersey (+44)' },
+    { value: 'JM', label: 'Jamaica (+1-876)' },
+    { value: 'JO', label: 'Jordan (+962)' },
+    { value: 'JP', label: 'Japan (+81)' },
+    { value: 'KE', label: 'Kenya (+254)' },
+    { value: 'KG', label: 'Kyrgyzstan (+996)' },
+    { value: 'KH', label: 'Cambodia (+855)' },
+    { value: 'KI', label: 'Kiribati (+686)' },
+    { value: 'KM', label: 'Comoros (+269)' },
+    { value: 'KN', label: 'Saint Kitts and Nevis (+1-869)' },
+    { value: 'KP', label: 'North Korea (+850)' },
+    { value: 'KR', label: 'South Korea (+82)' },
+    { value: 'KW', label: 'Kuwait (+965)' },
+    { value: 'KY', label: 'Cayman Islands (+345)' },
+    { value: 'KZ', label: 'Kazakhstan (+77)' },
+    { value: 'LA', label: 'Laos (+856)' },
+    { value: 'LB', label: 'Lebanon (+961)' },
+    { value: 'LC', label: 'Saint Lucia (+1-758)' },
+    { value: 'LI', label: 'Liechtenstein (+423)' },
+    { value: 'LK', label: 'Sri Lanka (+94)' },
+    { value: 'LR', label: 'Liberia (+231)' },
+    { value: 'LS', label: 'Lesotho (+266)' },
+    { value: 'LT', label: 'Lithuania (+370)' },
+    { value: 'LU', label: 'Luxembourg (+352)' },
+    { value: 'LV', label: 'Latvia (+371)' },
+    { value: 'LY', label: 'Libya (+218)' },
+    { value: 'MA', label: 'Morocco (+212)' },
+    { value: 'MC', label: 'Monaco (+377)' },
+    { value: 'MD', label: 'Moldova (+373)' },
+    { value: 'ME', label: 'Montenegro (+382)' },
+    { value: 'MF', label: 'Saint Martin (+590)' },
+    { value: 'MG', label: 'Madagascar (+261)' },
+    { value: 'MH', label: 'Marshall Islands (+692)' },
+    { value: 'MK', label: 'Macedonia (+389)' },
+    { value: 'ML', label: 'Mali (+223)' },
+    { value: 'MM', label: 'Myanmar (+95)' },
+    { value: 'MN', label: 'Mongolia (+976)' },
+    { value: 'MO', label: 'Macao (+853)' },
+    { value: 'MP', label: 'Northern Mariana Islands (+1-670)' },
+    { value: 'MQ', label: 'Martinique (+596)' },
+    { value: 'MR', label: 'Mauritania (+222)' },
+    { value: 'MS', label: 'Montserrat (+1-664)' },
+    { value: 'MT', label: 'Malta (+356)' },
+    { value: 'MU', label: 'Mauritius (+230)' },
+    { value: 'MV', label: 'Maldives (+960)' },
+    { value: 'MW', label: 'Malawi (+265)' },
+    { value: 'MX', label: 'Mexico (+52)' },
+    { value: 'MY', label: 'Malaysia (+60)' },
+    { value: 'MZ', label: 'Mozambique (+258)' },
+    { value: 'NA', label: 'Namibia (+264)' },
+    { value: 'NC', label: 'New Caledonia (+687)' },
+    { value: 'NE', label: 'Niger (+227)' },
+    { value: 'NF', label: 'Norfolk Island (+672)' },
+    { value: 'NG', label: 'Nigeria (+234)' },
+    { value: 'NI', label: 'Nicaragua (+505)' },
+    { value: 'NL', label: 'Netherlands (+31)' },
+    { value: 'NO', label: 'Norway (+47)' },
+    { value: 'NP', label: 'Nepal (+977)' },
+    { value: 'NR', label: 'Nauru (+674)' },
+    { value: 'NU', label: 'Niue (+683)' },
+    { value: 'NZ', label: 'New Zealand (+64)' },
+    { value: 'OM', label: 'Oman (+968)' },
+    { value: 'PA', label: 'Panama (+507)' },
+    { value: 'PE', label: 'Peru (+51)' },
+    { value: 'PF', label: 'French Polynesia (+689)' },
+    { value: 'PG', label: 'Papua New Guinea (+675)' },
+    { value: 'PH', label: 'Philippines (+63)' },
+    { value: 'PK', label: 'Pakistan (+92)' },
+    { value: 'PL', label: 'Poland (+48)' },
+    { value: 'PM', label: 'Saint Pierre and Miquelon (+508)' },
+    { value: 'PN', label: 'Pitcairn (+872)' },
+    { value: 'PR', label: 'Puerto Rico (+1-939)' },
+    { value: 'PS', label: 'Palestinie (+970)' },
+    { value: 'PT', label: 'Portugal (+351)' },
+    { value: 'PW', label: 'Palau (+680)' },
+    { value: 'PY', label: 'Paraguay (+595)' },
+    { value: 'QA', label: 'Qatar (+974)' },
+    { value: 'RE', label: 'Reunion (+262)' },
+    { value: 'RO', label: 'Romania (+40)' },
+    { value: 'RS', label: 'Serbia (+381)' },
+    { value: 'RU', label: 'Russia (+7)' },
+    { value: 'RW', label: 'Rwanda (+250)' },
+    { value: 'SA', label: 'Saudi Arabia (+966)' },
+    { value: 'SB', label: 'Solomon Islands (+677)' },
+    { value: 'SC', label: 'Seychelles (+248)' },
+    { value: 'SD', label: 'Sudan (+249)' },
+    { value: 'SE', label: 'Sweden (+46)' },
+    { value: 'SG', label: 'Singapore (+65)' },
+    { value: 'SH', label: 'Saint Helena (+290)' },
+    { value: 'SI', label: 'Slovenia (+386)' },
+    { value: 'SJ', label: 'Svalbard and Jan Mayen (+47)' },
+    { value: 'SK', label: 'Slovakia (+421)' },
+    { value: 'SL', label: 'Sierra Leone (+232)' },
+    { value: 'SM', label: 'San Marino (+378)' },
+    { value: 'SN', label: 'Senegal (+221)' },
+    { value: 'SO', label: 'Somalia (+252)' },
+    { value: 'SR', label: 'Suriname (+597)' },
+    { value: 'ST', label: 'Sao Tome and Principe (+239)' },
+    { value: 'SV', label: 'El Salvador (+503)' },
+    { value: 'SY', label: 'Syria (+963)' },
+    { value: 'SZ', label: 'Swaziland (+268)' },
+    { value: 'TC', label: 'Turks and Caicos Islands (+1649)' },
+    { value: 'TD', label: 'Chad (+235)' },
+    { value: 'TG', label: 'Togo (+228)' },
+    { value: 'TH', label: 'Thailand (+66)' },
+    { value: 'TJ', label: 'Tajikistan (+992)' },
+    { value: 'TK', label: 'Tokelau (+690)' },
+    { value: 'TL', label: 'East Timor (+670)' },
+    { value: 'TM', label: 'Turkmenistan (+993)' },
+    { value: 'TN', label: 'Tunisia (+216)' },
+    { value: 'TO', label: 'Tonga (+676)' },
+    { value: 'TR', label: 'Turkey (+90)' },
+    { value: 'TT', label: 'Trinidad and Tobago (+1868)' },
+    { value: 'TV', label: 'Tuvalu (+688)' },
+    { value: 'TW', label: 'Taiwan (+886)' },
+    { value: 'TZ', label: 'Tanzania (+255)' },
+    { value: 'UA', label: 'Ukraine (+380)' },
+    { value: 'UG', label: 'Uganda (+256)' },
+    { value: 'US', label: 'United States (+1)' },
+    { value: 'UY', label: 'Uruguay (+598)' },
+    { value: 'UZ', label: 'Uzbekistan (+998)' },
+    { value: 'VA', label: 'Holy See (Vatican City State) (+379)' },
+    { value: 'VC', label: 'Saint Vincent and the Grenadines (+1-784)' },
+    { value: 'VE', label: 'Venezuela (+58)' },
+    { value: 'VG', label: 'British Virgin Islands (+1-284)' },
+    { value: 'VI', label: 'U.S. Virgin Islands (+1-340)' },
+    { value: 'VN', label: 'Vietnam (+84)' },
+    { value: 'VU', label: 'Vanuatu (+678)' },
+    { value: 'WF', label: 'Wallis and Futuna (+681)' },
+    { value: 'WS', label: 'Samoa (+685)' },
+    { value: 'YE', label: 'Yemen (+967)' },
+    { value: 'YT', label: 'Mayotte (+262)' },
+    { value: 'ZA', label: 'South Africa (+27)' },
+    { value: 'ZM', label: 'Zambia (+260)' },
+    { value: 'ZW', label: 'Zimbabwe (+263)' } ];
 
 export default CountryPhone;

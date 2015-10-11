@@ -18,9 +18,7 @@ class ContentEditable extends React.Component{
     }
 
     emitChange(evt){
-
         let html = React.findDOMNode(this.refs.contenteditable).innerHTML;
-
         this.props.onChange(html);
     }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import {Input} from 'react-bootstrap';
 import {Link} from 'react-router';
 import PostDate from './PostDate';
@@ -6,7 +6,7 @@ import Message from './Message';
 import Comment from './Comment';
 import SendMessage from './SendMessage'
 
-class Post extends React.Component{
+class Post extends Component{
     constructor(props) {
         super(props);
     }
@@ -35,7 +35,11 @@ class Post extends React.Component{
 
         )
     }
-
 }
+
+Post.propTypes = {
+    date: PropTypes.object,
+    messages: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default Post;

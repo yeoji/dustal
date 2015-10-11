@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import Comment from './Comment';
 import CommentToggle from './CommentToggle';
 
-class CommentList extends React.Component{
+class CommentList extends Component{
     constructor(props){
         super(props);
         this.state = {comments: this.props.comments, showComments: false}
@@ -31,9 +31,10 @@ class CommentList extends React.Component{
     render(){
         let commentNodes = this.state.comments.map(function(comment){
             return(
-                <Comment username={comment.username} time={comment.time}>{comment.message}</Comment>
+                <Comment username={comment.username} time="1.47 AM">{comment.message}</Comment>
             )
         });
+
 
         return(
             <div className="commentList">
@@ -49,5 +50,11 @@ class CommentList extends React.Component{
         )
     }
 }
+
+CommentList.propTypes = {
+    comments: PropTypes.arrayOf(PropTypes.object)
+};
+
+
 
 export default CommentList;
