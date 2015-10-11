@@ -31,11 +31,12 @@ class UserRepository extends Repository {
         });
     }
 
-    findByMobileNo(mobile, db) {
+    findByMobileNo(code, mobile, db) {
         return new Promise(function (resolve, reject) {
-            db.model('User').findOne(function () {
-                return this.mobile.number == mobile;
-            }).populate('blogs').exec(function (err, model) {
+            db.model('User').findOne({mobile: {
+                country_code: code,
+                number: mobile
+            }}).populate('blogs').exec(function (err, model) {
                 if (err) {
                     reject(err);
                 }
