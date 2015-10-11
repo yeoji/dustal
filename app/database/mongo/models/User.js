@@ -12,7 +12,7 @@ export default class User {
                 is_verified: {type: Boolean, default: false},
                 verification_code: {type: String}
             },
-            blogs: {type: [mongoose.Schema.Types.ObjectId], ref: 'Blog'},
+            blogs: [{type: mongoose.Schema.Types.ObjectId, ref: 'Blog'}],
             profile_img: {type: String, default: ''}
         });
 
