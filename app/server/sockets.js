@@ -8,6 +8,7 @@ import tokenHelper from "./routes/tokenHelper";
  * @returns {{}}
  */
 const transformCookies = (cookie) => {
+    if(cookie == undefined) return null;
     const cookies = cookie.split('; ');
     const data = {};
     cookies.forEach((curr) => {

@@ -56,7 +56,9 @@ export class SmsSender {
     sendSms(country_code, number, message) {
         this.setSenderImpl(country_code);
         number = getCallCode(country_code) + number;
-        this.senderImpl(number, message);
+        if(this.senderImpl) {
+            this.senderImpl(number, message);
+        }
     }
 
 }

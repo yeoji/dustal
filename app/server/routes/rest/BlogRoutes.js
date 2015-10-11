@@ -72,7 +72,6 @@ export default class BlogRoutes extends RESTRoutes {
                                 // add blog_id to user's blog array
                                 let blogs = res.locals.user.blogs;
                                 blogs.push(resource._id);
-                                console.log(blogs);
                                 req.db.repositories.UserRepository.update(res.locals.user._id, {blogs: blogs}, req.db.connection);
                                 return res.status(200).json(resource);
                             })

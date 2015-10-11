@@ -35,14 +35,6 @@ export default function (app, passport) {
             });
     });
 
-    app.get('/test', (req, res) => {
-         req.db.repositories.UserRepository.findByMobileNo("AU", "478953050", req.db.connection)
-            .then((user) => {
-                 res.status(200).json(user);
-             });
-    });
-
-
     /******************
      *  React Routes  *
      ******************/
