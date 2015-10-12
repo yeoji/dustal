@@ -34,6 +34,7 @@ export default function(app, passport) {
                 message: 'Successfully registered user.',
                 first_name: user.first_name,
                 last_name: user.last_name,
+                username: user.username,
                 email: user.email,
                 mobile: user.mobile
             });
@@ -64,6 +65,7 @@ export default function(app, passport) {
                 message: 'Successfully logged in!',
                 first_name: user.first_name,
                 last_name: user.last_name,
+                username: user.username,
                 email: user.email,
                 mobile: user.mobile
             });
