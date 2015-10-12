@@ -54,8 +54,6 @@ class EmojiMessage extends React.Component{
                 </div>
 
             </div>
-
-
         )
     }
 }
