@@ -32,7 +32,17 @@ export default function (app, passport) {
                 // send an empty response
                 res.type('xml');
                 return res.end("<Response></Response>");
+            })
+            .catch((err) => {
+                return res.status(500).json(err);
             });
+    });
+
+    app.get('/test', (req, res) => {
+        req.db.repositories.UserRepository.all(req.db.connection)
+        .then((users) => {
+            return res.status(200).json(users);
+        });
     });
 
     /******************

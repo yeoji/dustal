@@ -2,10 +2,12 @@ import WebpackDevServer from "webpack-dev-server";
 import webpack from "webpack";
 import config from "./config/webpack.config.dev";
 
-var server = new WebpackDevServer(webpack(config), {
+var compiler = webpack(config);
+
+var server = new WebpackDevServer(compiler, {
     // webpack-dev-server options
     publicPath: config.output.publicPath,
-    hot: true,
+    filename: config.output.filename,
     stats: { colors: true }
 });
 
