@@ -3,7 +3,7 @@ export default class User {
         let UserSchema = new mongoose.Schema({
             first_name: {type: String, default: ''},
             last_name: {type: String, default: ''},
-            username: {type: String, default: '', lowercase: true, trim: true, unique: true},
+            username: {type: String, default: '', trim: true, unique: true},
             email: {type: String, default: ''},
             password: {type: String, default: ''},
             mobile: {

@@ -34,6 +34,7 @@ export default function(app, passport) {
                 message: 'Successfully registered user.',
                 first_name: user.first_name,
                 last_name: user.last_name,
+                username: user.username,
                 email: user.email,
                 mobile: user.mobile
             });
@@ -64,6 +65,7 @@ export default function(app, passport) {
                 message: 'Successfully logged in!',
                 first_name: user.first_name,
                 last_name: user.last_name,
+                username: user.username,
                 email: user.email,
                 mobile: user.mobile
             });
@@ -82,6 +84,22 @@ export default function(app, passport) {
         return res.status(200).json({
             error: false,
             message: 'User logged out.'
+        });
+
+    });
+
+    app.post('/api/users/verify', tokenHelper.verifyToken, function(req, res) {
+
+        if(req.body.verification_code == res.locals.user.mobile.verification_code) {
+            return res.status(200).json({
+                error: false,
+                message: 'User verified successfully!'
+            });
+        }
+
+        return res.status(401).json({
+            error: true,
+            message: 'Invalid verification code'
         });
 
     });
