@@ -2,7 +2,6 @@ import express from "express";
 import passport from "passport";
 import routes from "./routes";
 import sockets from "./sockets";
-import logger from "./config/logger";
 
 import db from '../database/db';
 
