@@ -32,6 +32,8 @@ class UserRepository extends Repository {
     }
 
     findByMobileNo(code, mobile, db) {
+        console.log(code);
+        console.log(mobile);
         return new Promise(function (resolve, reject) {
             db.model('User').findOne({mobile: {
                 country_code: code,

@@ -1,7 +1,9 @@
 import tokenHelper from "./tokenHelper";
 import {SmsSender} from "../services/sms/SmsService";
 
-export default function(app, passport) {
+const smsSender = new SmsSender();
+
+export default function (app, passport) {
 
     /*****************
      *  Auth Routes  *
@@ -27,7 +29,7 @@ export default function(app, passport) {
 
             // send verification code to mobile
             const verificationMsg = "Hi, thanks for registering! Your verification code is: " + user.mobile.verification_code;
-            SmsSender.sendSms(user.mobile.country_code, user.mobile.number, verificationMsg);
+            smsSender.sendSms(user.mobile.country_code, user.mobile.number, verificationMsg);
 
             return res.status(200).json({
                 error: false,
@@ -36,7 +38,11 @@ export default function(app, passport) {
                 last_name: user.last_name,
                 username: user.username,
                 email: user.email,
-                mobile: user.mobile
+                mobile: {
+                    is_verified: user.mobile.is_verified,
+                    number: user.mobile.number,
+                    country_code: user.mobile.country_code
+                }
             });
 
         })(req, res, next);
@@ -67,7 +73,11 @@ export default function(app, passport) {
                 last_name: user.last_name,
                 username: user.username,
                 email: user.email,
-                mobile: user.mobile
+                mobile: {
+                    is_verified: user.mobile.is_verified,
+                    number: user.mobile.number,
+                    country_code: user.mobile.country_code
+                }
             });
 
         })(req, res, next);
@@ -88,9 +98,9 @@ export default function(app, passport) {
 
     });
 
-    app.post('/api/users/verify', tokenHelper.verifyToken, function(req, res) {
+    app.post('/api/users/verify', tokenHelper.verifyToken, function (req, res) {
 
-        if(req.body.verification_code == res.locals.user.mobile.verification_code) {
+        if (req.body.verification_code == res.locals.user.mobile.verification_code) {
             return res.status(200).json({
                 error: false,
                 message: 'User verified successfully!'
