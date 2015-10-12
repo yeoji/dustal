@@ -16,12 +16,13 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  resolve: {
-    extensions: ['', '.js']
-  },
   module: {
     loaders: [
-      { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader?experimental'], exclude: /node_modules/ }
+      {
+        test:/\.jsx$/,
+        loaders: ["react-hot", 'babel-loader'],
+        exclude: /node_modules/
+      }
     ]
   }
 };

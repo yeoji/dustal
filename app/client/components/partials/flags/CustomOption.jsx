@@ -13,7 +13,11 @@ class Option extends Component{
             verticalAlign: 'middle'
         };
         return (
-            <div className={this.props.className}>
+            <div className={this.props.className}
+                 onMouseEnter={this.props.mouseEnter}
+                 onMouseLeave={this.props.mouseLeave}
+                 onMouseDown={this.props.mouseDown}
+                 onClick={this.props.mouseDown}>
                 <span className={"flag-icon flag-icon-" + obj.value + " flag-icon-squared"}></span>
                 {obj.label}
             </div>

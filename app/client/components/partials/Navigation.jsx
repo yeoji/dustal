@@ -53,8 +53,8 @@ class Navigation extends Component {
                         </Nav>
                     </CollapsibleNav>
                 </Navbar>
-                <LoginModal show={this.state.showLoginModal} close={this.closeLogin.bind(this)}/>
                 <RegisterModal show={this.state.showRegisterModal} close={this.closeRegister.bind(this)}/>
+                <LoginModal show={this.state.showLoginModal} close={this.closeLogin.bind(this)}/>
             </div>
         );
     }

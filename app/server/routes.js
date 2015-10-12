@@ -35,6 +35,13 @@ export default function (app, passport) {
             });
     });
 
+    app.get('/test', (req, res) => {
+        req.db.repositories.UserRepository.all(req.db.connection)
+        .then((users) => {
+            return res.status(200).json(users);
+        });
+    });
+
     /******************
      *  React Routes  *
      ******************/
