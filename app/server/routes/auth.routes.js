@@ -85,4 +85,20 @@ export default function(app, passport) {
         });
 
     });
+
+    app.post('/api/users/verify', tokenHelper.verifyToken, function(req, res) {
+
+        if(req.body.verification_code == res.locals.user.mobile.verification_code) {
+            return res.status(200).json({
+                error: false,
+                message: 'User verified successfully!'
+            });
+        }
+
+        return res.status(401).json({
+            error: true,
+            message: 'Invalid verification code'
+        });
+
+    });
 }
