@@ -11,13 +11,21 @@ export default function (passport, db) {
                     if (model) {
                         return done(null, false, {message: 'User Already Exists.'});
                     }
-                    const hash = bcrypt.hashSync(password);
-                    const newUser = req.db.repositories.UserRepository.create(user, hash, db.connection);
-                    newUser.then(function (savedUser) {
-                        return done(null, savedUser, {message: 'User Registered.'});
-                    }).catch(function (err) {
-                        return done(err);
-                    });
+                    // check mobile doesn't exist
+                    req.db.repositories.UserRepository.findByMobileNo(req.body.mobile.country_code, req.body.mobile.number, db.connection)
+                        .then((found) => {
+                            if(found) {
+                                return done(null, false, {message: 'Mobile Number is taken.'});
+                            }
+                            const hash = bcrypt.hashSync(password);
+                            const newUser = req.db.repositories.UserRepository.create(user, hash, db.connection);
+                            newUser.then(function (savedUser) {
+                                return done(null, savedUser, {message: 'User Registered.'});
+                            }).catch(function (err) {
+                                return done(err);
+                            });
+                        });
+
                 });
             })
     );

@@ -11,9 +11,6 @@ export const app = express();
 // Bootstrap application settings
 require('./config/express')(app, passport);
 
-// Set up logger
-logger(app);
-
 // Bootstrap passport config
 const database = db(passport);
 
