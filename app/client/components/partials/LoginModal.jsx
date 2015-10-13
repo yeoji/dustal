@@ -16,8 +16,6 @@ class LoginModal extends React.Component {
         user.email = this.refs.email.getValue();
         user.password = this.refs.password.getValue();
 
-        console.log(user);
-
         UserActions.doLogin(user);
     }
 

@@ -19,18 +19,11 @@ class Post extends Component{
             )
         });
 
-        var sendMessage = null;
-
-        if(this.props.first){
-            sendMessage = <SendMessage/>;
-        }
-
         return(
 
             <div className="post clearfix">
                 <PostDate date={this.props.date}/>
                 {messageNodes}
-                {sendMessage}
             </div>
 
         )

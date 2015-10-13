@@ -24,7 +24,7 @@ function requireAuth(nextState, transition) {
 export default (
     <Route path="/" handler={ App }>
         <DefaultRoute handler={ Hello }/>
-        <Route path="/blog/:userName" handler={ Blog }/>
+        <Route path="/:userName" handler={ Blog }/>
         <Route path="/favicon.ico" />
     </Route>
 );

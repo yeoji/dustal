@@ -1,21 +1,17 @@
 import React, {Component, PropTypes} from "react";
 import {Row, Col, Button, Jumbotron} from 'react-bootstrap';
 import {Link} from 'react-router';
-import RegisterModal from './partials/RegisterModal';
+import ModalActions from '../actions/ModalActions'
 import Footer from "./partials/Footer";
 class Hello extends Component {
 
     constructor(props){
         super();
-        this.state = {showRegisterModal: false};
+
     }
 
-    closeRegister() {
-        this.setState({ showRegisterModal: false });
-    }
-
-    openRegister() {
-        this.setState({ showRegisterModal: true });
+    showRegisterModal() {
+        ModalActions.showRegisterModal();
     }
 
     render() {
@@ -24,10 +20,9 @@ class Hello extends Component {
 
         return (
             <div>
-                <RegisterModal show={this.state.showRegisterModal} close={this.closeRegister.bind(this)}/>
                 <Row>
                     <Jumbotron className="welcome text-center">
-                        <Button bsSize="large" className="welcome-button" onClick={this.openRegister.bind(this)}>Join Now</Button>
+                        <Button bsSize="large" className="welcome-button" onClick={this.showRegisterModal.bind(this)}>Join Now</Button>
                     </Jumbotron>
                 </Row>
                 <Row>

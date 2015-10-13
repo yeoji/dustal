@@ -8,7 +8,6 @@ class Message extends Component{
     }
 
     render(){
-
         return(
             <div>
                 <div className="message user-message clearfix pull-right">
@@ -24,7 +23,6 @@ class Message extends Component{
         )
     }
 }
-
 Message.propTypes = {
     comments: PropTypes.arrayOf(PropTypes.object),
     time: PropTypes.string
