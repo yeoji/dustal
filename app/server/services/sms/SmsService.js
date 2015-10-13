@@ -83,5 +83,5 @@ export const getCallCode = (country_code) => {
 
 export default {
     SmsHandler: SmsHandler,
-    SmsSender: new SmsSender()
+    SmsSender: SmsSender
 };
