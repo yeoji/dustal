@@ -41,7 +41,7 @@ class CommentList extends Component{
                 {(() => {
                     if(this.state.comments.length !== 0){
                         return(
-                            <CommentToggle onToggle={this.loadComments.bind(this)} showComments={this.state.showComments}/>
+                            <CommentToggle onClick={this.loadComments.bind(this)} showComments={this.state.showComments}/>
                         )
                     }
                 })()}

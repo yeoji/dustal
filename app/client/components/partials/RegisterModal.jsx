@@ -44,6 +44,7 @@ class RegisterModal extends Component {
         this.setState({tab: this.state.tab + 1});
     }
 
+
     render() {
         return (
             <Modal show={this.props.show} onHide={this.props.close}>
@@ -61,7 +62,7 @@ class RegisterModal extends Component {
                                 <Input placeholder="Password" className="form-control" type="password" ref="password"/>
                                 <Button type="button" className="btn btn-lg btn-default btn-block" onClick={this.nextTab.bind(this)}>Next</Button>
                             </Tab>
-                            <Tab eventKey={2} title="Mobile Verfication">
+                            <Tab eventKey={2} title="Mobile Details">
                                 <Select
                                     ref="country_code"
                                     value={this.state.country_code}

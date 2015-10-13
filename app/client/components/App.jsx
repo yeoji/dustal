@@ -1,14 +1,11 @@
 import React from 'react';
 import { RouteHandler } from "react-router";
-import AltContainer from 'alt/AltContainer';
-import UserStore from '../stores/UserStore';
-import Navigation from "./partials/Navigation";
 import {Grid} from 'react-bootstrap';
 import AppActions from "../actions/AppActions";
+import Navigation from "./partials/Navigation";
+import GlobalModal from "./partials/GlobalModal";
 
-const storesObj = {
-    UserStore: UserStore
-};
+
 
 class App extends React.Component {
 
@@ -29,10 +26,9 @@ class App extends React.Component {
             <div>
                 <Navigation/>
                 <Grid fluid>
-                    <AltContainer stores={ storesObj }>
-                        <RouteHandler { ...this.props }/>
-                    </AltContainer>
+                    <RouteHandler/>
                 </Grid>
+                <GlobalModal />
             </div>
         );
     }
