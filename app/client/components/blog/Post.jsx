@@ -4,7 +4,6 @@ import {Link} from 'react-router';
 import PostDate from './PostDate';
 import Message from './Message';
 import Comment from './Comment';
-import SendMessage from './SendMessage'
 
 class Post extends Component{
     constructor(props) {

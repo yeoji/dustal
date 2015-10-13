@@ -10,7 +10,7 @@ class BlogStore{
         this.posts  = [
             {date : date,
                 messages : [
-                    {time : '1.47 AM', message: 'At the supermarket :)',
+                    {time : '1.47 AM', message: 'At the supermarket :) :hot_pepper:',
                         comments: []
                     },
                     {time : '1.49 AM', message: 'omg cool $1',
