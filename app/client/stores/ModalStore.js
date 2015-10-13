@@ -1,5 +1,6 @@
 import alt from '../alt'
 import ModalActions from '../actions/ModalActions';
+import UserActions from '../actions/UserActions';
 
 class ModalStore{
     constructor(){
@@ -7,7 +8,9 @@ class ModalStore{
             showLoginModal: ModalActions.showLoginModal,
             showRegisterModal: ModalActions.showRegisterModal,
             closeLoginModal: ModalActions.closeLoginModal,
-            closeRegisterModal: ModalActions.closeRegisterModal
+            closeRegisterModal: ModalActions.closeRegisterModal,
+            closeUserRegisterModal: UserActions.doRegister,
+            closeUserLoginModal: UserActions.doLogin
         });
 
         this.showLoginModal = false;
@@ -31,6 +34,16 @@ class ModalStore{
 
     closeRegisterModal(){
         this.showRegisterModal = false;
+        this.emitChange();
+    }
+
+    closeUserRegisterModal(){
+        this.showRegisterModal = false;
+        this.emitChange();
+    }
+
+    closeUserLoginModal(){
+        this.showLoginModal = false;
         this.emitChange();
     }
 }

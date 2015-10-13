@@ -36,6 +36,7 @@ class Navigation extends Component {
 
     doLogOut() {
         UserActions.doLogout();
+        ModalActions.closeLoginModal();
     }
 
     render() {
@@ -43,14 +44,21 @@ class Navigation extends Component {
             <Link className="navbar-brand" to="/">Dust</Link>
         );
 
-        var loginNode;
+        var loginNode, registerNode;
+
+        let loggedIn = Object.keys(this.state.UserStore.user.toObject()).length !== 0;
+
 
         //check if it is an empty object
-        if(Object.keys(this.state.UserStore.user.toObject()).length === 0){
-            loginNode = <NavItem onClick={this.showLogin.bind(this)}>Login</NavItem>;
+        if(loggedIn){
+            loginNode = <NavItem onClick={this.doLogOut.bind(this)}>Logout</NavItem>;
         }
         else{
-            loginNode = <NavItem onClick={this.doLogOut.bind(this)}>Logout</NavItem>;
+            loginNode = <NavItem onClick={this.showLogin.bind(this)}>Login</NavItem>;
+        }
+
+        if(!loggedIn){
+            registerNode = <NavItem onClick={this.showRegister.bind(this)}>Sign Up</NavItem>;
         }
 
         return (
@@ -63,7 +71,7 @@ class Navigation extends Component {
                             </form>
                         </Nav>
                         <Nav navbar right>
-                            <NavItem onClick={this.showRegister.bind(this)}>Sign Up</NavItem>
+                            {registerNode}
                             {loginNode}
                         </Nav>
                     </CollapsibleNav>

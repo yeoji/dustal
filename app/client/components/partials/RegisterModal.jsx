@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import UserActions from "../../actions/UserActions";
 import {Modal, Tabs, Tab, Input, Button} from 'react-bootstrap';
+import UserActions from "../../actions/UserActions";
 import CustomOption from './flags/CustomOption';
 import CustomValue from './flags/CustomSingleValue';
 import Select from 'react-select';
@@ -38,6 +38,7 @@ class RegisterModal extends Component {
 
     handleSelect(tab) {
         this.setState({tab});
+
     }
 
     nextTab(){
@@ -46,6 +47,7 @@ class RegisterModal extends Component {
 
 
     render() {
+
         return (
             <Modal show={this.props.show} onHide={this.props.close}>
                 <Modal.Header closeButton>
