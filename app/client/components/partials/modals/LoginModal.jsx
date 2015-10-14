@@ -1,7 +1,5 @@
 import React from 'react';
-import ModalActions from '../../actions/ModalActions';
-import UserActions from '../../actions/UserActions';
-import UserStore from '../../stores/UserStore';
+import UserActions from '../../../actions/UserActions';
 import {Input, Button, Modal, NavItem} from 'react-bootstrap';
 import {Link} from 'react-router';
 

@@ -24,13 +24,13 @@ class Blog extends Component {
         });
 
         return(
-            <div>
-                <Row className="blog">
-                    <Col lg={6} lgOffset={3}>
-                        {postNodes}
-                    </Col>
-                </Row>
-            </div>
+
+            <Row className="blog">
+                <Col lg={6} lgOffset={3}>
+                    {postNodes}
+                </Col>
+            </Row>
+
 
         )
     }

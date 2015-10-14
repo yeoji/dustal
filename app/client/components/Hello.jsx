@@ -20,7 +20,7 @@ class Hello extends Component {
 
         return (
             <div>
-                <Row>
+                <Row className="hidden-xs">
                     <Jumbotron className="welcome text-center">
                         <Button bsSize="large" className="welcome-button" onClick={this.showRegisterModal.bind(this)}>Join Now</Button>
                     </Jumbotron>
@@ -50,10 +50,6 @@ class Hello extends Component {
                         </div>
                     </Col>
                 </Row>
-                <Row>
-                    <Footer />
-                </Row>
-
             </div>
         );
     }

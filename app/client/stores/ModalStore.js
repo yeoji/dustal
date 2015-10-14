@@ -7,44 +7,58 @@ class ModalStore{
         this.bindListeners({
             showLoginModal: ModalActions.showLoginModal,
             showRegisterModal: ModalActions.showRegisterModal,
+            showVerificationModal: ModalActions.showVerificationModal,
             closeLoginModal: ModalActions.closeLoginModal,
             closeRegisterModal: ModalActions.closeRegisterModal,
-            closeUserRegisterModal: UserActions.doRegister,
-            closeUserLoginModal: UserActions.doLogin
+            UserRegisterModal: UserActions.doRegister,
+            UserLoginModal: UserActions.doLogin
         });
 
         this.showLoginModal = false;
         this.showRegisterModal = false;
+        this.showVerificationModal = false;
     }
 
     showLoginModal(){
         this.showLoginModal = true;
-        this.emitChange();
     }
 
     showRegisterModal(){
         this.showRegisterModal = true;
-        this.emitChange();
+    }
+
+    showVerificationModal(){
+        this.showVerificationModal = true;
     }
 
     closeLoginModal(){
         this.showLoginModal = false;
-        this.emitChange();
     }
 
     closeRegisterModal(){
         this.showRegisterModal = false;
-        this.emitChange();
     }
 
-    closeUserRegisterModal(){
+
+    UserRegisterModal(user){
         this.showRegisterModal = false;
         this.emitChange();
+
+        if(!user.mobile.is_verified){
+            this.showVerificationModal = true;
+        }
+
     }
 
-    closeUserLoginModal(){
+    UserLoginModal(user){
         this.showLoginModal = false;
         this.emitChange();
+
+        if(!user.mobile.is_verified){
+            this.showVerificationModal = true;
+        }
+
+
     }
 }
 

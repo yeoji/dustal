@@ -1,6 +1,5 @@
 import alt from '../alt';
 import Immutable from "immutable";
-import BlogActions from '../actions/BlogActions';
 import routerInstance from "../routerInstance";
 
 class BlogStore{
@@ -56,16 +55,8 @@ class BlogStore{
                 ]
             }
         ];
-
-        this.bindListeners({
-            handleUpdatePosts: BlogActions.UPDATE_POSTS
-        });
     }
 
-    handleUpdatePosts(posts){
-        this.posts = posts;
-        this.emitChange();
-    }
 }
 
 export default alt.createStore(BlogStore, 'BlogStore');

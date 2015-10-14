@@ -1,10 +1,10 @@
 import React, {Component, PropTypes} from 'react';
-import {Modal, Tabs, Tab, Input, Button} from 'react-bootstrap';
-import UserActions from "../../actions/UserActions";
-import CustomOption from './flags/CustomOption';
-import CustomValue from './flags/CustomSingleValue';
 import Select from 'react-select';
-import countryPhones from '../../data/country-phone';
+import {Modal, Tabs, Tab, Input, Button} from 'react-bootstrap';
+import UserActions from "../../../actions/UserActions";
+import CustomOption from '../flags/CustomOption';
+import CustomValue from '../flags/CustomSingleValue';
+import countryPhones from '../../../data/country-phone';
 
 class RegisterModal extends Component {
 

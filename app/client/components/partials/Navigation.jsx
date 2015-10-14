@@ -4,8 +4,8 @@ import {Navbar, NavBrand, CollapsibleNav, Nav, NavItem, Input} from 'react-boots
 import UserActions from "../../actions/UserActions";
 import UserStore from '../../stores/UserStore';
 import ModalActions from "../../actions/ModalActions";
-import LoginModal from './LoginModal';
-import RegisterModal from './RegisterModal';
+import LoginModal from './modals/LoginModal';
+import RegisterModal from './modals/RegisterModal';
 
 class Navigation extends Component {
 
@@ -23,7 +23,7 @@ class Navigation extends Component {
     }
 
     onUserChange(state){
-        this.state.UserStore = state;
+        this.setState({UserStore: state});
     }
 
     showLogin() {
@@ -62,12 +62,11 @@ class Navigation extends Component {
         }
 
         return (
-            <div>
                 <Navbar toggleNavKey={0} brand={Brand}>
                     <CollapsibleNav eventKey={0}>
                         <Nav navbar>
-                            <form className='navbar-form' action="">
-                                <Input type="text" placeholder="search" className="navbar-search"/>
+                            <form className='navbar-form hidden-xs' action="">
+                                <Input type="text" placeholder="search"/>
                             </form>
                         </Nav>
                         <Nav navbar right>
@@ -76,7 +75,7 @@ class Navigation extends Component {
                         </Nav>
                     </CollapsibleNav>
                 </Navbar>
-            </div>
+
         );
     }
 }
