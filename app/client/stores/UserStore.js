@@ -1,6 +1,7 @@
 import alt from "../alt";
 import Immutable from "immutable";
 import UserActions from "../actions/UserActions";
+import ModalActions from '../actions/ModalActions';
 import routerInstance from "../routerInstance";
 
 class UserStore {
@@ -28,7 +29,7 @@ class UserStore {
         this.emitChange();
 
         // redirect to dashboard
-        routerInstance.get().transitionTo('/');
+        routerInstance.get().transitionTo('/' + this.user.get('username'));
     }
 
     handleDoLogin(user) {
@@ -36,7 +37,7 @@ class UserStore {
         this.emitChange();
 
         // redirect to dashboard
-        routerInstance.get().transitionTo('/');
+        routerInstance.get().transitionTo('/' + this.user.get('username'));
     }
 
     handleDoLogout() {
@@ -44,7 +45,7 @@ class UserStore {
         this.emitChange();
 
         // redirect to sign in
-        routerInstance.get().transitionTo('/auth/login');
+        routerInstance.get().transitionTo('/');
     }
 
 }

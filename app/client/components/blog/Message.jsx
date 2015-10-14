@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import CommentList from './CommentList';
-import ReactEmoji from 'react-emoji';
+import EmojiText from '../partials/EmojiText';
 
 class Message extends Component{
     constructor(props) {
@@ -8,13 +8,12 @@ class Message extends Component{
     }
 
     render(){
-
         return(
             <div>
                 <div className="message user-message clearfix pull-right">
-                    <span>
-                        {ReactEmoji.emojify(this.props.children, {emojiType: 'emojione'})}
-                    </span>
+                    <EmojiText>
+                        {this.props.children}
+                    </EmojiText>
                     <div>
                         <span className="time">{this.props.time}</span>
                     </div>
@@ -24,7 +23,6 @@ class Message extends Component{
         )
     }
 }
-
 Message.propTypes = {
     comments: PropTypes.arrayOf(PropTypes.object),
     time: PropTypes.string

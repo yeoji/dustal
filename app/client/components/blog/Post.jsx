@@ -4,7 +4,6 @@ import {Link} from 'react-router';
 import PostDate from './PostDate';
 import Message from './Message';
 import Comment from './Comment';
-import SendMessage from './SendMessage'
 
 class Post extends Component{
     constructor(props) {
@@ -19,18 +18,11 @@ class Post extends Component{
             )
         });
 
-        var sendMessage = null;
-
-        if(this.props.first){
-            sendMessage = <SendMessage/>;
-        }
-
         return(
 
             <div className="post clearfix">
                 <PostDate date={this.props.date}/>
                 {messageNodes}
-                {sendMessage}
             </div>
 
         )

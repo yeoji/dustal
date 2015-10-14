@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import UserActions from "../../actions/UserActions";
 import {Modal, Tabs, Tab, Input, Button} from 'react-bootstrap';
+import UserActions from "../../actions/UserActions";
 import CustomOption from './flags/CustomOption';
 import CustomValue from './flags/CustomSingleValue';
 import Select from 'react-select';
@@ -38,13 +38,16 @@ class RegisterModal extends Component {
 
     handleSelect(tab) {
         this.setState({tab});
+
     }
 
     nextTab(){
         this.setState({tab: this.state.tab + 1});
     }
 
+
     render() {
+
         return (
             <Modal show={this.props.show} onHide={this.props.close}>
                 <Modal.Header closeButton>
@@ -61,7 +64,7 @@ class RegisterModal extends Component {
                                 <Input placeholder="Password" className="form-control" type="password" ref="password"/>
                                 <Button type="button" className="btn btn-lg btn-default btn-block" onClick={this.nextTab.bind(this)}>Next</Button>
                             </Tab>
-                            <Tab eventKey={2} title="Mobile Verfication">
+                            <Tab eventKey={2} title="Mobile Details">
                                 <Select
                                     ref="country_code"
                                     value={this.state.country_code}

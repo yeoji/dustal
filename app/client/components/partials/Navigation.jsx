@@ -2,41 +2,64 @@ import React, {PropTypes, Component} from "react";
 import {Link} from 'react-router';
 import {Navbar, NavBrand, CollapsibleNav, Nav, NavItem, Input} from 'react-bootstrap';
 import UserActions from "../../actions/UserActions";
+import UserStore from '../../stores/UserStore';
+import ModalActions from "../../actions/ModalActions";
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
-
 
 class Navigation extends Component {
 
     constructor(props){
         super(props);
-        this.state = {showLoginModal: false, showRegisterModal: false};
+        this.state = {UserStore: UserStore.getState()};
     }
 
-    _doLogOut() {
+    componentDidMount(){
+        UserStore.listen(this.onUserChange.bind(this));
+    }
+
+    componentWillUnmount() {
+        UserStore.unlisten(this.onUserChange.bind(this));
+    }
+
+    onUserChange(state){
+        this.state.UserStore = state;
+    }
+
+    showLogin() {
+        ModalActions.showLoginModal();
+    }
+
+    showRegister() {
+        ModalActions.showRegisterModal();
+    }
+
+    doLogOut() {
         UserActions.doLogout();
-    }
-
-    closeLogin() {
-        this.setState({ showLoginModal: false });
-    }
-
-    openLogin() {
-        this.setState({ showLoginModal: true });
-    }
-
-    closeRegister() {
-        this.setState({ showRegisterModal: false });
-    }
-
-    openRegister() {
-        this.setState({ showRegisterModal: true });
+        ModalActions.closeLoginModal();
     }
 
     render() {
         var Brand = (
             <Link className="navbar-brand" to="/">Dust</Link>
         );
+
+        var loginNode, registerNode;
+
+        let loggedIn = Object.keys(this.state.UserStore.user.toObject()).length !== 0;
+
+
+        //check if it is an empty object
+        if(loggedIn){
+            loginNode = <NavItem onClick={this.doLogOut.bind(this)}>Logout</NavItem>;
+        }
+        else{
+            loginNode = <NavItem onClick={this.showLogin.bind(this)}>Login</NavItem>;
+        }
+
+        if(!loggedIn){
+            registerNode = <NavItem onClick={this.showRegister.bind(this)}>Sign Up</NavItem>;
+        }
 
         return (
             <div>
@@ -48,13 +71,11 @@ class Navigation extends Component {
                             </form>
                         </Nav>
                         <Nav navbar right>
-                            <NavItem onClick={this.openRegister.bind(this)}>Sign Up</NavItem>
-                            <NavItem onClick={this.openLogin.bind(this)}>Login</NavItem>
+                            {registerNode}
+                            {loginNode}
                         </Nav>
                     </CollapsibleNav>
                 </Navbar>
-                <RegisterModal show={this.state.showRegisterModal} close={this.closeRegister.bind(this)}/>
-                <LoginModal show={this.state.showLoginModal} close={this.closeLogin.bind(this)}/>
             </div>
         );
     }

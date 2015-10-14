@@ -1,5 +1,7 @@
-import React from "react";
-import UserActions from "../../actions/UserActions";
+import React from 'react';
+import ModalActions from '../../actions/ModalActions';
+import UserActions from '../../actions/UserActions';
+import UserStore from '../../stores/UserStore';
 import {Input, Button, Modal, NavItem} from 'react-bootstrap';
 import {Link} from 'react-router';
 
@@ -9,14 +11,14 @@ class LoginModal extends React.Component {
         super(props);
     }
 
-
     _onAuthSubmit(e) {
         e.preventDefault();
         const user = {};
         user.email = this.refs.email.getValue();
         user.password = this.refs.password.getValue();
 
-        console.log(user);
+        this.refs.email.getInputDOMNode().value = "";
+        this.refs.password.getInputDOMNode().value = "";
 
         UserActions.doLogin(user);
     }
