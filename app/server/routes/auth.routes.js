@@ -100,6 +100,7 @@ export default function (app, passport) {
 
     app.post('/api/users/verify', tokenHelper.verifyToken, function (req, res) {
 
+
         if (req.body.verification_code == res.locals.user.mobile.verification_code) {
             req.db.repositories.UserRepository.update(res.locals.user._id, {mobile: {is_verified: true}}, req.db.connection)
                 .then((done) => {
@@ -109,11 +110,11 @@ export default function (app, passport) {
                     });
                 });
         }
-
-        return res.status(401).json({
-            error: true,
-            message: 'Invalid verification code'
-        });
-
+        else {
+            return res.status(401).json({
+                error: true,
+                message: 'Invalid verification code'
+            });
+        }
     });
 }
