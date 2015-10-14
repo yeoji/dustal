@@ -18,6 +18,7 @@ h4{
     font-size: 24px;
 }
 
+
 .btn-default{
     background-color: #FF7F66;
     color: white;
@@ -59,28 +60,21 @@ h4{
 /*
 * Navbar stuff
 **/
-
 .navbar {
-    position: relative;
     background-color: #FF7F66;
     border: 0;
     border-radius: 0;
-    max-height: 65px;
-    color: white;
 }
 
 .navbar-default .navbar-brand{
     color: white;
 }
 
-.navbar-form .form-control{
-    position: absolute;
-    width: 25%;
-}
-
 .navbar-default .navbar-nav>li>a{
     color: white;
 }
+
+
 
 /*
 * Footer stuff
@@ -258,6 +252,18 @@ h4{
     width: 50px;
     height: 50px;
     margin-right: 15px;
+}
+
+.settings-wrapper{
+    margin-top: 20px;
+}
+
+.settings-wrapper .Select-control{
+    background-color: #eee;
+}
+
+.Select-control{
+    min-height: 34px;
 }
 
 

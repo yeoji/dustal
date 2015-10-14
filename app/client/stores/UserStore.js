@@ -1,6 +1,7 @@
 import alt from "../alt";
 import Immutable from "immutable";
 import UserActions from "../actions/UserActions";
+import ModalActions from '../actions/ModalActions';
 import routerInstance from "../routerInstance";
 
 class UserStore {
@@ -11,9 +12,9 @@ class UserStore {
         this.on('bootstrap', this.bootstrap);
 
         this.bindListeners({
-            handleDoRegister: UserActions.DO_REGISTER,
-            handleDoLogin: UserActions.DO_LOGIN,
-            handleDoLogout: UserActions.DO_LOGOUT
+            handleDoRegister: UserActions.doRegister,
+            handleDoLogin: UserActions.doLogin,
+            handleDoLogout: UserActions.doLogout
         });
     }
 
@@ -25,23 +26,25 @@ class UserStore {
 
     handleDoRegister(user) {
         this.user = Immutable.Map(user);
-        this.emitChange();
 
         // redirect to dashboard
-        routerInstance.get().transitionTo('/');
+        routerInstance.get().transitionTo('/account');
     }
 
     handleDoLogin(user) {
         this.user = Immutable.Map(user);
-        this.emitChange();
 
-        // redirect to dashboard
-        routerInstance.get().transitionTo('/' + this.user.get('username'));
+        let path = '/' + this.user.get('username');
+
+        if(!this.user.get('mobile').is_verified){
+            path = '/account';
+        }
+
+        routerInstance.get().transitionTo(path);
     }
 
     handleDoLogout() {
         this.user = Immutable.Map({});
-        this.emitChange();
 
         // redirect to sign in
         routerInstance.get().transitionTo('/');

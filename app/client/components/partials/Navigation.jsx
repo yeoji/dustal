@@ -4,8 +4,8 @@ import {Navbar, NavBrand, CollapsibleNav, Nav, NavItem, Input} from 'react-boots
 import UserActions from "../../actions/UserActions";
 import UserStore from '../../stores/UserStore';
 import ModalActions from "../../actions/ModalActions";
-import LoginModal from './LoginModal';
-import RegisterModal from './RegisterModal';
+import LoginModal from './modals/LoginModal';
+import RegisterModal from './modals/RegisterModal';
 
 class Navigation extends Component {
 
@@ -23,7 +23,7 @@ class Navigation extends Component {
     }
 
     onUserChange(state){
-        this.state.UserStore = state;
+        this.setState({UserStore: state});
     }
 
     showLogin() {
@@ -36,6 +36,7 @@ class Navigation extends Component {
 
     doLogOut() {
         UserActions.doLogout();
+        ModalActions.closeLoginModal();
     }
 
     render() {
@@ -43,32 +44,38 @@ class Navigation extends Component {
             <Link className="navbar-brand" to="/">Dust</Link>
         );
 
-        var loginNode;
+        var loginNode, registerNode;
+
+        let loggedIn = Object.keys(this.state.UserStore.user.toObject()).length !== 0;
+
 
         //check if it is an empty object
-        if(Object.keys(this.state.UserStore.user.toObject()).length === 0){
-            loginNode = <NavItem onClick={this.showLogin.bind(this)}>Login</NavItem>;
+        if(loggedIn){
+            loginNode = <NavItem onClick={this.doLogOut.bind(this)}>Logout</NavItem>;
         }
         else{
-            loginNode = <NavItem onClick={this.doLogOut.bind(this)}>Logout</NavItem>;
+            loginNode = <NavItem onClick={this.showLogin.bind(this)}>Login</NavItem>;
+        }
+
+        if(!loggedIn){
+            registerNode = <NavItem onClick={this.showRegister.bind(this)}>Sign Up</NavItem>;
         }
 
         return (
-            <div>
                 <Navbar toggleNavKey={0} brand={Brand}>
                     <CollapsibleNav eventKey={0}>
                         <Nav navbar>
-                            <form className='navbar-form' action="">
-                                <Input type="text" placeholder="search" className="navbar-search"/>
+                            <form className='navbar-form hidden-xs' action="">
+                                <Input type="text" placeholder="search"/>
                             </form>
                         </Nav>
                         <Nav navbar right>
-                            <NavItem onClick={this.showRegister.bind(this)}>Sign Up</NavItem>
+                            {registerNode}
                             {loginNode}
                         </Nav>
                     </CollapsibleNav>
                 </Navbar>
-            </div>
+
         );
     }
 }

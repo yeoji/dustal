@@ -2,20 +2,25 @@ import alt from '../alt';
 
 class ModalActions{
     showLoginModal(){
-        this.dispatch();
+        this.dispatch({});
     }
 
     closeLoginModal(){
-        this.dispatch();
+        this.dispatch({});
     }
 
     showRegisterModal(){
-        this.dispatch();
+        this.dispatch({});
     }
 
     closeRegisterModal(){
-        this.dispatch();
+        this.dispatch({});
     }
+
+    showVerificationModal(){
+        this.dispatch({});
+    }
+
 }
 
 export default alt.createActions(ModalActions);

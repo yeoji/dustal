@@ -1,6 +1,5 @@
 import alt from '../alt';
 import Immutable from "immutable";
-import BlogActions from '../actions/BlogActions';
 import routerInstance from "../routerInstance";
 
 class BlogStore{
@@ -10,7 +9,7 @@ class BlogStore{
         this.posts  = [
             {date : date,
                 messages : [
-                    {time : '1.47 AM', message: 'At the supermarket :)',
+                    {time : '1.47 AM', message: 'At the supermarket :) :hot_pepper:',
                         comments: []
                     },
                     {time : '1.49 AM', message: 'omg cool $1',
@@ -56,16 +55,8 @@ class BlogStore{
                 ]
             }
         ];
-
-        this.bindListeners({
-            handleUpdatePosts: BlogActions.UPDATE_POSTS
-        });
     }
 
-    handleUpdatePosts(posts){
-        this.posts = posts;
-        this.emitChange();
-    }
 }
 
 export default alt.createStore(BlogStore, 'BlogStore');
