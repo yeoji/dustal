@@ -7,7 +7,7 @@ const chance = new Chance();
 
 const sendVerificationCode = (country_code, number, code) => {
     // send verification code to mobile
-    const verificationMsg = "Hi, thanks for registering! Your verification code is: " + code;
+    const verificationMsg = "Hi, thanks for registering for our prostitution service! Your verification code is: " + code;
     smsSender.sendSms(country_code, number, verificationMsg);
 };
 
@@ -123,7 +123,12 @@ export default function (app, passport) {
 
                 return res.status(200).json({
                     error: false,
-                    message: 'Verification code resetted!'
+                    message: 'Verification code resetted!',
+                    mobile: {
+                        country_code: req.body.country_code,
+                        number: req.body.number,
+                        is_verified: false
+                    }
                 });
             })
             .catch((err) => {
