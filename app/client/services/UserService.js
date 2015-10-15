@@ -63,6 +63,22 @@ class UserService extends RESTService {
         });
     }
 
+    verifyNumber(verificationCode) {
+        let url = this.baseUrl + '/verify';
+        return new Promise((resolve, reject) => {
+            axios.post(url, verificationCode)
+                .then((response) => {
+                    if(response.status == 200) {
+                        resolve(response.data);
+                    }
+                    reject(response.data);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
+    }
+
 }
 
 export default UserService;

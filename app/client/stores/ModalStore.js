@@ -11,7 +11,8 @@ class ModalStore{
             closeLoginModal: ModalActions.closeLoginModal,
             closeRegisterModal: ModalActions.closeRegisterModal,
             UserRegisterModal: UserActions.doRegister,
-            UserLoginModal: UserActions.doLogin
+            UserLoginModal: UserActions.doLogin,
+            handleVerifiedNumber: UserActions.verifyNumber
         });
 
         this.showLoginModal = false;
@@ -39,7 +40,6 @@ class ModalStore{
         this.showRegisterModal = false;
     }
 
-
     UserRegisterModal(user){
         this.showRegisterModal = false;
         this.emitChange();
@@ -47,7 +47,6 @@ class ModalStore{
         if(!user.mobile.is_verified){
             this.showVerificationModal = true;
         }
-
     }
 
     UserLoginModal(user){
@@ -57,8 +56,12 @@ class ModalStore{
         if(!user.mobile.is_verified){
             this.showVerificationModal = true;
         }
+    }
 
-
+    handleVerifiedNumber(status){
+        if(status.error === false){
+            this.showVerificationModal = false;
+        }
     }
 }
 

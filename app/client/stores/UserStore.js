@@ -14,7 +14,7 @@ class UserStore {
         this.bindListeners({
             handleDoRegister: UserActions.doRegister,
             handleDoLogin: UserActions.doLogin,
-            handleDoLogout: UserActions.doLogout
+            handleDoLogout: UserActions.doLogout,
         });
     }
 
@@ -35,7 +35,6 @@ class UserStore {
         this.user = Immutable.Map(user);
 
         let path = '/' + this.user.get('username');
-
         if(!this.user.get('mobile').is_verified){
             path = '/account';
         }

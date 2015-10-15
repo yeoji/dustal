@@ -39,6 +39,16 @@ class UserActions {
             });
     }
 
+    verifyNumber(verificationCode){
+        UserApi.verifyNumber(verificationCode)
+            .then((data) => {
+                this.dispatch(data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
 }
 
 export default alt.createActions(UserActions);

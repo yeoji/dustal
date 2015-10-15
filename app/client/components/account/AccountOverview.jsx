@@ -10,10 +10,7 @@ import CustomValue from '../partials/flags/CustomSingleValue';
 class AccountOverview extends Component{
     constructor(props){
         super(props);
-
     }
-
-
 
     render(){
 
