@@ -7,7 +7,7 @@ const chance = new Chance();
 
 const sendVerificationCode = (country_code, number, code) => {
     // send verification code to mobile
-    const verificationMsg = "Hi, thanks for registering for our prostitution service! Your verification code is: " + code;
+    const verificationMsg = "Hi, thanks for registering! Your verification code is: " + code;
     smsSender.sendSms(country_code, number, verificationMsg);
 };
 
