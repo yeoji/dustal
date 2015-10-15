@@ -1,7 +1,15 @@
 import tokenHelper from "./tokenHelper";
 import {SmsSender} from "../services/sms/SmsService";
+import Chance from "chance";
 
 const smsSender = new SmsSender();
+const chance = new Chance();
+
+const sendVerificationCode = (country_code, number, code) => {
+    // send verification code to mobile
+    const verificationMsg = "Hi, thanks for registering! Your verification code is: " + code;
+    smsSender.sendSms(country_code, number, verificationMsg);
+};
 
 export default function (app, passport) {
 
@@ -27,9 +35,7 @@ export default function (app, passport) {
             // no errors, therefore authenticated
             tokenHelper.setToken(user, res);
 
-            // send verification code to mobile
-            const verificationMsg = "Hi, thanks for registering! Your verification code is: " + user.mobile.verification_code;
-            smsSender.sendSms(user.mobile.country_code, user.mobile.number, verificationMsg);
+            sendVerificationCode(user.mobile.country_code, user.mobile.number, user.mobile.verification_code);
 
             return res.status(200).json({
                 error: false,
@@ -98,8 +104,34 @@ export default function (app, passport) {
 
     });
 
-    app.post('/api/users/verify', tokenHelper.verifyToken, function (req, res) {
+    /**
+     * This handles the regenerating and resending of a verification code
+     */
+    app.get('/api/users/verify', tokenHelper.verifyToken, (req, res) => {
+        const code = chance.natural({min: 1000, max: 9999});
+        req.db.repositories.UserRepository.update(res.locals.user._id, {
+            mobile: {
+                verification_code: code
+            }
+        }, req.db.connection)
+            .then((done) => {
+                // send new SMS with code
+                sendVerificationCode(res.locals.user.mobile.country_code, res.locals.user.mobile.number, code);
 
+                return res.status(200).json({
+                    error: false,
+                    message: 'Verification code resetted!'
+                });
+            })
+            .catch((err) => {
+                return res.status(500).json({
+                    error: true,
+                    message: 'Error in resetting verification code'
+                });
+            });
+    });
+
+    app.post('/api/users/verify', tokenHelper.verifyToken, function (req, res) {
 
         if (req.body.verification_code == res.locals.user.mobile.verification_code) {
             req.db.repositories.UserRepository.update(res.locals.user._id, {mobile: {is_verified: true}}, req.db.connection)
