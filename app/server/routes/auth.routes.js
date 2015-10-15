@@ -113,6 +113,7 @@ export default function (app, passport) {
             mobile: {
                 country_code: req.body.country_code,
                 number: req.body.number,
+                is_verified: false,
                 verification_code: code
             }
         }, req.db.connection)
@@ -135,20 +136,28 @@ export default function (app, passport) {
 
     app.post('/api/users/verify', tokenHelper.verifyToken, function (req, res) {
 
-        if (req.body.verification_code == res.locals.user.mobile.verification_code) {
-            req.db.repositories.UserRepository.update(res.locals.user._id, {mobile: {is_verified: true}}, req.db.connection)
-                .then((done) => {
-                    return res.status(200).json({
-                        error: false,
-                        message: 'User verified successfully!'
+        req.db.repositories.UserRepository.findById(res.locals.user._id, req.db.connection)
+            .then((user) => {
+                if (req.body.verification_code == user.mobile.verification_code) {
+                    req.db.repositories.UserRepository.update(user._id, {mobile: {
+                        country_code: user.mobile.country_code,
+                        number: user.mobile.number,
+                        is_verified: true,
+                        verification_code: user.mobile.verification_code
+                    }}, req.db.connection)
+                        .then((done) => {
+                            return res.status(200).json({
+                                error: false,
+                                message: 'User verified successfully!'
+                            });
+                        });
+                }
+                else {
+                    return res.status(401).json({
+                        error: true,
+                        message: 'Invalid verification code'
                     });
-                });
-        }
-        else {
-            return res.status(401).json({
-                error: true,
-                message: 'Invalid verification code'
+                }
             });
-        }
     });
 }

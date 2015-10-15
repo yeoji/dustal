@@ -7,6 +7,7 @@
 
 import express from "express";
 import _ from 'lodash';
+import tokenHelper from "../tokenHelper";
 
 export default class RESTRoutes {
 
@@ -60,7 +61,7 @@ export default class RESTRoutes {
 
         if (opts.create) {
             // Create new resource
-            this.apiRouter.post('/', (req, res) => {
+            this.apiRouter.post('/', tokenHelper.verifyToken, (req, res) => {
                 req.db.repositories[this.model + 'Repository'].create(req.body, req.db.connection)
                     .then((resource) => {
                         return res.status(200).json(resource);
@@ -76,7 +77,7 @@ export default class RESTRoutes {
 
         if (opts.update) {
             // Update resource
-            this.apiRouter.put('/:id', (req, res) => {
+            this.apiRouter.put('/:id', tokenHelper.verifyToken, (req, res) => {
                 const id = req.params.id;
                 req.db.repositories[this.model + 'Repository'].update(id, req.body, req.db.connection)
                     .then((resource) => {
@@ -93,7 +94,7 @@ export default class RESTRoutes {
 
         if (opts.delete) {
             // Delete resource
-            this.apiRouter.delete('/:id', (req, res) => {
+            this.apiRouter.delete('/:id', tokenHelper.verifyToken, (req, res) => {
                 const id = req.params.id;
                 req.db.repositories[this.model + 'Repository'].delete(id, req.db.connection)
                     .then((success) => {
