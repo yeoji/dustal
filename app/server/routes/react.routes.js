@@ -7,13 +7,7 @@ const reactRouter = express.Router();
  *  React Routes  *
  ******************/
 
-// auth pages do not require authentication
-reactRouter.use('/auth/*', function (req, res) {
-    const content = render(req, JSON.stringify({}));
-    res.render('index', {content: content});
-});
-
-reactRouter.use('/', (req, res) => {
+reactRouter.get('/', (req, res) => {
     const content = render(req, JSON.stringify({}));
     res.render('index', {content: content});
 });
@@ -25,7 +19,13 @@ reactRouter.use('*', tokenHelper.verifyToken, function (req, res) {
             user: {
                 first_name: res.locals.user.first_name,
                 last_name: res.locals.user.last_name,
-                email: res.locals.user.email
+                email: res.locals.user.email,
+                username: res.locals.user.username,
+                mobile: {
+                    country_code: res.locals.user.mobile.country_code,
+                    number: res.locals.user.mobile.number,
+                    is_verified: res.locals.user.mobile.is_verified
+                }
             }
         }
     };

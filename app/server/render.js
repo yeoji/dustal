@@ -9,6 +9,7 @@ export default function(req, state) {
     let markup;
 
     alt.bootstrap(state);
+
     Router.run(routes, req.url, Handler => {
         let content = React.renderToString(<Handler />);
         markup = Iso.render(content, alt.flush());

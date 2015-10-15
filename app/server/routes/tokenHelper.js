@@ -24,7 +24,7 @@ const auth = (req, res, next) => {
                 throw new Error(err);
             });
     } catch (err) {
-        res.status(401).redirect('/auth/login');
+        res.status(401).redirect('/');
     }
 };
 
