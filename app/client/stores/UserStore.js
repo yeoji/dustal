@@ -15,6 +15,7 @@ class UserStore {
             handleDoRegister: UserActions.doRegister,
             handleDoLogin: UserActions.doLogin,
             handleDoLogout: UserActions.doLogout,
+            handleResendNumber: UserActions.resendNumber
         });
     }
 
@@ -47,6 +48,11 @@ class UserStore {
 
         // redirect to sign in
         routerInstance.get().transitionTo('/');
+    }
+
+    handleResendNumber(mobile){
+        this.user = this.user.set('mobile', mobile);
+        this.emitChange();
     }
 
 }

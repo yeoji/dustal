@@ -79,6 +79,24 @@ class UserService extends RESTService {
         });
     }
 
+    resendNumber(mobile) {
+        let url = this.baseUrl + '/resend';
+        return new Promise((resolve, reject) => {
+            axios.post(url, mobile)
+                .then((response) => {
+                    if(response.status == 200) {
+                        resolve(response.data);
+                    }
+                    reject(response.data);
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
+    }
+
+
+
 }
 
 export default UserService;

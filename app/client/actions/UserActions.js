@@ -49,6 +49,16 @@ class UserActions {
             });
     }
 
+    resendNumber(mobile){
+        UserApi.resendNumber(mobile)
+            .then((data) => {
+                this.dispatch(data.mobile);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
 }
 
 export default alt.createActions(UserActions);

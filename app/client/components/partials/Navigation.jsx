@@ -34,6 +34,7 @@ class Navigation extends Component {
         ModalActions.showRegisterModal();
     }
 
+
     doLogOut() {
         UserActions.doLogout();
         ModalActions.closeLoginModal();
@@ -59,6 +60,9 @@ class Navigation extends Component {
 
         if(!loggedIn){
             registerNode = <NavItem onClick={this.showRegister.bind(this)}>Sign Up</NavItem>;
+        }
+        else{
+            registerNode =  <li><Link to="/account">My Account</Link></li>;
         }
 
         return (

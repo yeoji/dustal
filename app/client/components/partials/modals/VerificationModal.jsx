@@ -55,7 +55,21 @@ class VerificationModal extends Component{
         UserActions.verifyNumber(obj);
     }
 
+    _onResendNumber(e){
+        e.preventDefault();
+
+        const mobile = {};
+        mobile.country_code = this.state.countryCode;
+        mobile.number = this.refs.mobile_number.getValue();
+
+
+        UserActions.resendNumber(mobile);
+
+
+    }
+
     render() {
+
 
         return (
             <Modal show={this.props.show} onHide={this.close.bind(this)}>
@@ -63,7 +77,7 @@ class VerificationModal extends Component{
                     <Modal.Title>Verify Number</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form onSubmit={this._onVerifyNumber.bind(this)}>
+                    <form onSubmit={this._onResendNumber.bind(this)}>
                         <Select
                             ref="country_code"
                             value={this.state.countryCode}
@@ -77,7 +91,10 @@ class VerificationModal extends Component{
                                className="form-control"
                                type="text"
                                ref="mobile_number"
-                               value={this.state.mobileNumber}/>
+                               defaultValue={this.state.mobileNumber}/>
+                        <Button type="submit" className="btn btn-lg btn-default btn-block">Resend Code</Button>
+                    </form>
+                    <form onSubmit={this._onVerifyNumber.bind(this)}>
                         <Input placeholder="Verification Code"
                                className="form-control"
                                help="You will first need to verify your number before your blog is created."

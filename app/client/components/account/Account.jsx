@@ -36,15 +36,13 @@ class Account extends Component{
     }
 
     render(){
-
-
         var user = {
             username: "",
             email: "",
             countryCode: "",
             mobileNumber: ""
         };
-
+        
         if(Object.keys(this.state.UserStore.user.toObject()).length !== 0){
             user.username =  this.state.UserStore.user.get('username');
             user.email = this.state.UserStore.user.get('email');
