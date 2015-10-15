@@ -107,16 +107,18 @@ export default function (app, passport) {
     /**
      * This handles the regenerating and resending of a verification code
      */
-    app.get('/api/users/verify', tokenHelper.verifyToken, (req, res) => {
+    app.post('/api/users/resend', tokenHelper.verifyToken, (req, res) => {
         const code = chance.natural({min: 1000, max: 9999});
         req.db.repositories.UserRepository.update(res.locals.user._id, {
             mobile: {
+                country_code: req.body.country_code,
+                number: req.body.number,
                 verification_code: code
             }
         }, req.db.connection)
             .then((done) => {
                 // send new SMS with code
-                sendVerificationCode(res.locals.user.mobile.country_code, res.locals.user.mobile.number, code);
+                sendVerificationCode(req.body.country_code, req.body.number, code);
 
                 return res.status(200).json({
                     error: false,
