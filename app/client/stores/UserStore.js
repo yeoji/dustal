@@ -15,6 +15,7 @@ class UserStore {
             handleDoRegister: UserActions.doRegister,
             handleDoLogin: UserActions.doLogin,
             handleDoLogout: UserActions.doLogout,
+            handleVerifyNumber: UserActions.verifyNumber,
             handleResendNumber: UserActions.resendNumber
         });
     }
@@ -33,13 +34,13 @@ class UserStore {
     }
 
     handleDoLogin(user) {
-        this.user = Immutable.Map(user);
+        this.user = Immutable.fromJS(user);
 
         let path = '/' + this.user.get('username');
         if(!this.user.get('mobile').is_verified){
             path = '/account';
         }
-
+        
         routerInstance.get().transitionTo(path);
     }
 
@@ -48,6 +49,11 @@ class UserStore {
 
         // redirect to sign in
         routerInstance.get().transitionTo('/');
+    }
+
+
+    handleVerifyNumber(){
+        //nothing
     }
 
     handleResendNumber(mobile){

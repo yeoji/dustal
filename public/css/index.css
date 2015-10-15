@@ -5,10 +5,6 @@ body{
     font-family: 'Muli', sans-serif;
 }
 
-a{
-    font-size: 18px;
-}
-
 h3{
     font-size: 18px;
 }
@@ -34,6 +30,10 @@ h4{
     display: inline-block;
     text-align: left;
     vertical-align: middle;
+}
+
+.Select-control{
+    min-height: 34px;
 }
 
 @media screen and (min-width: 768px) {
@@ -66,11 +66,13 @@ h4{
     border-radius: 0;
 }
 
+
 .navbar-default .navbar-brand{
     color: white;
 }
 
 .navbar-default .navbar-nav>li>a{
+    font-size: 18px;
     color: white;
 }
 
@@ -254,17 +256,40 @@ h4{
     margin-right: 15px;
 }
 
-.settings-wrapper{
-    margin-top: 20px;
+.settings{
+    height: 300px;
+}
+
+.settings-selection{
+    padding: 0;
+    margin-top: 15px;
+}
+
+.settings-selection li{
+    list-style-type: none;
+    margin-bottom: 17px;
+}
+
+.settings-selection li a{
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.settings-selection li a:hover{
+    border-bottom: solid #eee 2px;
+}
+
+.settings h3{
+    border-bottom: solid #eee 2px;
+    padding: 0 0 5px 0px;
 }
 
 .settings-wrapper .Select-control{
     background-color: #eee;
 }
 
-.Select-control{
-    min-height: 34px;
-}
 
 
 

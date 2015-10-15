@@ -1,12 +1,10 @@
 import React, {Component, PropTypes} from 'react';
-import {Row, Col, Nav, NavItem} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import AccountOverview from './AccountOverview';
 import UserStore from '../../stores/UserStore';
 import countryPhones from '../../data/country-phone';
 
 class Account extends Component{
-
-
 
     constructor(props){
         super(props);
@@ -30,7 +28,8 @@ class Account extends Component{
     }
 
     findCountryByCode(countryPhone){
-        if(this.state.UserStore.user.get('mobile').country_code === countryPhone.value){
+
+        if(this.state.UserStore.user.get('mobile').get('country_code') === countryPhone.value){
             return countryPhone.label;
         };
     }
@@ -42,38 +41,46 @@ class Account extends Component{
             countryCode: "",
             mobileNumber: ""
         };
-        
+
         if(Object.keys(this.state.UserStore.user.toObject()).length !== 0){
             user.username =  this.state.UserStore.user.get('username');
             user.email = this.state.UserStore.user.get('email');
-            user.mobileNumber = this.state.UserStore.user.get('mobile').number;
+            user.mobileNumber = this.state.UserStore.user.get('mobile').get('number');
             user.countryCode = countryPhones.filter(this.findCountryByCode.bind(this))[0];
         }
-
         return(
-            <Row className="account-wrapper">
-                <Col lg={8} lgOffset={2}>
-                    <Nav bsStyle="tabs" activeKey={this.state.tab} onSelect={this.handleSelect.bind(this)}>
-                        <NavItem eventKey={1}>Account Overview</NavItem>
-                        <NavItem eventKey={2}>Change Password</NavItem>
-                        <NavItem eventKey={3}>Change Mobile</NavItem>
-                    </Nav>
-                    <div className="settings-wrapper">
-                        <Row>
-                            <Col lg={10} lgOffset={1}>
-                                <AccountOverview
-                                    username={user.username}
-                                    email={user.email}
-                                    countryCode={user.countryCode}
-                                    mobileNumber={user.mobileNumber}
-                                />
-                            </Col>
-                        </Row>
-                    </div>
+            <Row>
+                <Col lg={8} lgOffset={2} className="settings">
+                    <h3>My Account</h3>
+                    <Row className="settings">
+                        <Col lg={2}>
+                            <ul className="settings-selection">
+                                <li><a>Account Overview</a></li>
+                                <li><a>Edit Blog</a></li>
+                                <li><a>Change Mobile</a></li>
+                                <li><a>Change Number</a></li>
+                            </ul>
+                        </Col>
+                        <Col lg={10}>
+                            <div className="settings-wrapper">
+                                <Row>
+                                    <Col lg={10} lgOffset={1}>
+                                        <AccountOverview
+                                            username={user.username}
+                                            email={user.email}
+                                            countryCode={user.countryCode}
+                                            mobileNumber={user.mobileNumber}
+                                            />
+                                    </Col>
+                                </Row>
+                            </div>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
 
         )
+
     }
 }
 

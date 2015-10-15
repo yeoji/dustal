@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import Select from 'react-select';
-import {Row, Col, Input} from 'react-bootstrap';
+import {Row, Col, Input, ButtonInput} from 'react-bootstrap';
 import CustomOption from '../partials/flags/CustomOption';
 import CustomValue from '../partials/flags/CustomSingleValue';
 
@@ -35,6 +35,13 @@ class AccountOverview extends Component{
                     </Col>
                     <Col lg={6}>
                         <Input type="text" label="Mobile Number" value={this.props.mobileNumber} disabled/>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col lg={12}>
+                        <Input type="text" label="Blog Title" value="" disabled/>
+                        <Input type="checkbox" label="Private Blog" checked readOnly />
+                        <ButtonInput type="submit" value="Edit Blog" className="pull-right"/>
                     </Col>
                 </Row>
             </form>
