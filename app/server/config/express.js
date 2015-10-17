@@ -12,6 +12,7 @@ export default function (app, passport) {
     app.set('view engine', 'jade');
 
     app.use(express.static('public'));
+    app.use(express.static('storage'));
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencoded

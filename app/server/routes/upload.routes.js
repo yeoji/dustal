@@ -1,26 +1,29 @@
 import express from "express";
 import multer from "multer";
 import tokenHelper from "./tokenHelper";
+import fs from "fs";
 const uploadRouter = express.Router();
 
+const baseStoragePath = __dirname + '/../../../storage/uploads';
 const storage = multer.diskStorage({
-    destination: 'storage/uploads',
+    destination: baseStoragePath,
     filename: function (req, file, cb) {
-        const data = {};
-        tokenHelper.verifyToken(req, data, function() {
-            cb(null, data.locals.user.username + '/' + file.originalname + '.' + file.extension)
-        });
+        if(!fs.existsSync(baseStoragePath + '/' + req.params.username)) {
+            fs.mkdirSync(baseStoragePath + '/' + req.params.username);
+        }
+        cb(null, req.params.username + '/' + file.originalname);
     }
 });
 
 const upload = multer({
     storage: storage,
     fileFilter: function(req, file, cb) {
-        const allowed = ['png', 'jpg', 'jpeg'];
-        if(allowed.indexOf(file.extension) >= 0) {
+        const allowed = ['image/png', 'image/jpg', 'image/jpeg'];
+        if(allowed.indexOf(file.mimetype) >= 0) {
             cb(null, true);
+        } else {
+            cb(null, false);
         }
-        cb(null, false);
     },
     limits: {
         fileSize: '1000000'
@@ -32,13 +35,13 @@ const upload = multer({
  *******************/
 
 // uploading profile picture
-uploadRouter.post('/profile', tokenHelper.verifyToken, upload.single('profile'), (req, res) => {
-    console.log(req.file);
-    req.db.repositories.UserRepository.update(res.locals.user._id, {profile_img: req.file.path}, req.db.connection)
+uploadRouter.post('/profile/:username', tokenHelper.verifyToken, upload.single('profile'), (req, res) => {
+    req.db.repositories.UserRepository.update(res.locals.user._id, {profile_img: req.file.filename}, req.db.connection)
         .then((raw) => {
             return res.status(200).json({
                 error: false,
-                message: 'Image upload completed!'
+                message: 'Image upload completed!',
+                path: req.file.filename
             });
         })
         .catch((err) => {

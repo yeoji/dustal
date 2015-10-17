@@ -5,6 +5,7 @@ import App from "./components/App";
 import Hello from "./components/Hello";
 import Blog from "./components/blog/Blog";
 import Account from "./components/account/Account";
+import Setup from "./components/setup/Setup";
 import UserStore from './stores/UserStore';
 
 // To pass in props to the handler
@@ -25,6 +26,7 @@ function requireAuth(nextState, transition) {
 export default (
     <Route path="/" handler={ App }>
         <DefaultRoute handler={ Hello }/>
+        <Route path="/setup" handler={ Setup } />
         <Route path="/account" handler={ Account }/>
         <Route path="/:userName" handler={ Blog }/>
         <Route path="/favicon.ico" />

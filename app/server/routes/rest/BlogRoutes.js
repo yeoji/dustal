@@ -1,6 +1,7 @@
 import RESTRoutes from "./RESTRoutes";
 import bcrypt from "bcrypt-nodejs";
 import tokenHelper from "../tokenHelper";
+import {SmsHandler} from "../../services/sms/SmsService";
 
 export default class BlogRoutes extends RESTRoutes {
 
@@ -66,7 +67,10 @@ export default class BlogRoutes extends RESTRoutes {
                     if (!blog) {
                         // create blog document
                         req.body.users = [res.locals.user._id];
-                        req.body.password = bcrypt.hashSync(req.body.password);
+                        if(req.body.password) req.body.password = bcrypt.hashSync(req.body.password);
+                        // randomly assign number from our SmsHandler
+                        req.body.assigned_no = SmsHandler.assignBlogNumber();
+
                         req.db.repositories[this.model + 'Repository'].create(req.body, req.db.connection)
                             .then((resource) => {
                                 // add blog_id to user's blog array

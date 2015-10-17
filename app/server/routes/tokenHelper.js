@@ -30,7 +30,7 @@ const auth = (req, res, next) => {
 
 const setBlogToken = (blog, req, res) => {
     let blogs = [];
-    if(req.cookies.blogs) {
+    if (req.cookies.blogs) {
         blogs = jwt.verify(req.cookies.blogs, secrets.jwtSecret);
     }
     blogs.push(blog);
@@ -53,7 +53,7 @@ const verifyBlogToken = (blog, req, cookie) => {
     try {
         const blogs = jwt.verify((req ? req.cookies.blogs : cookie.blogs), secrets.jwtSecret);
         console.log('blogs: ' + blogs);
-        if(blogs.indexOf(blog) >= 0) {
+        if (blogs.indexOf(blog) >= 0) {
             console.log('blog: ' + blog);
             return true;
         }

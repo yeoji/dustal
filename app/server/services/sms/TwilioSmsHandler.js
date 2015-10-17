@@ -1,6 +1,9 @@
 import {getCallCode} from "./SmsService";
 import secrets from "../../config/secrets";
 import crypto from "crypto";
+import Chance from "chance";
+
+const chance = new Chance();
 
 const verifyReq = (req) => {
     // verify req against token
@@ -58,6 +61,18 @@ const parseSms = (req) => {
     });
 };
 
+/**
+ * Randomly assign a number from our available pool to a blog
+ */
+const assignNumber = () => {
+    // this will do for now, might move to another file if pool gets large
+    const availableNumbers = ['+15878033122'];
+    const index = chance.natural({min: 0, max: (availableNumbers.length-1)});
+
+    return availableNumbers[index];
+};
+
 export default {
-    receiveSms: parseSms
+    receiveSms: parseSms,
+    assignBlogNumber: assignNumber
 }
