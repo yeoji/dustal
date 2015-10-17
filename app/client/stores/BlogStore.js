@@ -18,6 +18,10 @@ class BlogStore{
                     {time : '1.49 AM', message: 'Should I buy a carrot? :rabbit2: this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text this is going to be a really long text ',
                         comments: [
                             {username: "AlanYu", time: "2.30AM", message: "No! buy sushi instead :sushi::sushi:"},
+                            {username: "WendyNguyen", time: "3.59 AM", message: ":D nice <3 this works perfectly now :flag_au: :hot_pepper:"},
+                            {username: "AlanYu", time: "2.30AM", message: "No! buy sushi instead :sushi::sushi:"},
+                            {username: "WendyNguyen", time: "3.59 AM", message: ":D nice <3 this works perfectly now :flag_au: :hot_pepper:"},
+                            {username: "AlanYu", time: "2.30AM", message: "No! buy sushi instead :sushi::sushi:"},
                             {username: "WendyNguyen", time: "3.59 AM", message: ":D nice <3 this works perfectly now :flag_au: :hot_pepper:"}
                         ]
                     }

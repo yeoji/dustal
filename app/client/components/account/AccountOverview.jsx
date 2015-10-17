@@ -15,7 +15,7 @@ class AccountOverview extends Component{
     render(){
 
         return(
-            <form>
+            <form className="account-overview">
                 <Row>
                     <Col lg={12}>
                         <Input type="text" label="Username" value={this.props.username} disabled/>
@@ -41,7 +41,7 @@ class AccountOverview extends Component{
                     <Col lg={12}>
                         <Input type="text" label="Blog Title" value="" disabled/>
                         <Input type="checkbox" label="Private Blog" checked readOnly />
-                        <ButtonInput type="submit" value="Edit Blog" className="pull-right"/>
+                        <ButtonInput type="submit" value="Edit Blog" className="pull-right" onClick={this.props.onClick}/>
                     </Col>
                 </Row>
             </form>

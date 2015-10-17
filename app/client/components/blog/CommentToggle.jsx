@@ -6,17 +6,13 @@ class CommentToggle extends Component{
 
     }
 
-    handleClick(e){
-        e.preventDefault();
-        this.props.onClick();
-    }
 
     render(){
 
-        let displayText = this.props.showComments ? 'Hide comments' : 'Show comments';
+        let displayText = this.props.show ? 'Hide comments' : 'Show comments';
 
         return(
-            <a className="comment-toggle" onClick={this.handleClick.bind(this)}>{displayText}</a>
+            <a className="comment-toggle" onClick={this.props.onClick}>{displayText}</a>
         );
     }
 }

@@ -5,43 +5,35 @@ import CommentToggle from './CommentToggle';
 class CommentList extends Component{
     constructor(props){
         super(props);
-        this.state = {comments: this.props.comments, showComments: false}
+        this.state = {showComments: false};
     }
 
-    loadComments(){
 
-        if(!this.state.showComments){
-
-            //do ajax here
-            let loadComments = [
-                {username: "Bob", time: "1.49AM", message: "hello alan"},
-                {username: "Bob", time: "3.59 AM", message: "hello wendy"}
-            ];
-
-            let comments = loadComments.concat(this.state.comments);
-            this.setState({comments: comments});
-        }
-        else{
-            this.setState({comments: this.props.comments});
-        }
-
+    _showComments(e){
+        e.preventDefault();
+        console.log('here');
         this.setState({showComments: !this.state.showComments});
     }
 
     render(){
-        let commentNodes = this.state.comments.map(function(comment){
+        let commentNodes = this.props.comments.map(function(comment, i){
             return(
-                <Comment username={comment.username} time="1.47 AM">{comment.message}</Comment>
+                <Comment key={i} username={comment.username} time="1.47 AM">{comment.message}</Comment>
             )
         });
 
+        //if it's larger than 2 and we don't want to show all comments comments
+        if(this.props.comments.length > 2 && !this.state.showComments){
+            let length = commentNodes.length;
+            commentNodes = commentNodes.slice(length - 2, length);
+        }
 
         return(
             <div className="commentList">
                 {(() => {
-                    if(this.state.comments.length !== 0){
+                    if(this.props.comments.length > 2){
                         return(
-                            <CommentToggle onClick={this.loadComments.bind(this)} showComments={this.state.showComments}/>
+                            <CommentToggle onClick={this._showComments.bind(this)} show={this.state.showComments}/>
                         )
                     }
                 })()}

@@ -10,7 +10,8 @@ class Message extends Component{
     render(){
         return(
             <div>
-                <div className="message user-message clearfix pull-right">
+                <div className="message user-message">
+                    <img className="img-circle display-picture message-picture" src="../../img/dp.jpg"/>
                     <EmojiText>
                         {this.props.children}
                     </EmojiText>

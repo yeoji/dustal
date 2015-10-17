@@ -2,55 +2,22 @@ import React, {Component, PropTypes} from 'react';
 import {Modal, Tabs, Tab, Input, Button} from 'react-bootstrap';
 import Select from 'react-select';
 import UserActions from '../../../actions/UserActions';
-import UserStore from '../../../stores/UserStore';
-import CustomOption from '../flags/CustomOption';
-import CustomValue from '../flags/CustomSingleValue';
-import countryPhones from '../../../data/country-phone';
+import ChangeMobile from '../../account/ChangeMobile';
 
 class VerificationModal extends Component{
     constructor(props){
         super(props);
-        this.state = {tab: 2, countryCode: "AU", mobileNumber: "", UserStore: UserStore.getState()};
+        this.state = {tab: 2, countryCode: "AU", mobileNumber: ""};
     }
-
-    componentDidMount(){
-        UserStore.listen(this.onUserChange.bind(this));
-    }
-
-    componentWillUnMount(){
-        UserStore.listen(this.onUserChange.bind(this));
-    }
-
-    onUserChange(state){
-        this.setState({UserStore: state});
-
-        if(Object.keys(this.state.UserStore.user.toObject()).length !== 0){
-            this.setState({
-                countryCode: this.state.UserStore.user.get('mobile').country_code,
-                mobileNumber: this.state.UserStore.user.get('mobile').number
-            })
-        }
-    }
-
-    countryChange(val) {
-        this.setState({countryCode: val});
-    }
-
-
 
     close(){
         return;
     }
 
-    handleSelect(tab) {
+    _handleSelectTab(tab) {
         this.setState({tab});
 
     }
-
-    _onAuthSubmit(e) {
-        e.preventDefault();
-        const user = {};
-    };
 
     _onVerifyNumber(e) {
         e.preventDefault();
@@ -62,17 +29,6 @@ class VerificationModal extends Component{
         UserActions.verifyNumber(obj);
     }
 
-    _onResendNumber(e){
-        e.preventDefault();
-
-        const mobile = {};
-        mobile.country_code = this.state.countryCode;
-        mobile.number = this.refs.mobile_number.getValue();
-
-        UserActions.resendNumber(mobile);
-
-    }
-
     render() {
 
 
@@ -82,25 +38,9 @@ class VerificationModal extends Component{
                     <Modal.Title>Verify Number</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Tabs activeKey={this.state.tab} onSelect={this.handleSelect.bind(this)}>
+                    <Tabs activeKey={this.state.tab} onSelect={this._handleSelectTab.bind(this)}>
                         <Tab eventKey={1} title="Mobile Details">
-                            <form onSubmit={this._onResendNumber.bind(this)}>
-                                <Select
-                                    ref="country_code"
-                                    value={this.state.countryCode}
-                                    options={countryPhones}
-                                    optionComponent={CustomOption}
-                                    singleValueComponent={CustomValue}
-                                    clearable={false}
-                                    onChange={this.countryChange.bind(this)}
-                                    />
-                                <Input placeholder="Mobile Number"
-                                       className="form-control"
-                                       type="text"
-                                       ref="mobile_number"
-                                       defaultValue={this.state.mobileNumber}/>
-                                <Button type="submit" className="btn btn-lg btn-default btn-block">Resend Code</Button>
-                            </form>
+                            <ChangeMobile />
                         </Tab>
                         <Tab eventKey={2} title="Verify Mobile">
                             <form onSubmit={this._onVerifyNumber.bind(this)}>

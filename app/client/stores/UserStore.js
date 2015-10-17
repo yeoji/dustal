@@ -22,12 +22,14 @@ class UserStore {
 
     bootstrap() {
         if (!Immutable.Map.isMap(this.user)) {
-            this.user = Immutable.fromJS(this.user);
+            this.user = Immutable.Map(this.user);
         }
     }
 
     handleDoRegister(user) {
         this.user = Immutable.Map(user);
+
+        console.log(this.user.toObject());
 
         // redirect to dashboard
         routerInstance.get().transitionTo('/account');

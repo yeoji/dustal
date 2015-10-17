@@ -11,10 +11,10 @@ class Post extends Component{
     }
     render(){
 
-        let messageNodes = this.props.messages.map(function(m){
+        let messageNodes = this.props.messages.map(function(m, i){
 
             return(
-                <Message time={m.time} comments={m.comments}>{m.message}</Message>
+                <Message key={i} time={m.time} comments={m.comments}>{m.message}</Message>
             )
         });
 

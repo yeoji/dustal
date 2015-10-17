@@ -1,6 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import AccountOverview from './AccountOverview';
+import EditBlog from './EditBlog';
+import ChangeMobile from './ChangeMobile';
+import ChangePassword from './ChangePassword';
 import UserStore from '../../stores/UserStore';
 import countryPhones from '../../data/country-phone';
 
@@ -23,15 +26,20 @@ class Account extends Component{
         this.setState({UserStore: state});
     }
 
-    handleSelect(selectedKey) {
-        this.setState({tab: selectedKey});
-    }
+    _findCountryByCode(countryPhone){
 
-    findCountryByCode(countryPhone){
-
-        if(this.state.UserStore.user.get('mobile').get('country_code') === countryPhone.value){
+        if(this.state.UserStore.user.get('mobile').country_code === countryPhone.value){
             return countryPhone.label;
         };
+    }
+
+    _handleSelection(tab){
+        this.setState({tab: tab});
+    }
+
+    _editBlog(e){
+        e.preventDefault();
+        this.setState({tab: 2});
     }
 
     render(){
@@ -45,9 +53,32 @@ class Account extends Component{
         if(Object.keys(this.state.UserStore.user.toObject()).length !== 0){
             user.username =  this.state.UserStore.user.get('username');
             user.email = this.state.UserStore.user.get('email');
-            user.mobileNumber = this.state.UserStore.user.get('mobile').get('number');
-            user.countryCode = countryPhones.filter(this.findCountryByCode.bind(this))[0];
+            user.mobileNumber = this.state.UserStore.user.get('mobile').number;
+            user.countryCode = countryPhones.filter(this._findCountryByCode.bind(this))[0];
         }
+
+        let selection;
+
+
+        if(this.state.tab === 2){
+            selection = <EditBlog />
+        }
+        else if(this.state.tab === 3){
+            selection = <ChangeMobile />
+        }
+        else if(this.state.tab === 4){
+            selection = <ChangePassword />
+        }
+        else{
+            selection = <AccountOverview
+                username={user.username}
+                email={user.email}
+                countryCode={user.countryCode}
+                mobileNumber={user.mobileNumber}
+                onClick={this._editBlog.bind(this)}
+                />
+        }
+
         return(
             <Row>
                 <Col lg={8} lgOffset={2} className="settings">
@@ -55,22 +86,17 @@ class Account extends Component{
                     <Row className="settings">
                         <Col lg={2}>
                             <ul className="settings-selection">
-                                <li><a>Account Overview</a></li>
-                                <li><a>Edit Blog</a></li>
-                                <li><a>Change Mobile</a></li>
-                                <li><a>Change Number</a></li>
+                                <li onClick={this._handleSelection.bind(this, 1)}><a>Account Overview</a></li>
+                                <li onClick={this._handleSelection.bind(this, 2)}><a>Edit Blog</a></li>
+                                <li onClick={this._handleSelection.bind(this, 3)}><a>Change Mobile</a></li>
+                                <li onClick={this._handleSelection.bind(this, 4)}><a>Change Password</a></li>
                             </ul>
                         </Col>
                         <Col lg={10}>
                             <div className="settings-wrapper">
                                 <Row>
                                     <Col lg={10} lgOffset={1}>
-                                        <AccountOverview
-                                            username={user.username}
-                                            email={user.email}
-                                            countryCode={user.countryCode}
-                                            mobileNumber={user.mobileNumber}
-                                            />
+                                        {selection}
                                     </Col>
                                 </Row>
                             </div>

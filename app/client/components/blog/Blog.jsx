@@ -19,7 +19,7 @@ class Blog extends Component {
 
         let postNodes = posts.map(function(post, i){
             return(
-                <Post date={post.date} messages={post.messages} first={false}/>
+                <Post key={i} date={post.date} messages={post.messages}/>
             );
         });
 
