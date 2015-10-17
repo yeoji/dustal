@@ -27,10 +27,9 @@ class Account extends Component{
     }
 
     _findCountryByCode(countryPhone){
-
-        if(this.state.UserStore.user.get('mobile').country_code === countryPhone.value){
+        if(this.state.UserStore.user.get('mobile').get('country_code') === countryPhone.value){
             return countryPhone.label;
-        };
+        }
     }
 
     _handleSelection(tab){
@@ -46,14 +45,14 @@ class Account extends Component{
         var user = {
             username: "",
             email: "",
-            countryCode: "",
+            countryCode: {value: '', label: ''},
             mobileNumber: ""
         };
 
         if(Object.keys(this.state.UserStore.user.toObject()).length !== 0){
             user.username =  this.state.UserStore.user.get('username');
             user.email = this.state.UserStore.user.get('email');
-            user.mobileNumber = this.state.UserStore.user.get('mobile').number;
+            user.mobileNumber = this.state.UserStore.user.get('mobile').get('number');
             user.countryCode = countryPhones.filter(this._findCountryByCode.bind(this))[0];
         }
 

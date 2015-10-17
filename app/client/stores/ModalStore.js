@@ -59,8 +59,9 @@ class ModalStore{
     }
 
     handleVerifiedNumber(status){
-        if(status.error === false){
+        if(!status.error){
             this.showVerificationModal = false;
+            this.emitChange();
         }
     }
 }

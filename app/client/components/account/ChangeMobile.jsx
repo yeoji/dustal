@@ -26,8 +26,8 @@ class ChangeMobile extends Component{
 
         if(Object.keys(this.state.UserStore.user.toObject()).length !== 0){
             this.setState({
-                countryCode: this.state.UserStore.user.get('mobile').country_code,
-                mobileNumber: this.state.UserStore.user.get('mobile').number
+                countryCode: this.state.UserStore.user.get('mobile').get('country_code'),
+                mobileNumber: this.state.UserStore.user.get('mobile').get('number')
             })
         }
     }

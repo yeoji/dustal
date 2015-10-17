@@ -22,7 +22,7 @@ class UserStore {
 
     bootstrap() {
         if (!Immutable.Map.isMap(this.user)) {
-            this.user = Immutable.Map(this.user);
+            this.user = Immutable.fromJS(this.user);
         }
     }
 
@@ -37,9 +37,10 @@ class UserStore {
 
     handleDoLogin(user) {
         this.user = Immutable.fromJS(user);
+        this.emitChange();
 
         let path = '/' + this.user.get('username');
-        if(!this.user.get('mobile').is_verified){
+        if(!this.user.get('mobile').get('is_verified')){
             path = '/account';
         }
         
@@ -54,8 +55,13 @@ class UserStore {
     }
 
 
-    handleVerifyNumber(){
+    handleVerifyNumber(verify){
         //nothing
+        if(!verify.error) {
+            const oldMobile = this.user.get('mobile');
+            this.user = this.user.set('mobile', oldMobile.set('is_verified', true));
+            //this.emitChange();
+        }
     }
 
     handleResendNumber(mobile){

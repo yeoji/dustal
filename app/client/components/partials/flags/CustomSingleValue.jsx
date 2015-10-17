@@ -1,6 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 
 class SingleValue extends Component{
+
+    constructor(props) {
+        super(props);
+    }
+
     render () {
         var obj = this.props.value;
 
