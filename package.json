@@ -49,6 +49,7 @@
     "immutable": "^3.7.5",
     "iso": "^4.2.0",
     "jade": "^1.11.0",
+    "jimp": "^0.2.9",
     "joi": "^6.9.0",
     "joi-validation-strategy": "^0.2.1",
     "jquery": "^2.1.4",

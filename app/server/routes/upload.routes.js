@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import tokenHelper from "./tokenHelper";
+import { resizeCrop } from "../services/files/FileHelper";
 import fs from "fs";
 const uploadRouter = express.Router();
 
@@ -36,6 +37,9 @@ const upload = multer({
 
 // uploading profile picture
 uploadRouter.post('/profile/:username', tokenHelper.verifyToken, upload.single('profile'), (req, res) => {
+    // resize the photo and crop
+    resizeCrop(req.file.path, 150, 150);
+
     req.db.repositories.UserRepository.update(res.locals.user._id, {profile_img: req.file.filename}, req.db.connection)
         .then((raw) => {
             return res.status(200).json({
