@@ -27,9 +27,7 @@ class UserStore {
     }
 
     handleDoRegister(user) {
-        this.user = Immutable.Map(user);
-
-        console.log(this.user.toObject());
+        this.user = Immutable.fromJS(user);
 
         // redirect to dashboard
         routerInstance.get().transitionTo('/account');

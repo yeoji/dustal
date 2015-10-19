@@ -303,6 +303,18 @@ h4{
     background-color: #eee;
 }
 
+.profile-picture{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: solid #aaaaaa 1px;
+}
+
+.profile-picture img{
+    width: 100%;
+    height: 100%;
+}
+
 
 
 

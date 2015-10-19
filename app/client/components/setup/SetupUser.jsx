@@ -2,6 +2,7 @@ import React from "react";
 import {Row, Col, Input, ButtonInput} from "react-bootstrap";
 import UploadActions from "../../actions/UploadActions";
 import UploadStore from "../../stores/UploadStore";
+import ProfilePicture from '../partials/ProfilePicture';
 
 class SetupUser extends React.Component {
 
@@ -22,22 +23,22 @@ class SetupUser extends React.Component {
         this.setState({profileImg: '/uploads/' + state.profileImg});
     }
 
-    _onFileChange() {
-        const form = React.findDOMNode(this.refs.profileForm);
+    _onFileChange(files) {
+
+        let file = files[0];
 
         const data = new FormData();
-        data.append('profile', form.elements.profile.files[0]);
+        data.append('profile', file);
         UploadActions.uploadProfilePic(data, this.props.user.get('username'));
     }
 
     render() {
         return (
             <form ref="profileForm" encType="multipart/form-data">
-                <Row style={{ margin: '30px' }}>
-                    <h2 style={{marginTop: '0px'}}>1) Upload a profile photo</h2>
+                <Row>
+                    <h2>1) Upload a profile photo</h2>
                     <Col lg={4} lgOffset={4}>
-                        <img src={this.state.profileImg}/>
-                        <Input type="file" name="profile" ref="profile" onChange={this._onFileChange.bind(this)}/>
+                        <ProfilePicture onChange={this._onFileChange.bind(this)} profileImg={this.state.profileImg}/>
                     </Col>
                 </Row>
             </form>

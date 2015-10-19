@@ -3,9 +3,7 @@ import Select from 'react-select';
 import {Row, Col, Input, ButtonInput} from 'react-bootstrap';
 import CustomOption from '../partials/flags/CustomOption';
 import CustomValue from '../partials/flags/CustomSingleValue';
-
-
-
+import ProfilePicture from '../partials/ProfilePicture';
 
 class AccountOverview extends Component{
     constructor(props){
@@ -18,6 +16,7 @@ class AccountOverview extends Component{
             <form className="account-overview">
                 <Row>
                     <Col lg={12}>
+                        <ProfilePicture />
                         <Input type="text" label="Username" value={this.props.username} disabled/>
                         <Input type="text" label="Email" value={this.props.email} disabled/>
                     </Col>

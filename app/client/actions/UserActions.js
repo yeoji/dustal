@@ -59,6 +59,10 @@ class UserActions {
             });
     }
 
+    updateProfilePictures(){
+        this.dispatch();
+    }
+
 }
 
 export default alt.createActions(UserActions);
