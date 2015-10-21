@@ -14,9 +14,6 @@ class ProfilePicture extends Component{
         return(
 
             <div className="form-group">
-                <label className="control-label">
-                    <span>Profile Picture</span>
-                </label>
                 <Dropzone onDrop={this._onDrop.bind(this)} className="profile-picture">
                     <img src={this.props.profileImg} />
                 </Dropzone>

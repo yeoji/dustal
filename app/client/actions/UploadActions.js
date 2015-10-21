@@ -1,12 +1,12 @@
 import alt from "../alt";
-import UploadService from "../services/UploadService";
+import S3Service from "../services/S3Service";
 
-const UploadApi = new UploadService();
+const UploadApi = new S3Service();
 
 class UploadActions {
 
-    uploadProfilePic(file, username) {
-        UploadApi.profilePic(file, username)
+    uploadProfilePic(file, name) {
+        UploadApi.profilePic(file, name)
             .then((response) => {
                 this.dispatch(response);
             })
