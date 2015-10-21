@@ -21,6 +21,7 @@ reactRouter.use('*', tokenHelper.verifyToken, function (req, res) {
                 last_name: res.locals.user.last_name,
                 email: res.locals.user.email,
                 username: res.locals.user.username,
+                profile_img: res.locals.user.profile_img,
                 mobile: {
                     country_code: res.locals.user.mobile.country_code,
                     number: res.locals.user.mobile.number,

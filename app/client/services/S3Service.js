@@ -11,7 +11,7 @@ class S3Service extends RESTService {
      * Handles the uploading of the user's profile picture
      * @param file
      */
-    profilePic(file, username) {
+    profilePic(file) {
         let url = this.baseUrl + '/upload/';
         return new Promise((resolve, reject) => {
             axios.post(url, file)

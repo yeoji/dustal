@@ -74,6 +74,7 @@ class Account extends Component{
                 email={user.email}
                 countryCode={user.countryCode}
                 mobileNumber={user.mobileNumber}
+                profileImg={this.state.UserStore.user.get('profile_img')}
                 onClick={this._editBlog.bind(this)}
                 />
         }

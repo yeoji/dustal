@@ -2,6 +2,7 @@ import alt from "../alt";
 import Immutable from "immutable";
 import UserActions from "../actions/UserActions";
 import ModalActions from '../actions/ModalActions';
+import UploadActions from "../actions/UploadActions";
 import routerInstance from "../routerInstance";
 
 class UserStore {
@@ -16,7 +17,8 @@ class UserStore {
             handleDoLogin: UserActions.doLogin,
             handleDoLogout: UserActions.doLogout,
             handleVerifyNumber: UserActions.verifyNumber,
-            handleResendNumber: UserActions.resendNumber
+            handleResendNumber: UserActions.resendNumber,
+            handleUploadProfile: UploadActions.uploadProfilePic
         });
     }
 
@@ -39,7 +41,7 @@ class UserStore {
 
         let path = '/' + this.user.get('username');
         if(!this.user.get('mobile').get('is_verified')){
-            path = '/account';
+            path = '/setup';
         }
         
         routerInstance.get().transitionTo(path);
@@ -64,6 +66,11 @@ class UserStore {
 
     handleResendNumber(mobile){
         this.user = this.user.set('mobile', mobile);
+        this.emitChange();
+    }
+
+    handleUploadProfile(data) {
+        this.user = this.user.set('profile_img', data.location);
         this.emitChange();
     }
 

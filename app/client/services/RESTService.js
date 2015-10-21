@@ -36,13 +36,7 @@ class RESTService {
 
     // Create a resource
     createResource(data) {
-        axios.post(this.baseUrl, data)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (response) {
-                console.log(response);
-            });
+        return axios.post(this.baseUrl, data);
     }
 
     // Update a specified resource

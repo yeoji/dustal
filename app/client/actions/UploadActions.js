@@ -5,8 +5,8 @@ const UploadApi = new S3Service();
 
 class UploadActions {
 
-    uploadProfilePic(file, name) {
-        UploadApi.profilePic(file, name)
+    uploadProfilePic(file) {
+        UploadApi.profilePic(file)
             .then((response) => {
                 this.dispatch(response);
             })

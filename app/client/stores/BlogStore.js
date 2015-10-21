@@ -1,11 +1,12 @@
 import alt from '../alt';
 import Immutable from "immutable";
 import routerInstance from "../routerInstance";
+import BlogActions from "../actions/BlogActions";
 
 class BlogStore{
     constructor(){
         let date = new Date();
-
+        this.blog = Immutable.Map({});
         this.posts  = [
             {date : date,
                 messages : [
@@ -59,6 +60,15 @@ class BlogStore{
                 ]
             }
         ];
+
+        this.bindListeners({
+            handleCreateBlog: BlogActions.createBlog
+        });
+    }
+
+    handleCreateBlog(data) {
+        this.blog = Immutable.fromJS(data);
+        routerInstance.get().transitionTo('/'+data.name);
     }
 
 }

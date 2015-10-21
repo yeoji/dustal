@@ -48,7 +48,7 @@ export default class s3Routes extends RESTRoutes {
         apiRouter.post('/upload', tokenHelper.verifyToken, upload.single('profile'), (req, res) => {
 
             const s3baseUrl = 'https://s3.amazonaws.com/dustal/';
-            const filename = res.locals.user.username + '/avatar.' + req.file.originalname.split('.')[1];
+            const filename = res.locals.user.username + '.' + req.file.originalname.split('.')[1];
             const s3 = new AWS.S3();
 
             s3.putObject({
