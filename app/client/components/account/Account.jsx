@@ -5,25 +5,32 @@ import EditBlog from './EditBlog';
 import ChangeMobile from './ChangeMobile';
 import ChangePassword from './ChangePassword';
 import UserStore from '../../stores/UserStore';
+import BlogStore from '../../stores/BlogStore';
 import countryPhones from '../../data/country-phone';
 
 class Account extends Component{
 
     constructor(props){
         super(props);
-        this.state = {tab : 1, UserStore: UserStore.getState()}
+        this.state = {tab : 1, UserStore: UserStore.getState(), BlogStore: BlogStore.getState()}
     }
 
     componentDidMount(){
         UserStore.listen(this.onUserChange.bind(this));
+        BlogStore.listen(this.onBlogChange.bind(this));
     }
 
     componentWillUnmount() {
         UserStore.unlisten(this.onUserChange.bind(this));
+        BlogStore.unlisten(this.onBlogChange.bind(this));
     }
 
     onUserChange(state){
         this.setState({UserStore: state});
+    }
+
+    onBlogChange(state) {
+        this.setState({BlogStore: state});
     }
 
     _findCountryByCode(countryPhone){
@@ -60,13 +67,13 @@ class Account extends Component{
 
 
         if(this.state.tab === 2){
-            selection = <EditBlog />
+            selection = <EditBlog blog={this.state.BlogStore.blog}/>
         }
         else if(this.state.tab === 3){
             selection = <ChangeMobile />
         }
         else if(this.state.tab === 4){
-            selection = <ChangePassword />
+            selection = <ChangePassword userId={this.state.UserStore.user.get('id')}/>
         }
         else{
             selection = <AccountOverview
@@ -75,6 +82,7 @@ class Account extends Component{
                 countryCode={user.countryCode}
                 mobileNumber={user.mobileNumber}
                 profileImg={this.state.UserStore.user.get('profile_img')}
+                blog={this.state.BlogStore.blog}
                 onClick={this._editBlog.bind(this)}
                 />
         }

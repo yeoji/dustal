@@ -15,6 +15,16 @@ class BlogActions {
             });
     }
 
+    updateBlog(name, data) {
+        BlogApi.updateResource(name, data)
+            .then((response) => {
+                this.dispatch(response.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
 }
 
 export default alt.createActions(BlogActions);

@@ -8,6 +8,7 @@ import routerInstance from "../routerInstance";
 class UserStore {
     constructor() {
         this.user = Immutable.Map({});
+        this.changePwSuccess = false;
 
         this.on('init', this.bootstrap);
         this.on('bootstrap', this.bootstrap);
@@ -18,7 +19,8 @@ class UserStore {
             handleDoLogout: UserActions.doLogout,
             handleVerifyNumber: UserActions.verifyNumber,
             handleResendNumber: UserActions.resendNumber,
-            handleUploadProfile: UploadActions.uploadProfilePic
+            handleUploadProfile: UploadActions.uploadProfilePic,
+            handleChangePassword: UserActions.changePassword
         });
     }
 
@@ -26,6 +28,7 @@ class UserStore {
         if (!Immutable.Map.isMap(this.user)) {
             this.user = Immutable.fromJS(this.user);
         }
+        this.changePwSuccess = false;
     }
 
     handleDoRegister(user) {
@@ -65,12 +68,17 @@ class UserStore {
     }
 
     handleResendNumber(mobile){
-        this.user = this.user.set('mobile', mobile);
+        this.user = this.user.set('mobile', Immutable.Map(mobile));
         this.emitChange();
     }
 
     handleUploadProfile(data) {
         this.user = this.user.set('profile_img', data.location);
+        this.emitChange();
+    }
+
+    handleChangePassword() {
+        this.changePwSuccess = true;
         this.emitChange();
     }
 

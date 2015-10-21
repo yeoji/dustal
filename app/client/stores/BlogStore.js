@@ -7,6 +7,7 @@ class BlogStore{
     constructor(){
         let date = new Date();
         this.blog = Immutable.Map({});
+        this.updateSuccess = false;
         this.posts  = [
             {date : date,
                 messages : [
@@ -61,14 +62,29 @@ class BlogStore{
             }
         ];
 
+        this.on('init', this.bootstrap);
+        this.on('bootstrap', this.bootstrap);
+
         this.bindListeners({
-            handleCreateBlog: BlogActions.createBlog
+            handleCreateBlog: BlogActions.createBlog,
+            handleUpdateBlog: BlogActions.updateBlog
         });
+    }
+
+    bootstrap() {
+        if (!Immutable.Map.isMap(this.blog)) {
+            this.blog = Immutable.fromJS(this.blog);
+        }
     }
 
     handleCreateBlog(data) {
         this.blog = Immutable.fromJS(data);
         routerInstance.get().transitionTo('/'+data.name);
+    }
+
+    handleUpdateBlog(data) {
+        this.updateSuccess = true;
+        this.emitChange();
     }
 
 }

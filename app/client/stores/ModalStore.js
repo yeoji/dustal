@@ -12,7 +12,8 @@ class ModalStore{
             closeRegisterModal: ModalActions.closeRegisterModal,
             UserRegisterModal: UserActions.doRegister,
             UserLoginModal: UserActions.doLogin,
-            handleVerifiedNumber: UserActions.verifyNumber
+            handleVerifiedNumber: UserActions.verifyNumber,
+            handleResendNumber: UserActions.resendNumber
         });
 
         this.showLoginModal = false;
@@ -63,6 +64,11 @@ class ModalStore{
             this.showVerificationModal = false;
             this.emitChange();
         }
+    }
+
+    handleResendNumber(mobile) {
+        this.showVerificationModal = true;
+        this.emitChange();
     }
 }
 

@@ -16,7 +16,7 @@ class AccountOverview extends Component{
             <form className="account-overview">
                 <Row>
                     <Col lg={12}>
-                        <ProfilePicture />
+                        <ProfilePicture img={this.props.profileImg || ''}/>
                         <Input type="text" label="Username" value={this.props.username} disabled/>
                         <Input type="text" label="Email" value={this.props.email} disabled/>
                     </Col>
@@ -38,8 +38,8 @@ class AccountOverview extends Component{
                 </Row>
                 <Row>
                     <Col lg={12}>
-                        <Input type="text" label="Blog Title" value="" disabled/>
-                        <Input type="checkbox" label="Private Blog" checked readOnly />
+                        <Input type="text" label="Blog Title" value={this.props.blog ? this.props.blog.get('title') : ''} disabled/>
+                        <Input type="checkbox" label="Private Blog" checked={this.props.blog ? this.props.blog.get('private') : false} readOnly />
                         <ButtonInput type="submit" value="Edit Blog" className="pull-right" onClick={this.props.onClick}/>
                     </Col>
                 </Row>

@@ -63,7 +63,7 @@ class ChangeMobile extends Component{
                        className="form-control"
                        type="text"
                        ref="mobile_number"
-                       defaultValue={this.state.mobileNumber}/>
+                       defaultValue={this.state.UserStore.user.get('mobile').get('number')}/>
                 <Button type="submit" className="pull-right">Resend Code</Button>
             </form>
         )

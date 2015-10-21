@@ -63,6 +63,16 @@ class UserActions {
         this.dispatch();
     }
 
+    changePassword(id, data) {
+        UserApi.updateResource(id, data)
+            .then((response) => {
+                this.dispatch(response.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
 }
 
 export default alt.createActions(UserActions);

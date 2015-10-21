@@ -5,7 +5,7 @@ import BlogRouter from "./routes/rest/BlogRoutes";
 import PostRouter from "./routes/rest/PostRoutes";
 import s3Router from "./routes/rest/s3Routes";
 import CommentRouter from "./routes/rest/CommentRoutes";
-import uploadRouter from "./routes/upload.routes";
+import UserRouter from "./routes/rest/UserRoutes";
 import {SmsHandler, getCallCode} from "./services/sms/SmsService";
 
 export default function (app, passport) {
@@ -22,7 +22,7 @@ export default function (app, passport) {
     app.use('/api/posts', new PostRouter().generateRoutes());
     app.use('/api/comments', new CommentRouter().generateRoutes());
     app.use('/api/s3', new s3Router().generateRoutes());
-    app.use('/api/users', new RESTRouter('User').generateRoutes({index: false, create: false, delete: false}));
+    app.use('/api/users', new UserRouter().generateRoutes());
 
     // routes that handle uploads
     //app.use('/api/uploads', uploadRouter);
@@ -38,13 +38,6 @@ export default function (app, passport) {
             .catch((err) => {
                 return res.status(500).json(err);
             });
-    });
-
-    app.get('/test', (req, res) => {
-        req.db.repositories.UserRepository.all(req.db.connection)
-        .then((users) => {
-            return res.status(200).json(users);
-        });
     });
 
     /******************

@@ -43,13 +43,19 @@ class RESTService {
     updateResource(id, data) {
         let url = this.baseUrl + '/' + id;
 
-        axios.put(url, data)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (response) {
-                console.log(response);
-            });
+        return new Promise((resolve, reject) => {
+            axios.put(url, data)
+                .then((response) => {
+                    if(response.status == 200) {
+                        resolve(response);
+                    } else {
+                        reject(response);
+                    }
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
     }
 
     // Delete a specified resource

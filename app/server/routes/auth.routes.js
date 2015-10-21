@@ -40,6 +40,7 @@ export default function (app, passport) {
             return res.status(200).json({
                 error: false,
                 message: 'Successfully registered user.',
+                id: user._id,
                 first_name: user.first_name,
                 last_name: user.last_name,
                 username: user.username,
@@ -75,6 +76,7 @@ export default function (app, passport) {
             return res.status(200).json({
                 error: false,
                 message: 'Successfully logged in!',
+                id: user._id,
                 first_name: user.first_name,
                 last_name: user.last_name,
                 username: user.username,
