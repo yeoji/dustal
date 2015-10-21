@@ -15,10 +15,9 @@ class Message extends Component{
                     <EmojiText>
                         {this.props.children}
                     </EmojiText>
-                    <div>
-                        <span className="time">{this.props.time}</span>
-                    </div>
+                    <span className="time">{this.props.time}</span>
                 </div>
+
                 <CommentList comments={this.props.comments}/>
             </div>
         )

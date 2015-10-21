@@ -16,7 +16,7 @@ class AccountOverview extends Component{
             <form className="account-overview">
                 <Row>
                     <Col lg={12}>
-                        <ProfilePicture img={this.props.profileImg || ''}/>
+                        <ProfilePicture />
                         <Input type="text" label="Username" value={this.props.username} disabled/>
                         <Input type="text" label="Email" value={this.props.email} disabled/>
                     </Col>

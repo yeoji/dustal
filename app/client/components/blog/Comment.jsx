@@ -18,9 +18,7 @@ class Comment extends Component{
                     <EmojiText>
                         {this.props.children}
                     </EmojiText>
-                    <div>
-                        <span className="time">{this.props.time}</span>
-                    </div>
+                    <span className="time">{this.props.time}</span>
                 </div>
         )
     }

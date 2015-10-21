@@ -78,7 +78,7 @@ export default function (app, passport) {
                 first_name: user.first_name,
                 last_name: user.last_name,
                 username: user.username,
-                profile_img: res.locals.user.profile_img,
+                profile_img: user.profile_img,
                 email: user.email,
                 mobile: {
                     is_verified: user.mobile.is_verified,
