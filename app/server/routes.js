@@ -25,7 +25,7 @@ export default function (app, passport) {
     app.use('/api/users', new RESTRouter('User').generateRoutes({index: false, create: false, delete: false}));
 
     // routes that handle uploads
-    app.use('/api/uploads', uploadRouter);
+    //app.use('/api/uploads', uploadRouter);
 
     // sms callback url
     app.post('/handler/sms', (req, res) => {

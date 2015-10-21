@@ -13,7 +13,7 @@ class UploadStore {
     }
 
     handleUploadProfile(data) {
-        this.profileImg = data.path;
+        this.profileImg = data.location;
         this.emitChange();
     }
 

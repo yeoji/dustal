@@ -20,7 +20,7 @@ class SetupUser extends React.Component {
     }
 
     onUploadChange(state){
-        this.setState({profileImg: '/uploads/' + state.profileImg});
+        this.setState({profileImg: state.profileImg});
     }
 
     _onFileChange(files) {

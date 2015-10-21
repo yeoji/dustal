@@ -47,10 +47,13 @@ export default class s3Routes extends RESTRoutes {
 
         apiRouter.post('/upload', tokenHelper.verifyToken, upload.single('profile'), (req, res) => {
 
-            var s3 = new AWS.S3();
+            const s3baseUrl = 'https://s3.amazonaws.com/dustal/';
+            const filename = res.locals.user.username + '/avatar.' + req.file.originalname.split('.')[1];
+            const s3 = new AWS.S3();
+
             s3.putObject({
                 Bucket: 'dustal',
-                Key: req.file.originalname,
+                Key: filename,
                 Body: req.file.buffer,
                 ACL: 'public-read'
             }, function (err, data) {
@@ -58,12 +61,24 @@ export default class s3Routes extends RESTRoutes {
                     throw err;
                 }
                 else{
-                    console.log('https://s3.amazonaws.com/dustal/' + req.file.originalname);
-                    return res.status(200).json({
-                        error: false,
-                        message: 'success',
-                        location: 'https://s3.amazonaws.com/dustal/' + req.file.originalname
-                    });
+                    const imgUrl = s3baseUrl + filename;
+                    console.log(imgUrl);
+
+                    // store link in user document
+                    req.db.repositories.UserRepository.update(res.locals.user._id, {profile_img: imgUrl}, req.db.connection)
+                        .then((raw) => {
+                            return res.status(200).json({
+                                error: false,
+                                message: 'Image upload completed!',
+                                location: imgUrl
+                            });
+                        })
+                        .catch((err) => {
+                            return res.status(500).json({
+                                error: true,
+                                message: 'Could not upload image'
+                            });
+                        });
                 }
             });
 
